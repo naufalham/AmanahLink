@@ -1,15 +1,15 @@
 <?php 
 class Produk extends CI_Controller {
 
-	// function __construct(){
-	// 	parent::__construct();
+	function __construct(){
+		parent::__construct();
 
-	// 	//jika tidak ada tiket login, maka suruh login
-	// 	if (!$this->session->userdata("id_member")) {
-	// 		$this->session->set_flashdata('pesan_gagal', 'Anda harus login');
-    //         redirect('','refresh');
-	// 	}
-	// }
+		//jika tidak ada tiket login, maka suruh login
+		if (!$this->session->userdata("id_admin")) {
+			$this->session->set_flashdata('pesan_gagal', 'Anda harus login');
+            redirect('','refresh');
+		}
+	}
 
 
     function index(){
