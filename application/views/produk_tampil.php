@@ -23,13 +23,13 @@
                 <td><?php echo $v['harga_produk'] ?></td>
                 <td><?php echo $v['deskripsi_produk'] ?></td>
                 <td>
-                    <a href="<?php echo base_url("index.php/produk/edit/".$v['id_produk']) ?>" class="btn btn-warning">Edit</a>
-                    <a href="<?php echo base_url("index.php/produk/hapus/".$v['id_produk']) ?>" class="btn btn-danger">Hapus</a>
+                    <a href="<?php echo base_url("produk/edit/".$v['id_produk']) ?>" class="btn btn-warning">Edit</a>
+                    <a href="<?php echo base_url("produk/hapus/".$v['id_produk']) ?>" class="btn btn-danger">Hapus</a>
                 </td>
             </tr>
             <?php endforeach ?>
         </tbody>
     </table>
 
-    <a href="<?php echo base_url("index.php/produk/tambah") ?>" class="btn btn-primary">Tambah</a>
+    <a href="<?php echo base_url("produk/tambah") ?>" class="btn btn-primary">Tambah</a>
 </div>

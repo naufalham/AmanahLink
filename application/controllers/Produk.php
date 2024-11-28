@@ -31,7 +31,7 @@ class Produk extends CI_Controller {
 		if ($inputan){
 			$this->Mproduk->simpan($inputan);
 			$this->session->set_flashdata('pesan_sukses', 'rpoduk tersimpan');
-			redirect('index.php/produk','refresh');
+			redirect('produk','refresh');
 		}
 
 		$this->load->view("header");
@@ -58,7 +58,7 @@ class Produk extends CI_Controller {
 			$this->session->set_flashdata('pesan_sukses', 'produk telah diubah');
 
 			//redirect
-			redirect('index.php/produk','refresh');
+			redirect('produk','refresh');
 		}
 
 		$this->load->view("header");
@@ -75,6 +75,6 @@ class Produk extends CI_Controller {
 		$this->session->set_flashdata('pesan_sukses', 'produk telah diubah');
 
 		//redirect
-		redirect('index.php/produk','refresh');
+		redirect('produk','refresh');
 	}
 }
