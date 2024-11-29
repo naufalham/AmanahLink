@@ -11,7 +11,7 @@ class Mtransaksi extends CI_Model{
 
     return $d;
     }
-
+    
     function detail($id_transaksi){
         $this->db->where('id_transaksi', $id_transaksi);
         $q = $this->db->get('transaksi');
