@@ -25,7 +25,6 @@ class Mtransaksi extends CI_Model{
     function transaksi_detail($id_transaksi){
         $this->db->where('id_transaksi', $id_transaksi);
         $this->db->join('produk', 'produk.id_produk = detail_transaksi.id_produk','left');
-        $this->db->group_by('detail_transaksi.id_transaksi');
         $q = $this->db->get('detail_transaksi');
         $d = $q->result_array();
     
