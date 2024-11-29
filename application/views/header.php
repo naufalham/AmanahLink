@@ -32,11 +32,11 @@
                         </ul>
                         
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a href="<?php echo base_url("akun") ?>" class="nav-link">
                                     <?php echo $this->session->userdata("nama"); ?>
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <a href="<?php echo base_url("logout") ?>" class="nav-link">Logout</a>
                             </li>
