@@ -35,4 +35,16 @@ class Mpelaporan extends CI_Model {
 
 		return $d;
 	}
+
+	
+	function pendapatan(){
+	
+		//melakukan query
+		$q = $this->db->query("SELECT DATE_FORMAT(tgl_transaksi, '%Y-%m') AS bulan, SUM(total_transaksi) AS total_pendapatan FROM transaksi GROUP BY DATE_FORMAT(tgl_transaksi, '%Y-%m') ORDER BY bulan ASC;");
+	
+		//pecah ke array
+		$d = $q->result_array();
+	
+		return $d;
+	}
 }

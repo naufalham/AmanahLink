@@ -1,7 +1,7 @@
 <div class="container">
 	<h5>Pelaporan Penjualan</h5>	
 
-	<div id="grafik-member-distrik"></div>
+	<div id="jumlah_penjualan"></div>
 
 </div>
 
@@ -10,7 +10,7 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script>
-	Highcharts.chart('grafik-member-distrik', {
+	Highcharts.chart('jumlah_penjualan', {
     chart: {
         type: 'pie'
     },
@@ -59,6 +59,80 @@
             ]
         }
     ]
+});
+</script>
+
+
+<div class="container">
+<h5>Pelaporan Pendapatan Per bulan</h5>	
+
+<div id="pendapatan"></div>
+
+</div>
+
+<script>
+
+Highcharts.chart('pendapatan', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Pendapatan Bulanan dalam Satu Tahun'
+    },
+    subtitle: {
+        text: 'Sumber: Data Pendapatan Bulanan'
+    },
+    xAxis: {
+        type: 'category',
+        labels: {
+            autoRotation: [-45, -90],
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Pendapatan (juta)'
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    tooltip: {
+        pointFormat: 'Pendapatan Bulanan: <b>{point.y:.1f} juta</b>'
+    },
+    series: [{
+        name: 'Pendapatan',
+        colors: [
+            '#0a9eaa'
+        ],
+        colorByPoint: true,
+        groupPadding: 0,
+        data: [
+            <?php foreach ($penjualan as $k => $v): ?>
+				{
+                    name: '<?php echo $v['bulan'] ?>',
+                    y: <?php echo $v['total_pendapatan'] ?>
+                },
+				<?php endforeach ?>
+        ],
+        dataLabels: {
+            enabled: true,
+            rotation: -90,
+            color: '#FFFFFF',
+            inside: true,
+            verticalAlign: 'top',
+            format: '{point.y:.1f}', // satu desimal
+            y: 10, // 10 piksel dari atas
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    }]
 });
 
 </script>
