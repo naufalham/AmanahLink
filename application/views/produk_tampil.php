@@ -1,5 +1,5 @@
 <div class="container">
-    <h5>Produk Jual <?php echo $this->session->userdata("nama_member"); ?></h5>
+    <h5>Produk Jual</h5>
 
     <table class="table">
         <thead>
