@@ -21,7 +21,7 @@ class Welcome extends CI_Controller {
 
 			if ($output=="ada") {
 				$this->session->set_flashdata('pesan_sukses', 'Berhasil Login');
-				redirect('home','refresh');
+				redirect('pelaporan','refresh');
 			}else {
 				$this->session->set_flashdata('pesan_gagal', 'Gagal Login');
 				redirect('/','refresh');
