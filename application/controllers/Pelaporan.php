@@ -17,11 +17,11 @@ class Pelaporan extends CI_Controller {
 
 		$this->load->model("Mpelaporan");
 		$data['jumlah_penjualan'] = $this->Mpelaporan->jumlah_penjualan("header");
-		$tada['pendapatan'] = $this->Mpelaporan->pendapatan("header");
+		$data['pendapatan'] = $this->Mpelaporan->pendapatan("header");
 
 
 		$this->load->view("header");
-		$this->load->view("pelaporan", $data, $tada);
+		$this->load->view("pelaporan", $data);
 		$this->load->view("footer");
 	}
 }

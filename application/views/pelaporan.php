@@ -8,6 +8,7 @@
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script>
 	Highcharts.chart('jumlah_penjualan', {
@@ -70,6 +71,10 @@
 
 </div>
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script>
 
 Highcharts.chart('pendapatan', {
@@ -93,7 +98,9 @@ Highcharts.chart('pendapatan', {
         }
     },
     yAxis: {
-        min: 0,
+        min: 0,// Minimum nilai sumbu Y
+        max: 5000000, // Maximum nilai sumbu Y
+        tickInterval: 1000000, // Interval antar tick (1 juta)
         title: {
             text: 'Pendapatan (juta)'
         }
@@ -102,7 +109,7 @@ Highcharts.chart('pendapatan', {
         enabled: false
     },
     tooltip: {
-        pointFormat: 'Pendapatan Bulanan: <b>{point.y:.1f} juta</b>'
+        pointFormat: 'Pendapatan Bulanan: <b>{point.y} ribu</b>'
     },
     series: [{
         name: 'Pendapatan',
@@ -112,7 +119,7 @@ Highcharts.chart('pendapatan', {
         colorByPoint: true,
         groupPadding: 0,
         data: [
-            <?php foreach ($penjualan as $k => $v): ?>
+            <?php foreach ($pendapatan as $k => $v): ?>
 				{
                     name: '<?php echo $v['bulan'] ?>',
                     y: <?php echo $v['total_pendapatan'] ?>
@@ -125,7 +132,7 @@ Highcharts.chart('pendapatan', {
             color: '#FFFFFF',
             inside: true,
             verticalAlign: 'top',
-            format: '{point.y:.1f}', // satu desimal
+            format: '{point.y}', // satu desimal
             y: 10, // 10 piksel dari atas
             style: {
                 fontSize: '13px',
@@ -136,3 +143,4 @@ Highcharts.chart('pendapatan', {
 });
 
 </script>
+
