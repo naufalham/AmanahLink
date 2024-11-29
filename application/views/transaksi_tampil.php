@@ -17,7 +17,7 @@
                 <tr>
                     <td><?php echo $k+1; ?></td>
                     <td><?php echo $v['tgl_transaksi']; ?></td>
-                    <td><?php echo $v['total_transaksi']; ?></td>
+                    <td><?php echo number_format($v['total_transaksi']) ?></td>
                     <td><?php echo $v['status_transaksi']; ?></td>
                     <td>
                         <a href="<?php echo base_url("transaksi/detail/" .$v["id_transaksi"]) ?>" class="btn btn-info">Detail</a>
