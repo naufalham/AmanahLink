@@ -11,7 +11,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
         <div class="container">
-            <a href="<?php echo base_url("home") ?>" class="navbar-brand">Admin</a>
+            <a href="<?php echo base_url("pelaporan") ?>" class="navbar-brand">Admin</a>
                 <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#naff">
                     <span class="navbar-toggler-icon"></span>
                 </button>
