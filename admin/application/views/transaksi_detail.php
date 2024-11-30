@@ -17,7 +17,7 @@
                 </select>
             </div>
         </div>
-        </div>
+    </div>
 
         <!-- Javascript untuk menangani perubahan status -->
         <script>
@@ -49,7 +49,7 @@
       
     </div>
 
-    
+    <div class="container">
     <h5>Produk</h5>
     <table class="table table-bordered">
         <thead>
@@ -81,4 +81,5 @@
             </tr>
         </tfoot>
     </table>
+    </div>
 </div>
