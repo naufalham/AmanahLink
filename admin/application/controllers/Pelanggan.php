@@ -28,9 +28,8 @@ class Pelanggan extends CI_Controller{
         $this->load->model('Mpelanggan');
         $data["pelanggan"] = $this->Mpelanggan->detail($id_pelanggan);
 
-        /* $this->load->model('Mtransaksi');
-        $data['jual'] = $this->Mtransaksi->transaksi_member_jual($id_member);
-        $data['beli'] = $this->Mtransaksi->transaksi_member_beli($id_member); */
+        $this->load->model('Mtransaksi');
+        $data['beli'] = $this->Mtransaksi->transaksi_pelanggan_beli($id_pelanggan); 
 
         $this->load->view('header');
         $this->load->view('pelanggan_detail', $data);

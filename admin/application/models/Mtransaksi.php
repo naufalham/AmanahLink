@@ -12,6 +12,13 @@ class Mtransaksi extends CI_Model{
     return $d;
     }
     
+    function transaksi_pelanggan_beli($id_pelanggan) {
+        $this->db->where('id_pelanggan', $id_pelanggan);
+        $q = $this->db->get("transaksi");
+        $d = $q->result_array();
+        return $d;
+    }
+    
     function detail($id_transaksi){
         $this->db->where('id_transaksi', $id_transaksi);
         $this->db->join('pelanggan', 'pelanggan.id_pelanggan = transaksi.id_transaksi','left');
