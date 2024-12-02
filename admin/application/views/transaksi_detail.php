@@ -4,19 +4,41 @@
             <h5>Transaksi</h5>
             <p>ID: <?php echo $transaksi['id_transaksi'] ?></p>
             <p><?php echo date('d M Y H:i', strtotime($transaksi['tgl_transaksi'])) ?></p>
-            <span class="badge bg-primary"><?php echo $transaksi['status_transaksi'] ?></span>
 
-            <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <?php echo $transaksi['status_transaksi'] ?>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#"><?php echo $transaksi['status_transaksi'] ?></a></li>
-                <li><a class="dropdown-item" href="#"><?php echo $transaksi['status_transaksi'] ?></a></li>
-                <li><a class="dropdown-item" href="#"><?php echo $transaksi['status_transaksi'] ?></a></li>
-            </ul>
+            <div>
+                <select class="form-control form-select" name="status_transaksi" id="status_transaksi">
+                <option value="">Pilih Status</option>
+                    <?php foreach ($enum_status as $status): ?>
+                        <option value="<?php echo $status; ?>" 
+                                <?php echo ($transaksi['status_transaksi'] == $status) ? 'selected' : ''; ?>>
+                            <?php echo ucfirst($status); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
         </div>
-        </div>
+    </div>
+
+        <!-- Javascript untuk menangani perubahan status -->
+        <script>
+            document.getElementById('status_transaksi').addEventListener('change', function() {
+                var selectedStatus = this.value;
+                var idTransaksi = <?php echo $transaksi['id_transaksi']; ?>;
+                
+                // Mengirim data status transaksi yang dipilih ke server menggunakan fetch API
+                fetch('<?php echo site_url('transaksi/update_status'); ?>', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id_transaksi: idTransaksi,
+                        status_transaksi: selectedStatus
+                    })
+                })
+                
+            });
+        </script>
        
         <div class="col-md-3">
             <h5>Penerima</h5>
@@ -27,7 +49,7 @@
       
     </div>
 
-    
+    <div class="container">
     <h5>Produk</h5>
     <table class="table table-bordered">
         <thead>
@@ -59,4 +81,5 @@
             </tr>
         </tfoot>
     </table>
+    </div>
 </div>
