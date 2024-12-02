@@ -1,6 +1,6 @@
 <div class="container">
-	<div class="row">
-		<div class="col-md-4">
+	<div class="row mb-5">
+		<div class="col-md-3">
 			<h5>Detail Pelanggan</h5>
 			<table class="table table-bordered">
 				<tr>
@@ -13,8 +13,19 @@
 				</tr>
 				<tr>
 					<td>Status Pelanggan</td>
-					<td><?php echo $pelanggan['status_pelanggan'] ?></td>
+					<td>
+						<select class="form-control form-select" name="status_pelanggan" id="status_pelanggan">
+							<option value="">Pilih Status</option>
+							<?php foreach ($enum_status as $status): ?>
+								<option value="<?php echo $status; ?>" 
+										<?php echo ($pelanggan['status_pelanggan'] == $status) ? 'selected' : ''; ?>>
+									<?php echo ucfirst($status); ?>
+								</option>
+							<?php endforeach; ?>
+						</select>
+					</td>
 				</tr>
+				
 				<tr>
 					<td>Tanggal Daftar</td>
 					<td><?php echo $pelanggan['tgl_daftar'] ?></td>
@@ -29,7 +40,29 @@
 				</tr>
 			</table>
 		</div>
- 		<div class="col col-md-8">
+
+		<!-- Javascript untuk menangani perubahan status -->
+        <script>
+            document.getElementById('status_pelanggan').addEventListener('change', function() {
+                var selectedStatus = this.value;
+                var idPelanggan = <?php echo $pelanggan['id_pelanggan']; ?>;
+                
+                // Mengirim data status transaksi yang dipilih ke server menggunakan fetch API
+                fetch('<?php echo site_url('pelanggan/update_member'); ?>', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id_pelanggan: idPelanggan,
+                        status_pelanggan: selectedStatus
+                    })
+                })
+                
+            });
+        </script>
+
+	<div class="container">
 			<h5>Transaksi Beli</h5>
 			<table class="table table-bordered" id="tabelku">
 	            <thead>
