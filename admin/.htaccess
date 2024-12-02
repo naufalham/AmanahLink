@@ -1,13 +1,18 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /admin/
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteBase /admin/
 
-    # Redirect Trailing Slashes...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)/$ /admin/$1 [L,R=301]
+#     # Redirect Trailing Slashes...
+#     RewriteCond %{REQUEST_FILENAME} !-d
+#     RewriteRule ^(.*)/$ /admin/$1 [L,R=301]
 
-    # Rewrite URLs of the form "index.php/example/view" to "example/view"
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php/$1 [L]
-</IfModule>
+#     # Rewrite URLs of the form "index.php/example/view" to "example/view"
+#     RewriteCond %{REQUEST_FILENAME} !-f
+#     RewriteCond %{REQUEST_FILENAME} !-d
+#     RewriteRule ^(.*)$ index.php/$1 [L]
+# </IfModule>
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
