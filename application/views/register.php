@@ -20,16 +20,6 @@
 					<span class="text-muted"><?php echo form_error("nama_pelanggan") ?></span>
 				</div>
 				<div class="mb-3">
-					<label>Status Pelanggan</label>
-					<input type="text" name="status_pelanggan" class="form-control" value="<?php echo set_value("status_pelanggan") ?>">
-					<span class="text-muted"><?php echo form_error("status_pelanggan") ?></span>
-				</div>
-				<div class="mb-3">
-					<label>Tanggal Daftar</label>
-					<input type="date" name="tgl_daftar" class="form-control" value="<?php echo set_value("tgl_daftar") ?>">
-					<span class="text-muted"><?php echo form_error("tgl_daftar") ?></span>
-				</div>
-				<div class="mb-3">
 					<label>Alamat</label>
 					<textarea class="form-control" name="alamat"><?php echo set_value("alamat") ?></textarea>
 					<span class="text-muted"><?php echo form_error("alamat") ?></span>

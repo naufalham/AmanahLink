@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/AmanahLink/pelanggan/';
+$config['base_url'] = 'http://localhost/AmanahLink/';
 $config['url_produk'] = 'http://localhost/amanahlink/assets/produk/';
 $config['url_logo'] = 'http://localhost/amanahlink/assets/logo/';
 

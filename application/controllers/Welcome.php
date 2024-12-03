@@ -5,29 +5,29 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$inputan = $this->input->post();
+		// $inputan = $this->input->post();
 
-		//form validation username dan password wajib di isi
-		$this->form_validation->set_rules("username_pelanggan", "Email","required");
-		$this->form_validation->set_rules("password_pelanggan", "Password","required");
+		// //form validation username dan password wajib di isi
+		// $this->form_validation->set_rules("username_pelanggan", "Email","required");
+		// $this->form_validation->set_rules("password_pelanggan", "Password","required");
 
-		//atur pesan dalam b. indo
-		$this->form_validation->set_message("required", "%s wajib diisi");
+		// //atur pesan dalam b. indo
+		// $this->form_validation->set_message("required", "%s wajib diisi");
 
-		//pakai validasinya
-		if ($this->form_validation->run()==TRUE) {
-			$this->load->model('Mpelanggan');
-			$output = $this->Mpelanggan->login($inputan);
+		// //pakai validasinya
+		// if ($this->form_validation->run()==TRUE) {
+		// 	$this->load->model('Mpelanggan');
+		// 	$output = $this->Mpelanggan->login($inputan);
 
-			if ($output=="ada") {
+		// 	if ($output=="ada") {
 
-				$this->session->set_flashdata('pesan_sukses', 'Berhasil Login');
-				redirect('home','refresh');
-			} else {
-				$this->session->set_flashdata('pesan_gagal', 'Gagal Login');
-				redirect('/','refresh');
-			}
-		}
+		// 		$this->session->set_flashdata('pesan_sukses', 'Berhasil Login');
+		// 		redirect('home','refresh');
+		// 	} else {
+		// 		$this->session->set_flashdata('pesan_gagal', 'Gagal Login');
+		// 		redirect('/','refresh');
+		// 	}
+		// }
 
 		/* $this->load->model('Mslider');
 		$this->load->model('Mkategori');
@@ -44,4 +44,6 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome');
 		$this->load->view('footer');
 	}
+
+	 
 }

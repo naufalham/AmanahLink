@@ -9,8 +9,8 @@ class Register extends CI_Controller {
 
 		$this->form_validation->set_rules("username_pelanggan","email","required|is_unique[pelanggan.username_pelanggan]");
 		$this->form_validation->set_rules("password_pelanggan","password","required");
-		$this->form_validation->set_rules("status_pelanggan","status","required");
-		$this->form_validation->set_rules("tgl_daftar","tanggal","required");
+		// $this->form_validation->set_rules("status_pelanggan","status","required");
+		// $this->form_validation->set_rules("tgl_daftar","tanggal","required");
 		$this->form_validation->set_rules("nama_pelanggan","nama","required");
 		$this->form_validation->set_rules("alamat","alamat","required");
 		$this->form_validation->set_rules("wa_pelanggan","wa","required");
@@ -23,14 +23,14 @@ class Register extends CI_Controller {
 			$m['password_pelanggan'] = $this->input->post("password_pelanggan");
 			$m['password_pelanggan'] = sha1($m['password_pelanggan']);
 			$m['nama_pelanggan'] = $this->input->post("nama_pelanggan");
-			$m['status_pelanggan'] = $this->input->post("status_pelanggan");
-			$m['tgl_daftar'] = $this->input->post("tgl_daftar");
+			// $m['status_pelanggan'] = $this->input->post("status_pelanggan");
+			// $m['tgl_daftar'] = $this->input->post("tgl_daftar");
 			$m['alamat'] = $this->input->post("alamat");
 			$m['wa_pelanggan'] = $this->input->post("wa_pelanggan");
 
 			$this->Mpelanggan->register($m);
 			$this->session->set_flashdata('pesan_sukses', 'registrasi berhasil, silahkan login');
-			redirect('/','refresh');
+			redirect('/login','refresh');
 
 		}
 		$this->load->view('header');
