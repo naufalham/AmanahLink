@@ -27,7 +27,7 @@
         }
         .footer-content h3 {
             margin-bottom: 10px;
-			margin-top: 50px;
+			margin-top: 40px;
 			font-family: 'Kantumruy', sans-serif;
             font-size: 14px;
             font-weight: bold;

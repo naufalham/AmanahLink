@@ -33,8 +33,10 @@
             background-color: #F9DA73;
             border-radius: 10px;
             padding: 20px;
+            height: 130px;
             width: 200px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: ;
         }
         .product-item img {
             max-width: 100%;
