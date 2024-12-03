@@ -24,6 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/AmanahLink/pelanggan/';
+$config['url_produk'] = 'http://localhost/amanahlink/assets/produk/';
+$config['url_logo'] = 'http://localhost/amanahlink/assets/logo/';
 
 /*
 |--------------------------------------------------------------------------
