@@ -82,36 +82,18 @@
         </span>
     </h1>
     <div class="product-grid">
+
+        <?php foreach ($produk as $key => $value): ?>
         <div class="product-item">
-            <img alt="Refill Galon 19L" height="200" src="assets/produk/galon.png" width="200"/>
+            <img alt="Refill Galon 19L" height="200" src="<?php echo $this->config->item("url_produk").$value['foto_produk']?>" width="200"/>
             <div class="product-title">
-            <button class>Refill Galon 19L</button>
+                <a href="<?php echo base_url("produk/detail/".$value["id_produk"]) ?>">
+                    <button class><?php echo $value['nama_produk'] ?></button>
+                </a>
             </div>
         </div>
-        <div class="product-item">
-            <img alt="Amigol 500ml" height="200" src="https://storage.googleapis.com/a1aa/image/H41DpjiQmLJVN9V2gFzzNEyBEb9BaERAzfkF7fvEkCjs8K3TA.jpg" width="200"/>
-            <div class="product-title">
-            Amigol 500ml
-            </div>
-        </div>
-        <div class="product-item">
-            <img alt="Amigol 330ml" height="200" src="https://storage.googleapis.com/a1aa/image/SRGmiTiM0mqbC1jstisdkMJlzvgp8MNxQcLCvPk2GfPUeK3TA.jpg" width="200"/>
-            <div class="product-title">
-            Amigol 330ml
-            </div>
-        </div>
-        <div class="product-item">
-            <img alt="Galon Kosong" height="200" src="https://storage.googleapis.com/a1aa/image/cEq4tv2OjJ6oHNfttcFmcsd3EGGTWsFvTHaf1HAPCkLp8K3TA.jpg" width="200"/>
-            <div class="product-title">
-            Galon Kosong
-            </div>
-        </div>
-        <div class="product-item">
-            <img alt="Amigol 200ml" height="200" src="https://storage.googleapis.com/a1aa/image/G1oNQQA16IodNZNrdFTd4wBJs8NJPPL3oGRyuqi5OO1Kvy9E.jpg" width="200"/>
-            <div class="product-title">
-            Amigol 200ml
-            </div>
-        </div>
+        <?php endforeach ?>
+
     </div>
  </body>
 </html>
