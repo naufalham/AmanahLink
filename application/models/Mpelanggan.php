@@ -21,12 +21,12 @@ class Mpelanggan extends CI_Model{
     }
 
     function login($inputan) {
-        $email_pelanggan = $inputan['email_pelanggan'];
+        $email_pelanggan = $inputan['username_pelanggan'];
         $password_pelanggan = $inputan['password_pelanggan'];
         $password_pelanggan = sha1($password_pelanggan);
 
         //cek ke database
-        $this->db->where('email_pelanggan', $email_pelanggan);
+        $this->db->where('username_pelanggan', $username_pelanggan);
         $this->db->where('password_pelanggan', $password_pelanggan);
         $q = $this->db->get('pelanggan');
         $cekpelanggan = $q->row_array();
@@ -35,7 +35,7 @@ class Mpelanggan extends CI_Model{
         if (!empty($cekpelanggan)) {
             //membuat tiket biskop yang dipakai selama keliling apliaksi
             $this->session->set_userdata("id_pelanggan", $cekpelanggan["id_pelanggan"]);
-            $this->session->set_userdata("email_pelanggan", $cekpelanggan["email_pelanggan"]);
+            $this->session->set_userdata("username_pelanggan", $cekpelanggan["username_pelanggan"]);
             $this->session->set_userdata("nama_pelanggan", $cekpelanggan["nama_pelanggan"]);
             $this->session->set_userdata("alamat", $cekpelanggan["alamat"]);
             $this->session->set_userdata("wa_pelanggan", $cekpelanggan["wa_pelanggan"]);
@@ -67,7 +67,7 @@ class Mpelanggan extends CI_Model{
         //buat tiket lagi
        //membuat tiket biskop yang dipakai selama keliling apliaksi
        $this->session->set_userdata("id_pelanggan", $cekpelanggan["id_pelanggan"]);
-       $this->session->set_userdata("email_pelanggan", $cekpelanggan["email_pelanggan"]);
+       $this->session->set_userdata("username_pelanggan", $cekpelanggan["username_pelanggan"]);
        $this->session->set_userdata("nama_pelanggan", $cekpelanggan["nama_pelanggan"]);
        $this->session->set_userdata("alamat", $cekpelanggan["alamat"]);
        $this->session->set_userdata("wa_pelanggan", $cekpelanggan["wa_pelanggan"]);
