@@ -66,6 +66,10 @@
             margin-top: -30%; /* Geser teks ke atas untuk proporsi */
         }
 
+        a {
+            text-decoration: none; /* Menghilangkan garis bawah pada link */
+        }
+
         @media (max-width: 600px) {
             .product-item {
                 width: 100%;
@@ -88,7 +92,7 @@
             <img alt="Refill Galon 19L" height="200" src="<?php echo $this->config->item("url_produk").$value['foto_produk']?>" width="200"/>
             <div class="product-title">
                 <a href="<?php echo base_url("produk/detail/".$value["id_produk"]) ?>">
-                    <button class><?php echo $value['nama_produk'] ?></button>
+                    <div class="product-title"><?php echo $value['nama_produk'] ?></div>
                 </a>
             </div>
         </div>
