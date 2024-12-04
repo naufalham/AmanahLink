@@ -1,7 +1,7 @@
 <div id="carouselExampleCaptions" class="carousel slide">
   
   
-  <div class="carousel-inner">
+  <!-- <div class="carousel-inner">
 
   	 <?php foreach ($slider as $key => $value): ?>
   	
@@ -79,7 +79,7 @@
 				</div>
 			<?php endforeach ?>
 		</div>
-	</div>
+	</div> -->
 </section>
 
 

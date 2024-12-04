@@ -1,20 +1,30 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Footer Section</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
+        /* Reset body margin dan padding */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-			border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Memastikan tinggi halaman 100% */
+            border-radius: 20px;
+        }
+        .content {
+            flex-grow: 1; /* Membuat konten mengambil ruang sebanyak mungkin */
         }
         .footer {
-            background: linear-gradient(#F9DA73 0,1%, #0E6635 99%, #0E6635 200%);
+            background: linear-gradient(#F9DA73 0, 1%, #0E6635 99%, #0E6635 200%);
             color: white;
             text-align: center;
             padding: 20px 0;
             position: relative;
-			border-radius: 80px 80px 0 0;
+            border-radius: 80px 80px 0 0;
         }
         .footer-content {
             display: flex;
@@ -27,19 +37,19 @@
         }
         .footer-content h3 {
             margin-bottom: 10px;
-			margin-top: 40px;
-			font-family: 'Kantumruy', sans-serif;
+            margin-top: 40px;
+            font-family: 'Kantumruy', sans-serif;
             font-size: 14px;
             font-weight: bold;
-			text-align: left;
+            text-align: left;
         }
         .footer-content p, .footer-content a {
             margin: 5px 0;
             color: white;
             text-decoration: none;
-			font-family: 'Kantumruy', sans-serif;
+            font-family: 'Kantumruy', sans-serif;
             font-size: 14px;
-			text-align: left;
+            text-align: left;
         }
         .footer-content a:hover {
             text-decoration: underline;
@@ -60,6 +70,10 @@
     </style>
 </head>
 <body>
+    <div class="content">
+        <!-- Konten halaman lain (form, produk, dll.) -->
+    </div>
+
     <div class="footer">
         <div class="footer-content">
             <div>
@@ -72,7 +86,7 @@
                 <p><img src="assets/logo/email.png" width="22" height="17"> anasarifin30@students.amikom.ac.id</p>
             </div>
         </div>
-		<div class="footer-bottom">copyright &copy; 2024. Amanah Link</div>
+        <div class="footer-bottom">copyright &copy; 2024. Amanah Link</div>
     </div>
 </body>
 </html>
