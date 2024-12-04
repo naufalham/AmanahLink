@@ -19,34 +19,53 @@
             font-weight: bold;
         }
         .highlight {
-            background-color: #F9DA73;
-            padding: 0 5px;
+            position: relative;
+            color: #2e7d32;
+            font-weight: bold;
+            display: inline-block;
         }
+
+        .highlight::before {
+            content: '';
+            position: absolute;
+            background-color: #F9DA73;
+            top: 85%; /* Posisi di bawah teks */
+            left: 50px; /* Mulai sedikit sebelum teks */
+            width: 80%; /* Memanjang melewati teks */
+            height: 70%; /* Tinggi persegi panjang mencakup sebagian teks */
+            z-index: -1; /* Letakkan di belakang teks */
+            transform: translateY(-50%);
+        }
+
         .product-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
             margin: 20px;
+            padding-top:80px;
         }
         .product-item {
             background-color: #F9DA73;
-            border-radius: 10px;
-            padding: 20px;
-            height: 130px;
-            width: 200px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: ;
+            border-radius: 20px; /* Membuat sudut membulat */
+            padding: 20px 10px 10px; /* Memberikan ruang untuk teks */
+            text-align: center;
+            position: relative; /* Supaya teks dan gambar bisa diatur posisinya relatif terhadap container */
         }
+
         .product-item img {
-            max-width: 100%;
-            border-radius: 10px;
+            position: relative;
+            top: -50%; /* Membuat gambar naik ke atas */
+            z-index: 1; /* Agar gambar berada di atas elemen lain */
         }
+
         .product-title {
-            color: #0E6635;
-            font-weight: bold;
-            margin-top: 10px;
+            color: #0E6635; /* Warna hijau gelap */
+            font-weight: bold; /* Teks tebal */
+            font-size: 16px; /* Ukuran font disesuaikan */
+            margin-top: -30%; /* Geser teks ke atas untuk proporsi */
         }
+
         @media (max-width: 600px) {
             .product-item {
                 width: 100%;
@@ -64,9 +83,9 @@
     </h1>
     <div class="product-grid">
         <div class="product-item">
-            <img alt="Refill Galon 19L" height="200" src="https://storage.googleapis.com/a1aa/image/2nuHqdL0WpqlHdCLcFWTbiVH7tdQGyDchbAPjKPweNRTeK3TA.jpg" width="200"/>
+            <img alt="Refill Galon 19L" height="200" src="assets/produk/galon.png" width="200"/>
             <div class="product-title">
-            Refill Galon 19L
+            <button class>Refill Galon 19L</button>
             </div>
         </div>
         <div class="product-item">
