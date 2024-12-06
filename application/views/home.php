@@ -4,5 +4,3 @@
         Melalui panel ini anda dapat mengelola produk yang Anda jual dan Anda beli
     </p>
 </div>
-
-
