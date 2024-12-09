@@ -6,19 +6,18 @@
     <title>Registrasi Pelanggan</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Kantumruy Pro', sans-serif;
             background-color: #f5f5f5;
         }
 
         .container {
             text-align: center;
-            margin-top: 50px;
         }
+        
 
         h5 {
-            font-size: 28px;
+            font-size: 35px;
+            margin-top: 45px;
             font-weight: bold;
             color: #2e7d32;
             margin-bottom: 30px;
