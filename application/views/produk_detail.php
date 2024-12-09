@@ -51,7 +51,7 @@
         }
         .content {
             flex-grow: 1;
-            margin-left: 100px; /* Memberikan margin kiri agar elemen bergeser ke kanan */
+            margin-left: 100px; /* memberikan margin kiri agar elemen bergeser ke kanan */
             margin-top: 50px; 
         }
         .content h1 {
@@ -136,21 +136,25 @@
         <div class="product-grid">
 
             <div class="product-item">
-                <img alt="Three large water bottles with Amanah label" height="300" src="https://storage.googleapis.com/a1aa/image/ijZaQkS4Sa5FNddXwfgQZvWccbDOQGaPaTJegKeflma2ZMeeE.jpg" width="300"/>
+                <img alt="" height="300" src="<?php echo $this->config->item("url_produk").$produk["foto_produk"] ?>" width="300"/>
             </div>
 
         </div>
 
         <div class="content">
             <h1>
-                Air Amanah Refill 19 Liter
+                <?php echo $produk["nama_produk"] ?>
             </h1>
             <p>
-                Air Amanah galon 19 Liter sangat cocok untuk membantu mencukupi kebutuhan air minum harian kita di rumah, di kantor atau tempat - tempat di dalam ruangan lainnya. Air Amanah galon 19 Liter dikemas menggunakan galon kualitas terbaik (Galon Grade A+). Dengan kualitas dan kesegarannya, air amanah yang terbaik untuk kita konsumsi setiap hari.
+            <?php echo $produk["deskripsi_produk"] ?>
             </p>
+
+
             <div class="price">
-                <span class="currency">Rp.</span> 20.000
+                <span class="currency">Rp.</span> <?php echo number_format($produk["harga_produk"]) ?>
             </div>
+            
+            <?php if ($produk["id_pelanggan"]!==$this->session->userdata("id_pelanggan")): ?>
             <div class="buy-section">
                 <label for="quantity">Kuantitas</label>
                 <input min="1" type="number" value="1"/>
@@ -158,6 +162,8 @@
                     Beli
                 </button>
             </div>
+            <?php endif ?>
+
         </div>
     </div>
  </body>
