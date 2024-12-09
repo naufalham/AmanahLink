@@ -150,10 +150,11 @@
             </p>
 
 
-            <?php if ($produk["id_pelanggan"]!==$this->session->userdata("id_pelanggan")): ?>
             <div class="price">
                 <span class="currency">Rp.</span> <?php echo number_format($produk["harga_produk"]) ?>
             </div>
+            
+            <?php if ($produk["id_pelanggan"]!==$this->session->userdata("id_pelanggan")): ?>
             <div class="buy-section">
                 <label for="quantity">Kuantitas</label>
                 <input min="1" type="number" value="1"/>
