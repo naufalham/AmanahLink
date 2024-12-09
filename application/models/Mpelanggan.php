@@ -60,9 +60,9 @@ class Mpelanggan extends CI_Model{
         $this->db->where('id_pelanggan', $id_pelanggan);
         $this->db->update('pelanggan', $inputan);
 
-        //karena akun member telah diubah pada database, maka tiket bioskopnya jg harus membuat baru
+        //karena akun pelanggan telah diubah pada database, maka tiket bioskopnya jg harus membuat baru
 
-        //dapatkan dulu data member yang abru yang telah diupdate 
+        //dapatkan dulu data pelanggan yang abru yang telah diupdate 
         $this->db->where('id_pelanggan', $id_pelanggan);
         $q = $this->db->get('pelanggan');
         $cekpelanggan = $q->row_array();

@@ -1,6 +1,7 @@
 <div id="carouselExampleCaptions" class="carousel slide">
   
   
+<h1>INI WELCOME PHP</h1>
   <!-- <div class="carousel-inner">
 
   	 <?php foreach ($slider as $key => $value): ?>
@@ -81,6 +82,16 @@
 		</div>
 	</div> -->
 </section>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<?php if ($this->session->flashdata('pesan_sukses')): ?>
+	<script>swal("Sukses!", "<?php echo $this->session->flashdata('pesan_sukses') ?>", "success");</script>
+	<?php endif ?>
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<?php if ($this->session->flashdata('pesan_gagal')): ?>
+	<script>swal("Gagal!", "<?php echo $this->session->flashdata('pesan_gagal') ?>", "error");</script>
+	<?php endif ?>
 
 
 

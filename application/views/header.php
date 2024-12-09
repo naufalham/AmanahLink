@@ -40,7 +40,7 @@
 
 
 
-        <?php if ($this->session->userdata("id_member")): ?>
+        <?php if ($this->session->userdata("id_pelanggan")): ?>
         <ul class="nav justify-content-end ">
             
             <li class="nav-item">
@@ -53,13 +53,16 @@
             </li>
             <li class="nav-item">
                 <a href="<?php echo base_url("akun") ?>" class="nav-link link-success">
-                    <?php  echo $this->session->userdata("nama_member") ?>
+                    <?php  echo $this->session->userdata("nama_pelanggan") ?>
                 </a>
+            </li>
+            <li class="nav-item">
+                        <a href="<?php echo base_url("logout") ?>" class="nav-link">Logout</a>
             </li>
         </ul>
         <?php endif ?>
 
-        <?php if (!$this->session->userdata("id_member")): ?>
+        <?php if (!$this->session->userdata("id_pelanggan")): ?>
             <ul class="nav justify-content-end align-items-center">
                 
                     
