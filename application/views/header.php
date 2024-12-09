@@ -108,12 +108,24 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url('logout') ?>" class="nav-link">Logout</a>
+
+                <a href="<?php echo base_url("akun") ?>" class="nav-link link-success">
+                    <img src="assets/logo/profile.png" width="28" height="29">
+                    <?php  echo $this->session->userdata("nama_member") ?>
+                </a>
+
+
             </li>
-          </ul>
-          <?php endif; ?>
+
+            <li class="nav-item">
+                        <a href="<?php echo base_url("logout") ?>" class="nav-link">Logout</a>
+            </li>
+        </ul>
+        <?php endif ?>
+
           <?php if (!$this->session->userdata("id_pelanggan")): ?>
             <ul class="navbar-nav ms-auto">
+
                 <li class="nav-item">
                     <a href="<?php echo base_url('login') ?>" class="nav-link">Masuk</a>
                 </li>
