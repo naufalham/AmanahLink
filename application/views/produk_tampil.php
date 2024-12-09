@@ -54,12 +54,17 @@
         }
 
         .product-grid {
-            display: flex;
+            /* display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
             margin: 20px;
-            padding-top:80px;
+            padding-top:80px; */
+            display: grid; /* Gunakan grid layout */
+            grid-template-columns: repeat(3, 1fr); /* Tampilkan 3 kolom */
+            gap: 20px; /* Jarak antar produk */
+            justify-items: center; /* Produk berada di tengah */
+            padding-top: 80px;
         }
         .product-item {
             background-color: #F9DA73;
@@ -84,6 +89,7 @@
             font-weight: bold; /* Teks tebal */
             font-size: 16px; /* Ukuran font disesuaikan */
             margin-top: -30%; /* Geser teks ke atas untuk proporsi */
+            text-align: center; /* Rata tengah teks */
         }
 
         a {
