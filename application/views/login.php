@@ -19,7 +19,7 @@
 				</div>
 				<div class="mb-3">
 					<label>Password</label>
-					<input type="text" name="password_pelanggan" class="form-control" value="<?php echo set_value("password_pelanggan") ?>">
+					<input type="password" name="password_pelanggan" class="form-control" value="<?php echo set_value("password_pelanggan") ?>">
 					<span class="text-muted"><?php echo form_error("password_pelanggan") ?></span>
 				</div>
 				<button class="btn btn-primary">Kirim</button>
