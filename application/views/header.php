@@ -98,9 +98,15 @@
           <?php if ($this->session->userdata("id_pelanggan")): ?>                    
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
+<<<<<<< HEAD
+                <a class="navbar-brand" href="#">
+                    <img src="assets/logo/keranjang.png" width="28" height="25.67">
+                </a>
+=======
               <a class="nav-link" href="#">
                 <img src="assets/logo/keranjang.png" alt="Keranjang" width="25">
               </a>
+>>>>>>> 870846041fb7f962e1f0d9a6d52b12587a6d6209
             </li>
             <li class="nav-item">
               <a href="<?php echo base_url('akun') ?>" class="nav-link">
@@ -108,7 +114,14 @@
               </a>
             </li>
             <li class="nav-item">
+<<<<<<< HEAD
+                <a href="<?php echo base_url("akun") ?>" class="nav-link link-success">
+                    <img src="assets/logo/profile.png" width="28" height="29">
+                    <?php  echo $this->session->userdata("nama_member") ?>
+                </a>
+=======
               <a href="<?php echo base_url('logout') ?>" class="nav-link">Logout</a>
+>>>>>>> 870846041fb7f962e1f0d9a6d52b12587a6d6209
             </li>
           </ul>
           <?php endif; ?>
