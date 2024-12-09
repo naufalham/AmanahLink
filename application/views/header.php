@@ -95,26 +95,12 @@
             </li>
           </ul>
 
-<<<<<<< HEAD
-
-
-        <?php if ($this->session->userdata("id_pelanggan")): ?>
-        <ul class="nav justify-content-end ">
-            
-=======
           <?php if ($this->session->userdata("id_pelanggan")): ?>                    
           <ul class="navbar-nav ms-auto">
->>>>>>> f8fc32c1739983acf4ddb6a00544e078f612fd18
             <li class="nav-item">
-<<<<<<< HEAD
-                <a class="navbar-brand" href="#">
-                    <img src="assets/logo/keranjang.png" width="28" height="25.67">
-                </a>
-=======
               <a class="nav-link" href="#">
                 <img src="assets/logo/keranjang.png" alt="Keranjang" width="25">
               </a>
->>>>>>> 870846041fb7f962e1f0d9a6d52b12587a6d6209
             </li>
             <li class="nav-item">
               <a href="<?php echo base_url('akun') ?>" class="nav-link">
@@ -122,39 +108,24 @@
               </a>
             </li>
             <li class="nav-item">
-<<<<<<< HEAD
+
                 <a href="<?php echo base_url("akun") ?>" class="nav-link link-success">
-<<<<<<< HEAD
-                    <?php  echo $this->session->userdata("nama_pelanggan") ?>
-=======
                     <img src="assets/logo/profile.png" width="28" height="29">
                     <?php  echo $this->session->userdata("nama_member") ?>
->>>>>>> f8fc32c1739983acf4ddb6a00544e078f612fd18
                 </a>
-=======
-              <a href="<?php echo base_url('logout') ?>" class="nav-link">Logout</a>
->>>>>>> 870846041fb7f962e1f0d9a6d52b12587a6d6209
+
+
             </li>
-<<<<<<< HEAD
+
             <li class="nav-item">
                         <a href="<?php echo base_url("logout") ?>" class="nav-link">Logout</a>
             </li>
         </ul>
         <?php endif ?>
 
-        <?php if (!$this->session->userdata("id_pelanggan")): ?>
-            <ul class="nav justify-content-end align-items-center">
-                
-                    
-                <div class="btn">
-                    <a href="<?php echo base_url("login") ?>" class="btn btn-outline-success">Masuk</a>
-                </div>
-=======
-          </ul>
-          <?php endif; ?>
           <?php if (!$this->session->userdata("id_pelanggan")): ?>
             <ul class="navbar-nav ms-auto">
->>>>>>> f8fc32c1739983acf4ddb6a00544e078f612fd18
+
                 <li class="nav-item">
                     <a href="<?php echo base_url('login') ?>" class="nav-link">Masuk</a>
                 </li>
