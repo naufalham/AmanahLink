@@ -17,6 +17,7 @@ class Register extends CI_Controller {
 
 		$this->form_validation->set_message("required","%s wajib diisi");
 		$this->form_validation->set_message("is_unique","%s yang sama sudah digunakan");
+		
 		if ($this->form_validation->run() == TRUE) {
 
 			$m['username_pelanggan'] = $this->input->post("username_pelanggan");

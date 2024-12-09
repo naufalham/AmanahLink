@@ -9,7 +9,6 @@ class Login extends CI_Controller {
 	{
 		$inputan = $this->input->post();
 
-
 		//form validation ussername dan pass
 		$this->form_validation->set_rules("username_pelanggan", "Username", "required");
 		$this->form_validation->set_rules("password_pelanggan", "Password", "required");
@@ -23,7 +22,7 @@ class Login extends CI_Controller {
 
 			if ($output=="ada") {
 				$this->session->set_flashdata('pesan_sukses', 'Berhasil Login');
-				redirect('home','refresh');
+				redirect('welcome','refresh');
 			}else {
 				$this->session->set_flashdata('pesan_gagal', 'Gagal Login');
 				redirect('/','refresh');
