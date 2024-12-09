@@ -72,6 +72,7 @@ class Mpelanggan extends CI_Model{
        $this->session->set_userdata("id_pelanggan", $cekpelanggan["id_pelanggan"]);
        $this->session->set_userdata("username_pelanggan", $cekpelanggan["username_pelanggan"]);
        $this->session->set_userdata("nama_pelanggan", $cekpelanggan["nama_pelanggan"]);
+       $this->session->set_userdata("status_pelanggan", $cekpelanggan["status_pelanggan"]);
        $this->session->set_userdata("alamat", $cekpelanggan["alamat"]);
        $this->session->set_userdata("wa_pelanggan", $cekpelanggan["wa_pelanggan"]);
     }

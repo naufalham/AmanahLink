@@ -42,9 +42,13 @@
         .navbar-nav .nav-link {
             font-family: 'Kantumruy Pro', sans-serif;
             font-weight: 500; /* Membuat teks bold */
-            color: #006600;
+            color: #0E6635;
             font-size: 20px;
             margin: 0 20px; /* Spasi antar menu */
+        }
+
+        .nav-link.link-success {
+            color: #0E6635; /* Ubah warna jika diperlukan */
         }
 
         .navbar-nav .nav-link:hover {
@@ -60,7 +64,7 @@
         }
 
         .navbar-toggler-icon {
-            background-color: #006600;
+            background-color: #0E6635;
         }
 
         .nav-item span {
@@ -68,7 +72,7 @@
             height: 20px;
             margin: 0 10px;
             display: inline-block;
-        }       
+        }     
 
     </style>
   </head>
@@ -102,29 +106,23 @@
                 <img src="assets/logo/keranjang.png" alt="Keranjang" width="25">
               </a>
             </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url('akun') ?>" class="nav-link">
-                <?php echo $this->session->userdata('nama_pelanggan') ?>
-              </a>
+            <li class="nav-item" style="display: flex; align-items: center;">
+                    <span style="border-left: 3px solid #F9C710; height: 20px;"></span>
             </li>
             <li class="nav-item">
-
                 <a href="<?php echo base_url("akun") ?>" class="nav-link link-success">
-                    <img src="assets/logo/profile.png" width="28" height="29">
+                    <img src="assets/logo/profile.png" width="22">
+                    <?php echo $this->session->userdata('nama_pelanggan') ?>
                 </a>
-
-
             </li>
-
             <li class="nav-item">
-                        <a href="<?php echo base_url("logout") ?>" class="nav-link">Logout</a>
+              <a href="<?php echo base_url("logout") ?>" class="nav-link">Logout</a>
             </li>
         </ul>
         <?php endif ?>
 
           <?php if (!$this->session->userdata("id_pelanggan")): ?>
             <ul class="navbar-nav ms-auto">
-
                 <li class="nav-item">
                     <a href="<?php echo base_url('login') ?>" class="nav-link">Masuk</a>
                 </li>
