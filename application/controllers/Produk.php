@@ -1,14 +1,14 @@
 <?php
 class Produk extends CI_Controller {
-	function __construct()
-    {
-        parent::__construct();
+	// function __construct()
+    // {
+    //     parent::__construct();
 
-        //jk tidak ada tiket biskop, maka suruh login
-        if (!$this->session->userdata("id_pelanggan")) {
-            redirect('/','refresh');
-        }
-    }
+    //     //jk tidak ada tiket biskop, maka suruh login
+    //     if (!$this->session->userdata("id_pelanggan")) {
+    //         redirect('/','refresh');
+    //     }
+    // }
 	
     function index() {
 
@@ -29,11 +29,11 @@ class Produk extends CI_Controller {
 
         $inputan = $this->input->post();
         if ($inputan) {
-            $this->load->model("Mkeranjang");
-            $this->Mkeranjang->simpan($inputan, $id_produk);
+            $this->load->model("Mtransaksi");
+            $this->Mtransaksi->simpan($inputan, $id_produk);
 
             $this->session->set_flashdata('pesan_sukses','produk masuk ke keranjang belanja');
-            redirect('','refresh');
+            // redirect('','refresh');
         }
 
         $this->load->view('header');

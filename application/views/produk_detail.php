@@ -154,10 +154,11 @@
                 <span class="currency">Rp.</span> <?php echo number_format($produk["harga_produk"]) ?>
             </div>
             
-            <?php if ($produk["id_pelanggan"]!==$this->session->userdata("id_pelanggan")): ?>
-            <div class="buy-section">
+            <?php if ($this->session->userdata("id_pelanggan")): ?>
+
+            <div class="buy-section" method="post">
                 <label for="quantity">Kuantitas</label>
-                <input min="1" type="number" value="1"/>
+                <input min="1" type="number" name="jumlah"/>
                 <button>
                     Beli
                 </button>
