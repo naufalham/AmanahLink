@@ -45,7 +45,7 @@
             
             <li class="nav-item">
                 <a class="navbar-brand" href="#">
-                    <img src="assets/logo/keranjang.png" width="125" height="34">
+                    <img src="assets/logo/keranjang.png" width="28" height="25.67">
                 </a>
             </li>
             <li class="nav-item">
@@ -53,6 +53,7 @@
             </li>
             <li class="nav-item">
                 <a href="<?php echo base_url("akun") ?>" class="nav-link link-success">
+                    <img src="assets/logo/profile.png" width="28" height="29">
                     <?php  echo $this->session->userdata("nama_member") ?>
                 </a>
             </li>
