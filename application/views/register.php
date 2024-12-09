@@ -24,121 +24,169 @@
             position: relative;
         }
 
-        h5::after {
-            content: '';
-            position: absolute;
-            background-color: #F9DA73;
-            top: 50%;
-            left: 53%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 23px;
-            border-radius: 2px;
-            z-index: -1;
-        }
+h5::after {
+    content: '';
+    position: absolute;
+    background-color: #F9DA73;
+    top: 50%;
+    left: 53%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 23px;
+    border-radius: 2px;
+    z-index: -1;
+}
 
-        form {
-            background-color: #ffffff;
-            padding: 20px 40px;
-            border-radius: 10px;
-            text-align: left;
-            max-width: 750px;
-            margin: 0 auto;
-            box-sizing: border-box;
-        }
+form {
+    background-color: #F9F9F9;
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: left;
+    max-width: 750px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
 
-        label {
-            font-size: 14px;
-            font-weight: bold;
-            color: #0e6635;
-            margin-bottom: 5px;
-            display: block;
-        }
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #0e6635;
+    margin-bottom: 5px;
+    display: block;
+}
 
-        .form-control {
-            border-radius: 5px;
-            border: 1px solid #F9DA73;
-            padding: 10px;
-            font-size: 14px;
-            width: 100%;
-        }
+.form-control {
+    background-color: #F9F9F9;
+    border-radius: 5px;
+    border: 1px solid #F9DA73;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+}
 
-        .row {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 15px;
-        }
+.row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
 
-        .col-half {
-            flex: 1;
-        }
+.col-half {
+    flex: 1;
+}
 
-        textarea.form-control {
-            resize: none;
-            height: 100px;
-        }
+textarea.form-control {
+    resize: none;
+    height: 100px;
+}
 
-        button.btn {
-            background-color: #f9da73;
-            border: none;
-            color: #2e7d32;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 10px;
-            cursor: pointer;
-            width: 50%;
-            margin-top: 10px;
-			margin-left: auto;   /* Menambahkan margin kiri otomatis */
-			margin-right: auto;  /* Menambahkan margin kanan otomatis */
-			display: block;      /* Agar margin otomatis bekerja dengan benar */
-        }
+button.btn {
+    background-color: #f9da73;
+    border: none;
+    color: #2e7d32;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 50%;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
 
-        button.btn:hover {
-            background-color: #ffd54f;
-            color: #2e7d32;
-        }
+button.btn:hover {
+    background-color: #0E6635;
+    color: #f9da73;
+}
 
-        .text-muted {
-            font-size: 12px;
-            color: #6c757d;
-        }
+.text-muted {
+    font-size: 12px;
+    color: #6c757d;
+}
 
-        /* Menambahkan bayangan pada placeholder */
-        ::placeholder {
-            color: #888;
-            font-size: 14px;
-            font-weight: normal;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        }
+::placeholder {
+    color: #888;
+    font-size: 14px;
+    font-weight: normal;
+}
 
-        .product-section {
-			position: absolute; /* Gambar tetap di pojok kanan */
-			top: 40%;
-			right: 70px; /* Geser gambar sedikit ke kiri dari tepi kanan */
-			transform: translateY(-50%); /* Agar gambar vertikal sejajar dengan form */
-			padding: 20px;
-			text-align: center;	
-		}
+.product-section {
+    position: absolute;
+    top: 40%;
+    right: 70px;
+    transform: translateY(-50%);
+    padding: 20px;
+    text-align: center;
+}
 
+.product-section img {
+    width: 300px;
+    height: auto;
+}
 
-        .product-section img {
-            width: 300px;
-            height: auto;
-        }
+.product-section::after {
+    content: '';
+    position: absolute;
+    background-color: #F9DA73;
+    top: 50%;
+    left: 50%;
+    transform: translate(-5%, -10%);
+    width: 250px;
+    height: 450px;
+    z-index: -1;
+}
 
-		.product-section::after {
-			content: '';
-			position: absolute;
-			background-color: #F9DA73;
-			top: 50%;
-			left: 50%;
-			transform: translate(-5%, -10%); /* Agar persegi panjang di tengah gambar */
-			width: 250px; /* Lebar persegi panjang (sesuaikan dengan lebar gambar) */
-			height: 450px; /* Tinggi persegi panjang */
-			z-index: -1; /* Agar berada di belakang gambar */
+/* Media Queries untuk Responsivitas */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Menyusun kolom secara vertikal pada layar kecil */
+        gap: 10px;
+    }
 
-		}
+    .col-half {
+        flex: 1 1 100%; /* Membuat kolom menjadi lebar penuh */
+    }
+
+    form {
+        padding: 20px 20px;
+    }
+
+    button.btn {
+        width: 100%; /* Tombol mengisi lebar penuh pada layar kecil */
+    }
+
+    .product-section {
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: translateY(0);
+        margin-top: 20px;
+    }
+
+    .product-section img {
+        width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    h5 {
+        font-size: 24px;
+    }
+
+    .container {
+        margin-top: 30px;
+    }
+
+    .product-section img {
+        width: 200px;
+    }
+
+    button.btn {
+        font-size: 14px;
+    }
+}
+
 
     </style>
 </head>
@@ -179,7 +227,7 @@
                 <span class="text-muted"><?php echo form_error('alamat'); ?></span>
             </div>
             <!-- Tombol Daftar -->
-            <button type="submit" class="btn btn-primary">Daftar</button>
+            <button type="submit" class="btn">Daftar</button>
         </form>
     </div>
 
