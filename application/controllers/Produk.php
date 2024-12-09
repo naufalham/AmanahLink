@@ -1,6 +1,6 @@
 <?php
 class Produk extends CI_Controller {
-	/* function __construct()
+	function __construct()
     {
         parent::__construct();
 
@@ -8,7 +8,7 @@ class Produk extends CI_Controller {
         if (!$this->session->userdata("id_pelanggan")) {
             redirect('/','refresh');
         }
-    } */
+    }
 	
     function index() {
 

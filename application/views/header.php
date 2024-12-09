@@ -111,7 +111,6 @@
 
                 <a href="<?php echo base_url("akun") ?>" class="nav-link link-success">
                     <img src="assets/logo/profile.png" width="28" height="29">
-                    <?php  echo $this->session->userdata("nama_member") ?>
                 </a>
 
 
