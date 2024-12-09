@@ -5,19 +5,35 @@
   </title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <style>
-   body {
-            font-family: 'Kantumruy pro', sans-serif;
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
             text-align: center;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
         }
-        h1 {
-            color: #2e7d32;
-            margin-top: 20px;
-            font-size: 30px;
+    
+        h5 {
+            font-size: 35px;
+            margin-top: 45px;
             font-weight: bold;
+            color: #2e7d32;
+            margin-bottom: 30px;
+            position: relative;
         }
+        h5::after {
+        content: '';
+        position: absolute;
+        background-color: #F9DA73;
+        top: 50%;
+        left: 59%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 23px;
+        border-radius: 2px;
+        z-index: -1;
+    }
         .highlight {
             position: relative;
             color: #2e7d32;
@@ -50,6 +66,7 @@
             border-radius: 20px; /* Membuat sudut membulat */
             padding: 20px 10px 10px; /* Memberikan ruang untuk teks */
             text-align: center;
+            box-sizing: border-box; /* Memastikan padding tidak memengaruhi ukuran elemen */
             position: relative; /* Supaya teks dan gambar bisa diatur posisinya relatif terhadap container */
         }
 
@@ -57,7 +74,10 @@
             position: relative;
             top: -50%; /* Membuat gambar naik ke atas */
             z-index: 1; /* Agar gambar berada di atas elemen lain */
+            width: 250px; /* Atur ukuran lebar gambar */
+            height: auto; /* Agar proporsi gambar tetap terjaga */
         }
+
 
         .product-title {
             color: #0E6635; /* Warna hijau gelap */
@@ -79,18 +99,12 @@
   </style>
  </head>
  <body>
-     <h1>
-         Katalog
-         <span class="highlight">
-            Produk
-        </span>
-    </h1>
+    <div class="container">
+    <h5>Katalog produk</h5>
     <div class="product-grid">
-
         <?php foreach ($produk as $key => $value): ?>
         <div class="product-item">
-            <img alt="Refill Galon 19L" height="200" src="<?php echo $this->config->item("url_produk").$value['foto_produk']?>" width="200"/>
-            <div class="product-title">
+            <img src="<?php echo $this->config->item("url_produk").$value["foto_produk"] ?>">            <div class="product-title">
                 <a href="<?php echo base_url("produk/detail/".$value["id_produk"]) ?>">
                     <div class="product-title"><?php echo $value['nama_produk'] ?></div>
                 </a>
@@ -98,6 +112,7 @@
         </div>
         <?php endforeach ?>
 
+    </div>
     </div>
  </body>
 </html>
