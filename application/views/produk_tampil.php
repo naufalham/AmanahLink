@@ -104,7 +104,8 @@
     <div class="product-grid">
         <?php foreach ($produk as $key => $value): ?>
         <div class="product-item">
-            <img src="<?php echo $this->config->item("url_produk").$value["foto_produk"] ?>">            <div class="product-title">
+            <img src="<?php echo $this->config->item("url_produk").$value["foto_produk"] ?>">            
+            <div class="product-title">
                 <a href="<?php echo base_url("produk/detail/".$value["id_produk"]) ?>">
                     <div class="product-title"><?php echo $value['nama_produk'] ?></div>
                 </a>

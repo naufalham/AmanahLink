@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
-	function __construct()
+	/* function __construct()
     {
         parent::__construct();
 
@@ -11,7 +11,7 @@ class Welcome extends CI_Controller {
         if (!$this->session->userdata("id_pelanggan")) {
             redirect('/','refresh');
         }
-    }
+    } */
 	public function index()
 	{
 		// $inputan = $this->input->post();
