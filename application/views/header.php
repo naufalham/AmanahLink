@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;700&display=swap" rel="stylesheet">
     
-
     <style>
         body {
             font-family: 'Kantumruy Pro', sans-serif;
@@ -31,6 +30,10 @@
             height: auto;
         }
 
+        /* Add box shadow to navbar */
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Horizontal offset, vertical offset, blur radius, color */
+        }
         .navbar-nav {
             flex-grow: 1;
             justify-content: center;
