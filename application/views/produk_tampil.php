@@ -62,7 +62,7 @@
             padding-top:80px; */
             display: grid; /* Gunakan grid layout */
             grid-template-columns: repeat(3, 1fr); /* Tampilkan 3 kolom */
-            gap: 20px; /* Jarak antar produk */
+            gap: 150px; /* Jarak antar produk */
             justify-items: center; /* Produk berada di tengah */
             padding-top: 80px;
         }
@@ -73,6 +73,7 @@
             text-align: center;
             box-sizing: border-box; /* Memastikan padding tidak memengaruhi ukuran elemen */
             position: relative; /* Supaya teks dan gambar bisa diatur posisinya relatif terhadap container */
+            
         }
 
         .product-item img {
@@ -118,7 +119,6 @@
             </div>
         </div>
         <?php endforeach ?>
-
     </div>
     </div>
  </body>
