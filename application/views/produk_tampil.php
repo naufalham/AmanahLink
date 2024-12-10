@@ -23,17 +23,17 @@
             position: relative;
         }
         h5::after {
-        content: '';
-        position: absolute;
-        background-color: #F9DA73;
-        top: 50%;
-        left: 59%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 23px;
-        border-radius: 2px;
-        z-index: -1;
-    }
+            content: '';
+            position: absolute;
+            background-color: #F9DA73;
+            top: 50%;
+            left: 59%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 23px;
+            border-radius: 2px;
+            z-index: -1;
+        }
         .highlight {
             position: relative;
             color: #2e7d32;
@@ -53,6 +53,13 @@
             transform: translateY(-50%);
         }
 
+        .div{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%)
+        }
+
         .product-grid {
             /* display: flex;
             flex-wrap: wrap;
@@ -64,7 +71,8 @@
             grid-template-columns: repeat(3, 1fr); /* Tampilkan 3 kolom */
             gap: 150px; /* Jarak antar produk */
             justify-items: center; /* Produk berada di tengah */
-            padding-top: 80px;
+            justify-content: center; /* Pusatkan grid */
+            padding: 80px;
         }
         .product-item {
             background-color: #F9DA73;

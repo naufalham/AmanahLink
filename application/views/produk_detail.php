@@ -3,7 +3,7 @@
   <title>
    Air Amanah Refill 19 Liter
   </title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/> -->
   <style>
    body {
             font-family: 'Kantumruy pro', sans-serif;
@@ -19,8 +19,8 @@
             background-color: #ffffff;
             margin: 50;
             padding: 0;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            /* margin-top: 20px;
+            margin-bottom: 20px; */
         }
         .product-grid {
             display: flex;
