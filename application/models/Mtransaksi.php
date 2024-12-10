@@ -69,8 +69,8 @@ class Mtransaksi extends CI_Model {
 
         // Data transaksi yang akan dimasukkan
         $q = $this->db->query(
-            INSERT INTO transaksi (id_pelanggan, tgl_transaksi, total_transaksi, status_transaksi)
-            VALUES ($this->session->userdata("id_pelanggan");, NOW(), 0, 'diproses');
+            // INSERT INTO transaksi (id_pelanggan, tgl_transaksi, total_transaksi, status_transaksi)
+            // VALUES ($this->session->userdata("id_pelanggan");, NOW(), 0, 'diproses');
         );
 
         
