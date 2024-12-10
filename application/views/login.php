@@ -48,7 +48,7 @@
 			padding: 20px 40px;
 			border-radius: 10px;
 			text-align: left;
-			max-width: 600px;
+			max-width: 550px;
 			margin: 0 auto;
 			box-sizing: border-box;
 		}
@@ -90,8 +90,8 @@
 			font-weight: bold;
 			border-radius: 10px;
 			cursor: pointer;
-			width: 50%;
-			margin-top: 10px;
+			width: 65%;
+			margin-top: 20px;
 			margin-left: auto;
 			margin-right: auto;
         	display: block;
@@ -108,7 +108,31 @@
 			margin-top: 5px;
 		}
 
+		.product-section {
+			position: absolute;
+			top: 40%;
+			left: 70px; /* Ubah dari right ke left */
+			transform: translateY(-50%);
+			padding: 20px;
+			text-align: center;
+		}
 
+		.product-section img {
+			width: 300px;
+			height: auto;
+		}
+
+		.product-section::after {
+			content: '';
+			position: absolute;
+			background-color: #F9DA73;
+			top: 50%;
+			left: -57px;
+			transform: translate(-5%, -10%);
+			width: 250px;
+			height: 450px;
+			z-index: -1;
+		}
 
 	</style>
 </head>

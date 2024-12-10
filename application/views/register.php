@@ -89,7 +89,7 @@
         border-radius: 10px;
         cursor: pointer;
         width: 50%;
-        margin-top: 10px;
+        margin-top: 20px;
         margin-left: auto;
         margin-right: auto;
         display: block;
