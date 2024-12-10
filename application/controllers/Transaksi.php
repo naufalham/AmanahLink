@@ -3,13 +3,6 @@ class Transaksi extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-<<<<<<< HEAD
-        if (!$this->session->userdata("id_pelanggan")) {
-            redirect('/','refresh');
-        }
-        $this->load->model("Mtransaksi");
-    }
-=======
         //jk tidak ada tiket biskop, maka suruh login
         if (!$this->session->userdata("id_pelanggan")) {
             redirect('/','refresh');
@@ -57,10 +50,7 @@ class Transaksi extends CI_Controller {
 
         $this->load->model("Mproduk");
         $data['produk'] = $this->Mproduk->tampil();
->>>>>>> fe6418ce7bb0bcd3ead387e7ffbf77e349d05fa2
 
-    // Halaman keranjang
-    public function keranjang() {
         $id_transaksi = $this->session->userdata('id_transaksi');
         if (!$id_transaksi) {
             $data['keranjang'] = []; // Kosongkan keranjang jika tidak ada ID transaksi
