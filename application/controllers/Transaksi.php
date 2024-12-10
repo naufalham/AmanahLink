@@ -1,74 +1,60 @@
 <?php
 class Transaksi extends CI_Controller {
 
-	function __construct()
-    {
+    public function __construct() {
         parent::__construct();
-
-        //jk tidak ada tiket biskop, maka suruh login
         if (!$this->session->userdata("id_pelanggan")) {
             redirect('/','refresh');
-        } 
+        }
+        $this->load->model("Mtransaksi");
     }
-    function index() {
 
-        //panggil model Mproduk dan fungsi tampil()
-
-        $this->load->model("Mproduk");
-        $data['produk'] = $this->Mproduk->tampil();
-
+    // Halaman keranjang
+    public function keranjang() {
+        $id_transaksi = $this->session->userdata('id_transaksi');
+        if (!$id_transaksi) {
+            $data['keranjang'] = []; // Kosongkan keranjang jika tidak ada ID transaksi
+        } else {
+            $data['keranjang'] = $this->Mtransaksi->get_detail_transaksi($id_transaksi);
+        }
+    
         $this->load->view('header');
         $this->load->view('keranjang', $data);
         $this->load->view('footer');
-
     }
     
-    // private function get_keranjang_by_pelanggan($id_pelanggan) {
-    //     $this->db->where('id_pelanggan', $id_pelanggan);
-    //     return $this->db->get('keranjang')->result_array();
-    // }
+
+    // Proses checkout (data keranjang dikirim via POST)
+    public function checkout() {
+        $id_transaksi = $this->session->userdata('id_transaksi');
+        if (!$id_transaksi) {
+            $this->session->set_flashdata('error', 'Keranjang kosong!');
+            redirect('transaksi/keranjang');
+        }
+    
+        $keranjang = $this->Mtransaksi->get_detail_transaksi($id_transaksi);
+        if (empty($keranjang)) {
+            $this->session->set_flashdata('error', 'Keranjang kosong!');
+            redirect('transaksi/keranjang');
+        }
+    
+        // Update status transaksi
+        $this->db->where('id_transaksi', $id_transaksi);
+        $this->db->update('transaksi', ['status_transaksi' => 'diproses']);
+    
+        $this->session->unset_userdata('id_transaksi'); // Hapus ID transaksi dari sesi
+        redirect(base_url('transaksi/konfirmasi/' . $id_transaksi));
+    }
     
 
-    // // Proses checkout untuk satu penjual
-    // public function checkout($id_member) {
-    //     // Ambil data keranjang berdasarkan id_member dan id_pelanggan (dari session)
-    //     $id_pelanggan = $this->session->userdata('id_pelanggan');
-    //     $keranjang = $this->get_keranjang_by_member($id_member, $id_pelanggan);
+    // Halaman konfirmasi transaksi
+    public function konfirmasi($id_transaksi) {
+        $data['transaksi'] = $this->Mtransaksi->get_transaksi($id_transaksi);
+        $data['detail_transaksi'] = $this->Mtransaksi->get_detail_transaksi($id_transaksi);
 
-    //     // Proses checkout
-    //     $id_transaksi = $this->Mtransaksi->checkout($id_pelanggan, $keranjang);
-
-    //     // Redirect atau tampilkan halaman konfirmasi
-    //     redirect(base_url('transaksi/konfirmasi/' . $id_transaksi));
-    // }
-
-    // // Proses checkout untuk semua penjual
-    // public function checkout_all() {
-    //     // Ambil data keranjang berdasarkan id_pelanggan (dari session)
-    //     $id_pelanggan = $this->session->userdata('id_pelanggan');
-    //     $keranjang = $this->get_keranjang_by_pelanggan($id_pelanggan);
-
-    //     // Proses checkout
-    //     $id_transaksi = $this->Mtransaksi->checkout($id_pelanggan, $keranjang);
-
-    //     // Redirect atau tampilkan halaman konfirmasi
-    //     redirect(base_url('transaksi/konfirmasi/' . $id_transaksi));
-    // }
-
-    // // Menampilkan konfirmasi setelah transaksi selesai
-    // public function konfirmasi($id_transaksi) {
-    //     $data['transaksi'] = $this->db->get_where('transaksi', ['id_transaksi' => $id_transaksi])->row_array();
-    //     $this->load->view('konfirmasi', $data);
-    // }
-
-    // // Fungsi untuk mendapatkan data keranjang berdasarkan id_member dan id_pelanggan
-    // private function get_keranjang_by_member($id_member, $id_pelanggan) {
-    //     // Ambil keranjang berdasarkan id_member dan id_pelanggan
-    //     $this->db->where('id_member', $id_member);
-    //     $this->db->where('id_pelanggan', $id_pelanggan);
-    //     return $this->db->get('keranjang')->result_array();
-    // }
-
-
+        $this->load->view('header');
+        $this->load->view('konfirmasi', $data);
+        $this->load->view('footer');
+    }
 }
 ?>

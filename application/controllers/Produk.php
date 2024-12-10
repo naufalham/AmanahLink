@@ -25,30 +25,36 @@ class Produk extends CI_Controller {
 
     function detail($id_produk) {
         $this->load->model('Mproduk');
+        $this->load->model('Mtransaksi');
         $data["produk"] = $this->Mproduk->detail($id_produk);
+    
+        $id_pelanggan = $this->session->userdata("id_pelanggan");
+    
+        // Ambil atau buat transaksi
+        $id_transaksi = $this->Mtransaksi->get_or_create_transaksi($id_pelanggan);
+        $this->session->set_userdata('id_transaksi', $id_transaksi);
     
         $inputan = $this->input->post();
         if ($inputan) {
-            $id_produk = $this->input->post('id_produk');  // Ambil id_produk dari POST
-            $jumlah = $this->input->post('jumlah');  // Ambil jumlah dari POST
+            $jumlah = $this->input->post('jumlah');
     
-            if (!is_numeric($id_produk) || !is_numeric($jumlah) || $id_produk <= 0 || $jumlah <= 0) {
-                // Tangani error jika id_produk atau jumlah tidak valid
-                $this->session->set_flashdata('pesan_error', 'ID Produk atau Jumlah tidak valid.');
-                redirect('produk/detail/'.$id_produk, 'refresh');  // Redirect kembali dengan pesan error
+            if (!is_numeric($jumlah) || $jumlah <= 0) {
+                $this->session->set_flashdata('pesan_error', 'Jumlah tidak valid.');
+                redirect('produk/detail/' . $id_produk, 'refresh');
             }
     
-            // Jika valid, simpan transaksi
-            $this->load->model("Mtransaksi");
-            $this->Mtransaksi->simpan($id_produk, $jumlah);
+            // Simpan ke detail transaksi
+            $this->Mtransaksi->simpan($id_produk, $jumlah, $id_transaksi);
     
-            $this->session->set_flashdata('pesan_sukses','produk masuk ke keranjang belanja');
-            redirect('produk/detail/'.$id_produk, 'refresh');
+            $this->session->set_flashdata('pesan_sukses', 'Produk masuk ke keranjang belanja.');
+            redirect('produk/detail/' . $id_produk, 'refresh');
         }
     
         $this->load->view('header');
-        $this->load->view('produk_detail',$data);
+        $this->load->view('produk_detail', $data);
         $this->load->view('footer');
     }
+    
+    
     
 }
