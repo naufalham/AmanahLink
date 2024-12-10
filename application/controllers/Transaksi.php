@@ -51,12 +51,12 @@ class Transaksi extends CI_Controller {
         $this->load->model("Mproduk");
         $data['produk'] = $this->Mproduk->tampil();
 
-        $id_transaksi = $this->session->userdata('id_transaksi');
-        if (!$id_transaksi) {
-            $data['keranjang'] = []; // Kosongkan keranjang jika tidak ada ID transaksi
-        } else {
-            $data['keranjang'] = $this->Mtransaksi->get_detail_transaksi($id_transaksi);
-        }
+        // $id_transaksi = $this->session->userdata('id_transaksi');
+        // if (!$id_transaksi) {
+        //     $data['keranjang'] = []; // Kosongkan keranjang jika tidak ada ID transaksi
+        // } else {
+        //     $data['keranjang'] = $this->Mtransaksi->get_detail_transaksi($id_transaksi);
+        // }
     
         $this->load->view('header');
         $this->load->view('keranjang', $data);
@@ -66,17 +66,17 @@ class Transaksi extends CI_Controller {
 
     // Proses checkout (data keranjang dikirim via POST)
     public function checkout() {
-        $id_transaksi = $this->session->userdata('id_transaksi');
-        if (!$id_transaksi) {
-            $this->session->set_flashdata('error', 'Keranjang kosong!');
-            redirect('transaksi/keranjang');
-        }
+        // $id_transaksi = $this->session->userdata('id_transaksi');
+        // if (!$id_transaksi) {
+        //     $this->session->set_flashdata('error', 'Keranjang kosong!');
+        //     redirect('transaksi/keranjang');
+        // }
     
-        $keranjang = $this->Mtransaksi->get_detail_transaksi($id_transaksi);
-        if (empty($keranjang)) {
-            $this->session->set_flashdata('error', 'Keranjang kosong!');
-            redirect('transaksi/keranjang');
-        }
+        // $keranjang = $this->Mtransaksi->get_detail_transaksi($id_transaksi);
+        // if (empty($keranjang)) {
+        //     $this->session->set_flashdata('error', 'Keranjang kosong!');
+        //     redirect('transaksi/keranjang');
+        // }
     
         // Update status transaksi
         $this->db->where('id_transaksi', $id_transaksi);

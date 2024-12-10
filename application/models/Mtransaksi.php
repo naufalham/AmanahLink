@@ -66,21 +66,21 @@ class Mtransaksi extends CI_Model {
     // Fungsi untuk membuat transaksi baru
     function buat_transaksi_baru() {
         // Ambil id pelanggan dari session
-        $id_pelanggan = $this->session->userdata("id_pelanggan");
 
         // Data transaksi yang akan dimasukkan
-        $data_transaksi = [
-            'id_pelanggan' => $id_pelanggan,
-            'status_transaksi' => 'diproses',
-            'total_transaksi' => 0,  // Mulai dengan total 0
-            'tgl_transaksi' => date('Y-m-d H:i:s')
-        ];
+        $q = $this->db->query(
+            INSERT INTO transaksi (id_pelanggan, tgl_transaksi, total_transaksi, status_transaksi)
+            VALUES ($this->session->userdata("id_pelanggan");, NOW(), 0, 'diproses');
+        );
+
+        
+
 
         // Masukkan data transaksi ke tabel 'transaksi'
-        $this->db->insert('transaksi', $data_transaksi);
+        $d = $this->db->insert('transaksi', $q);
 
         // Mengembalikan ID transaksi yang baru dibuat
-        return $this->db->insert_id();
+        return $d;
     }
 
     // Fungsi simpan (seperti yang Anda sudah buat)
