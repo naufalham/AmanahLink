@@ -1,11 +1,6 @@
 <?php
 class Mtransaksi extends CI_Model {
 
-<<<<<<< HEAD
-    function simpan($id_produk, $jumlah, $id_transaksi = null) {
-        if (!is_numeric($id_produk) || $id_produk <= 0 || $jumlah <= 0) {
-            throw new Exception("ID Produk atau jumlah tidak valid.");
-=======
 
     function transaksi_pelanggan_beli($id_pelanggan) {
         $this->db->where('id_pelanggan', $id_pelanggan);
@@ -93,7 +88,6 @@ class Mtransaksi extends CI_Model {
         // Validasi id_produk dan jumlah
         if (!is_numeric($id_produk) || $id_produk <= 0) {
             throw new Exception("ID Produk tidak valid.");
->>>>>>> fe6418ce7bb0bcd3ead387e7ffbf77e349d05fa2
         }
     
         // Ambil data produk
