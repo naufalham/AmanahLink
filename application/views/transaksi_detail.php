@@ -54,13 +54,14 @@ span.active a:after,
 	</div>
 
 	<h5>Produk</h5>
-	<table class="table table-bordered">
+	<table class="table">
 		<thead>
 			<tr>
+				<th></th>
 				<th>Produk</th>
 				<th>Harga</th>
 				<th>Jumlah</th>
-				<th>Total</th>
+				<th>Subtotal Harga</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -68,12 +69,17 @@ span.active a:after,
 				
 			
 			<tr>
+				<td><img src="<?php echo $this->config->item("url_produk").$value["foto_produk"] ?> " width="200"></td>
 				<td><?php echo $value["nama_produk"]; ?></td>
 				<td><?php echo number_format($value["harga_produk"]); ?></td>
 				<td><?php echo $value["jumlah_produk"]; ?></td>
-				<td><?php echo $value["total_harga"];?></td>
+				<td><?php echo $value["subtotal_harga"]; ?></td>
 			</tr>
 			<?php endforeach ?>
+			<tr>
+				<td colspan="4">Total</td>
+				<th><?php echo number_format($value["total_harga"]);?></th>
+			</tr>
 		</tbody>
-
+	</table>
 </div>

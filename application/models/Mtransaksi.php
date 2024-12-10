@@ -57,7 +57,7 @@ class Mtransaksi extends CI_Model {
                                 ORDER BY 
                                     t.id_transaksi, p.nama_produk;
                                 ");
-    	$d = $q->row_array();
+    	$d = $q->result_array();
 
     	return $d;
     }
