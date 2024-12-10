@@ -155,14 +155,14 @@
             </div>
             
             <?php if ($this->session->userdata("id_pelanggan")): ?>
-
-            <div class="buy-section" method="post">
-                <label for="quantity">Kuantitas</label>
-                <input min="1" type="number" name="jumlah"/>
-                <button>
-                    Beli
-                </button>
-            </div>
+                <form class="buy-section" method="post">
+                    <input type="hidden" name="id_produk" value="<?php echo $produk['id_produk']; ?>"/>  <!-- Menambahkan id_produk -->
+                    <label for="quantity">Kuantitas</label>
+                    <input min="1" type="number" name="jumlah"/>
+                    <button>
+                        Beli
+                    </button>
+                </form>
             <?php endif ?>
 
         </div>
