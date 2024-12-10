@@ -84,6 +84,36 @@ class Mtransaksi extends CI_Model {
         $this->db->where('id_transaksi', $id_transaksi);
         $this->db->update('transaksi');
     }
+
+
+    // Proses checkout seluruh produk dalam keranjang
+    function checkout($id_pelanggan, $keranjang) {
+        // Cek apakah sudah ada transaksi diproses
+        $this->db->where('id_pelanggan', $id_pelanggan);
+        $this->db->where('status_transaksi', 'diproses');
+        $transaksi = $this->db->get('transaksi')->row_array();
+
+        // Jika tidak ada transaksi diproses, buat transaksi baru
+        if (!$transaksi) {
+            $id_transaksi = $this->buat_transaksi_baru($id_pelanggan);
+        } else {
+            $id_transaksi = $transaksi['id_transaksi'];
+        }
+
+        // Loop untuk setiap produk dalam keranjang
+        foreach ($keranjang as $per_penjual) {
+            foreach ($per_penjual['produk'] as $per_produk) {
+                $this->simpan($per_produk['id_produk'], $per_produk['jumlah'], $id_transaksi);
+            }
+        }
+
+        // Update status transaksi menjadi selesai setelah checkout
+        $this->db->set('status_transaksi', 'selesai');
+        $this->db->where('id_transaksi', $id_transaksi);
+        $this->db->update('transaksi');
+
+        return $id_transaksi;
+    }
 }
 
 ?>
