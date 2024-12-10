@@ -81,7 +81,7 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="assets/logo/logo_nav.png" alt="Logo">
+          <img src="<?php echo base_url('assets/logo/logo_nav.png'); ?>" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -103,7 +103,7 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a href="<?php echo base_url("transaksi/keranjang") ?>"class="nav-link" href="#">
-                <img src="assets/logo/keranjang.png" alt="Keranjang" width="25">
+                <img src="<?php echo base_url('assets/logo/keranjang.png'); ?>" alt="Keranjang"width="25">
               </a>
             </li>
             <li class="nav-item" style="display: flex; align-items: center;">
@@ -111,7 +111,7 @@
             </li>
             <li class="nav-item">
                 <a href="<?php echo base_url("akun") ?>" class="nav-link link-success">
-                    <img src="assets/logo/profile.png" width="22">
+                    <img src="<?php echo base_url('assets/logo/profile.png'); ?>" alt="Profile"width="22">
                     <?php echo $this->session->userdata('nama_pelanggan') ?>
                 </a>
             </li>
