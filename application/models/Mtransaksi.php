@@ -1,6 +1,44 @@
 <?php
 class Mtransaksi extends CI_Model {
 
+
+    function transaksi_pelanggan_beli($id_pelanggan) {
+        $this->db->where('id_pelanggan', $id_pelanggan);
+        $q = $this->db->get("transaksi");
+        $d = $q->result_array();
+        return $d;
+    }
+
+    function detail($id_transaksi) {
+    	$this->db->where('id_transaksi', $id_transaksi);
+    	$q = $this->db->query("SELECT 
+                                    p.nama_produk,
+                                    p.foto_produk,
+                                    p.harga_produk,
+                                    dt.jumlah AS jumlah_produk,
+                                    dt.subtotal_harga,
+                                    t.total_transaksi AS total_harga,
+                                    t.id_transaksi,
+                                    t.tgl_transaksi,
+                                    t.status_transaksi,
+                                    pel.nama_pelanggan,
+                                    pel.wa_pelanggan,
+                                    pel.alamat
+                                FROM 
+                                    detail_transaksi dt
+                                INNER JOIN 
+                                    produk p ON dt.id_produk = p.id_produk
+                                INNER JOIN 
+                                    transaksi t ON dt.id_transaksi = t.id_transaksi
+                                INNER JOIN 
+                                    pelanggan pel ON t.id_pelanggan = pel.id_pelanggan
+                                ORDER BY 
+                                    t.id_transaksi, p.nama_produk;");
+    	$d = $q->row_array();
+
+    	return $d;
+    }
+
     // Fungsi untuk membuat transaksi baru
     function buat_transaksi_baru() {
         // Ambil id pelanggan dari session
