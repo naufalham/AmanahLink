@@ -1,16 +1,14 @@
 <?php
 class Transaksi extends CI_Controller {
 
-	// function __construct()
-    // {
-    //     parent::__construct();
-
-<<<<<<< HEAD
-    //     //jk tidak ada tiket biskop, maka suruh login
-    //     if (!$this->session->userdata("id_pelanggan")) {
-    //         redirect('/','refresh');
-    //     }
-    // }
+	function __construct()
+    {
+        parent::__construct();
+        //jk tidak ada tiket biskop, maka suruh login
+        if (!$this->session->userdata("id_pelanggan")) {
+            redirect('/','refresh');
+        }
+    }
     
     public function index(){
 
@@ -27,32 +25,27 @@ class Transaksi extends CI_Controller {
             $this->load->view('footer');
         }
 
-        function detail($id_transaksi) {
+    function detail($id_transaksi) {
 
             //panggil model Mtransaksi
             $this->load->model('Mtransaksi');
     
+            
             //panggil fungsi detail()
+            
+            $data["produk_beli"] = $this->Mtransaksi->produk_beli($id_transaksi);
             $data["transaksi"] = $this->Mtransaksi->detail($id_transaksi);
-            if ($data["transaksi"]['id_pelanggan']!==$this->session->userdata("id_pelanggan")) {
-                $this->session->set_flashdata('pesan_gagal', 'tidak valid');
-                redirect('transaksi','refresh');
-            }
+            // if ($data["transaksi"]['id_pelanggan']!==$this->session->userdata("id_pelanggan")) {
+            //     $this->session->set_flashdata('pesan_gagal', 'tidak valid');
+            //     redirect('transaksi','refresh');
+            // }
     
             $this->load->view('header');
             $this->load->view('transaksi_detail', $data);
             $this->load->view('footer');
             }
-
-
-=======
-        //jk tidak ada tiket biskop, maka suruh login
-        if (!$this->session->userdata("id_pelanggan")) {
-            redirect('/','refresh');
-        } 
-    }
-    function index() {
->>>>>>> a2252a17c7a44e5cb317e8ae9f6dae8ee2a36440
+    
+    function keranjang() {
 
         //panggil model Mproduk dan fungsi tampil()
 

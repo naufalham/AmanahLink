@@ -102,7 +102,7 @@
           <?php if ($this->session->userdata("id_pelanggan")): ?> 
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="<?php echo base_url("keranjang") ?>"class="nav-link" href="#">
+              <a href="<?php echo base_url("transaksi/keranjang") ?>"class="nav-link" href="#">
                 <img src="assets/logo/keranjang.png" alt="Keranjang" width="25">
               </a>
             </li>
