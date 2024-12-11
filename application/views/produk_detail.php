@@ -36,19 +36,21 @@
         .product-item {
             background-color: #F9DA73;
             border-radius: 20px; /* Membuat sudut membulat */
-            padding: 10px 5px 5px; /* Mengurangi padding agar produk lebih kecil */
+            padding: 20px 10px 10px; /* Memberikan ruang untuk teks */
             text-align: center;
-            position: relative;
-            width: 250px; /* Menentukan lebar kotak produk */
+            box-sizing: border-box; /* Memastikan padding tidak memengaruhi ukuran elemen */
+            position: relative; /* Supaya teks dan gambar bisa diatur posisinya relatif terhadap container */
+            
         }
 
         .product-item img {
             position: relative;
-            top: -30%; /* Menyesuaikan posisi gambar */
-            z-index: 1;
-            width: 180px; /* Mengurangi ukuran gambar */
-            height: auto; /* Menjaga rasio gambar tetap proporsional */
+            top: -10%; /* Membuat gambar naik ke atas */
+            z-index: 1; /* Agar gambar berada di atas elemen lain */
+            width: 250px; /* Atur ukuran lebar gambar */
+            height: auto; /* Agar proporsi gambar tetap terjaga */
         }
+
         .content {
             flex-grow: 1;
             margin-left: 100px; /* memberikan margin kiri agar elemen bergeser ke kanan */
@@ -137,7 +139,7 @@
         <div class="product-grid">
 
             <div class="product-item">
-                <img alt="" height="300" src="<?php echo $this->config->item("url_produk").$produk["foto_produk"] ?>" width="300"/>
+                <img src="<?php echo $this->config->item("url_produk").$produk["foto_produk"] ?>"/>
             </div>
 
         </div>
