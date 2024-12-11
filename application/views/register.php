@@ -14,12 +14,11 @@
             text-align: center;
         }
         
-
         h5 {
             font-size: 35px;
             margin-top: 45px;
             font-weight: bold;
-            color: #2e7d32;
+            color: #0E6635;
             margin-bottom: 30px;
             position: relative;
         }
@@ -82,7 +81,7 @@
     button.btn {
         background-color: #f9da73;
         border: none;
-        color: #2e7d32;
+        color: #0E6635;
         padding: 10px 20px;
         font-size: 16px;
         font-weight: bold;

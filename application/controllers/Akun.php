@@ -18,7 +18,6 @@ class Akun extends CI_Controller{
     // Perbaikan di sini: pastikan validasi sudah sesuai
     $this->form_validation->set_rules("username_pelanggan", "Username", "required");
     $this->form_validation->set_rules("password_pelanggan", "Password", "trim");
-    $this->form_validation->set_rules("status_pelanggan", "Status", "required");
     $this->form_validation->set_rules("nama_pelanggan", "Nama Lengkap", "required");
     $this->form_validation->set_rules("alamat", "Alamat", "required");
     $this->form_validation->set_rules("wa_pelanggan", "Nomor WA", "required");
@@ -29,7 +28,7 @@ class Akun extends CI_Controller{
         $this->Mpelanggan->ubah($inputan, $id_pelanggan);
 
         $this->session->set_flashdata('pesan_sukses', 'Akun telah diubah');
-        redirect('home', 'refresh');
+        redirect('/', 'refresh');
     }
 
     $this->load->view('header');

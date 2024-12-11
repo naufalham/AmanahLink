@@ -1,49 +1,148 @@
-<div class="container mt-5">
-	<h5>Ubah Akun Pelanggan</h5>
-		<div class="row">
-			<div class="col-md-8 offset-md-2">
-				<form method="post">
-					<div class="mb-3">
-						<label>Username Anda</label>
-						<input type="text" name="username_pelanggan" class="form-control" value="<?php echo set_value("username_pelanggan",$this->session->userdata("username_pelanggan")) ?>">
-						<span class="small text-danger">
-							<?php echo form_error("username_pelanggan") ?>
-            			</span>
-					</div>
-					<div class="mb-3">
-						<label>Password</label>
-						<input type="text" name="password_pelanggan" class="form-control">
-						<p class="test-muted">Kosongkan jika password tidak diubah</p>						
-					</div>	
-					<div class="mb-3">
-						<label>Nama Lengkap</label>
-						<input type="text" name="nama_pelanggan" class="form-control" value="<?php echo set_value("nama_pelanggan",$this->session->userdata("nama_pelanggan")) ?>">	
-						<span class="small text-danger">
-							<?php echo form_error("nama_pelanggan") ?>
-            			</span>			
-					</div>	
-                    <div class="mb-3">
-						<label>Status Pelanggan</label>
-						<p><?php echo set_value("status_pelanggan",$this->session->userdata("status_pelanggan")) ?></p>						<span class="small text-danger">
-							<?php echo form_error("status_pelanggan") ?>
-            			</span>			
-					</div>	
-					<div class="mb-3">
-						<label>Alamat Lengkap</label>
-						<input type="text" name="alamat" class="form-control" value="<?php echo set_value("alamat",$this->session->userdata("alamat")) ?>">	
-						<span class="small text-danger">
-							<?php echo form_error("alamat") ?>
-            			</span>			
-					</div>
-					<div class="mb-3">
-						<label>Nomor WA</label>
-						<input type="text" name="wa_pelanggan" class="form-control" value="<?php echo set_value("wa_pelanggan",$this->session->userdata("wa_pelanggan")) ?>">	
-						<span class="small text-danger">
-							<?php echo form_error("wa_pelanggan") ?>
-            			</span>			
-					</div>
-					<button class="btn btn-primary">Ubah Akun</button>				
-				</form>
-			</div>
-		</div>
-	</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Profil</title>
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            background-color: #f5f5f5;
+
+        }
+
+        .container {
+            text-align: center;
+
+        }
+        
+        h5 {
+            font-size: 35px;
+            margin-top: 45px;
+            font-weight: bold;
+            color: #0E6635;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h5::after {
+            content: '';
+			position: absolute;
+			background-color: #F9DA73;
+			top: 50%;
+			left: 56%;
+			transform: translateX(-50%);
+			width: 80px;
+			height: 23px;
+			border-radius: 2px;
+			z-index: -1;
+        }
+
+        form {
+            background-color: #F9F9F9;
+            padding: 20px 40px;
+            border-radius: 10px;
+			text-align: left;
+			max-width: 750px;
+			margin: 0 auto;
+			box-sizing: border-box;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .col-half {
+            flex: 1;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #0E6635;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            background-color: #F9F9F9;
+            border-radius: 5px;
+            border: 1px solid #F9DA73;
+            padding: 10px;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        textarea.form-control {
+            resize: none;
+            height: 100px;
+        }
+
+        button.btn {
+            background-color: #F9DA73;
+            border: none;
+            color: #0E6635;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button.btn:hover {
+            background-color: #0E6635;
+            color: #F9DA73;
+        }
+
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            button.btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h5>Data Profil</h5>
+        <form method="post">
+            <div class="row">
+                <div class="col-half">
+                    <label for="username_pelanggan">Username/Email</label>
+                    <input type="text" id="username_pelanggan" name="username_pelanggan" class="form-control" value="<?php echo set_value('username_pelanggan', $this->session->userdata('username_pelanggan')); ?>">
+                </div>
+                <div class="col-half">
+                    <label for="nama_pelanggan">Nama Lengkap</label>
+                    <input type="text" id="nama_pelanggan" name="nama_pelanggan" class="form-control" value="<?php echo set_value('nama_pelanggan', $this->session->userdata('nama_pelanggan')); ?>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-half">
+                    <label for="password_pelanggan">Password</label>
+                    <input type="password" id="password_pelanggan" name="password_pelanggan" class="form-control">
+                    <p class="text-muted">Kosongkan jika password tidak diubah</p>
+                </div>
+                <div class="col-half">
+                    <label for="wa_pelanggan">No HP</label>
+                    <input type="text" id="wa_pelanggan" name="wa_pelanggan" class="form-control" value="<?php echo set_value('wa_pelanggan', $this->session->userdata('wa_pelanggan')); ?>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-half" style="flex: 1 1 100%;">
+                    <label for="alamat">Alamat Lengkap</label>
+                    <input type="text" id="alamat" name="alamat" class="form-control" value="<?php echo set_value('alamat', $this->session->userdata('alamat')); ?>">
+                </div>
+            </div>
+            <button type="submit" class="btn">Simpan</button>
+        </form>
+    </div>
+</body>
+</html>
