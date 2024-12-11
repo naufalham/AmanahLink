@@ -1,164 +1,140 @@
 <?php
 class Mtransaksi extends CI_Model {
 
-
+    // Ambil transaksi berdasarkan pelanggan
     function transaksi_pelanggan_beli($id_pelanggan) {
         $this->db->where('id_pelanggan', $id_pelanggan);
-        $q = $this->db->get("transaksi");
-        $d = $q->result_array();
-        return $d;
-    }
-
-    function detail($id_transaksi) {
-    	$this->db->where('id_transaksi', $id_transaksi);
-    	$q = $this->db->query("SELECT 
-                                    p.nama_produk,
-                                    p.foto_produk,
-                                    p.harga_produk,
-                                    dt.jumlah AS jumlah_produk,
-                                    dt.subtotal_harga,
-                                    t.total_transaksi AS total_harga,
-                                    t.id_transaksi,
-                                    t.tgl_transaksi,
-                                    t.status_transaksi,
-                                    pel.nama_pelanggan,
-                                    pel.wa_pelanggan,
-                                    pel.alamat
-                                FROM 
-                                    detail_transaksi dt
-                                INNER JOIN 
-                                    produk p ON dt.id_produk = p.id_produk
-                                INNER JOIN 
-                                    transaksi t ON dt.id_transaksi = t.id_transaksi
-                                INNER JOIN 
-                                    pelanggan pel ON t.id_pelanggan = pel.id_pelanggan
-                                ORDER BY 
-                                    t.id_transaksi, p.nama_produk;");
-    	$d = $q->row_array();
-
-    	return $d;
+        $this->db->where('status_transaksi !=', null); // Filter status tidak null
+        return $this->db->get("transaksi")->result_array();
     }
     
-    function produk_beli($id_transaksi) {
-    	$this->db->where('id_transaksi', $id_transaksi);
-    	$q = $this->db->query("SELECT 
-                                    p.nama_produk,
-                                    p.harga_produk,
-                                    dt.jumlah AS jumlah_produk,
-                                    dt.subtotal_harga,
-                                    t.total_transaksi AS total_harga,
-                                    p.foto_produk
-                                FROM 
-                                    detail_transaksi dt
-                                INNER JOIN 
-                                    produk p ON dt.id_produk = p.id_produk
-                                INNER JOIN 
-                                    transaksi t ON dt.id_transaksi = t.id_transaksi
-                                ORDER BY 
-                                    t.id_transaksi, p.nama_produk;
-                                ");
-    	$d = $q->result_array();
 
-    	return $d;
-    }
-
-
-    // Fungsi untuk membuat transaksi baru
-    function buat_transaksi_baru() {
-        // Ambil id pelanggan dari session
-
-        // Data transaksi yang akan dimasukkan
-        $q = $this->db->query(
-            // INSERT INTO transaksi (id_pelanggan, tgl_transaksi, total_transaksi, status_transaksi)
-            // VALUES ($this->session->userdata("id_pelanggan");, NOW(), 0, 'diproses');
-        );
-
+    // Ambil detail transaksi lengkap berdasarkan ID transaksi
+    function detail($id_transaksi) {
+        $query = "SELECT 
+                    p.nama_produk,
+                    p.foto_produk,
+                    p.harga_produk,
+                    dt.jumlah AS jumlah_produk,
+                    dt.subtotal_harga,
+                    t.total_transaksi AS total_harga,
+                    t.id_transaksi,
+                    t.tgl_transaksi,
+                    t.status_transaksi,
+                    pel.nama_pelanggan,
+                    pel.wa_pelanggan,
+                    pel.alamat
+                FROM 
+                    detail_transaksi dt
+                INNER JOIN 
+                    produk p ON dt.id_produk = p.id_produk
+                INNER JOIN 
+                    transaksi t ON dt.id_transaksi = t.id_transaksi
+                INNER JOIN 
+                    pelanggan pel ON t.id_pelanggan = pel.id_pelanggan
+                WHERE
+                    t.id_transaksi = ?
+                ORDER BY 
+                    p.nama_produk";
         
-
-
-        // Masukkan data transaksi ke tabel 'transaksi'
-        $d = $this->db->insert('transaksi', $q);
-
-        // Mengembalikan ID transaksi yang baru dibuat
-        return $d;
+        return $this->db->query($query, [$id_transaksi])->row_array();
     }
 
-    // Fungsi simpan (seperti yang Anda sudah buat)
+    // Ambil daftar produk yang dibeli dalam transaksi tertentu
+    function produk_beli($id_transaksi) {
+        $query = "SELECT 
+                    p.nama_produk,
+                    p.harga_produk,
+                    dt.jumlah AS jumlah_produk,
+                    dt.subtotal_harga,
+                    t.total_transaksi AS total_harga,
+                    p.foto_produk
+                FROM 
+                    detail_transaksi dt
+                INNER JOIN 
+                    produk p ON dt.id_produk = p.id_produk
+                INNER JOIN 
+                    transaksi t ON dt.id_transaksi = t.id_transaksi
+                WHERE
+                    t.id_transaksi = ?
+                ORDER BY 
+                    p.nama_produk";
+
+        return $this->db->query($query, [$id_transaksi])->result_array();
+    }
+
+    // Simpan produk ke dalam keranjang
     function simpan($id_produk, $jumlah) {
-        // Validasi id_produk dan jumlah
-        if (!is_numeric($id_produk) || $id_produk <= 0) {
-            throw new Exception("ID Produk tidak valid.");
+        if (!is_numeric($jumlah) || $jumlah <= 0) {
+            throw new Exception("Jumlah produk harus lebih dari 0.");
         }
     
-        // Ambil data produk
+        $id_pelanggan = $this->session->userdata("id_pelanggan");
+        $id_transaksi = $this->get_or_create_transaksi($id_pelanggan);
+    
         $produk = $this->db->get_where('produk', ['id_produk' => $id_produk])->row_array();
         if (!$produk) {
             throw new Exception("Produk tidak ditemukan.");
         }
     
-        // Jika id_transaksi tidak diberikan, buat transaksi baru
-        if ($id_transaksi === null) {
-            $data_transaksi = [
-                'id_pelanggan' => $this->session->userdata("id_pelanggan"),
-                'tgl_transaksi' => date('Y-m-d H:i:s'),
-                'total_transaksi' => 0,
-                'status_transaksi' => 'diproses'
-            ];
-            $this->db->insert('transaksi', $data_transaksi);
-            $id_transaksi = $this->db->insert_id();
-        }
-    
-        // Hitung subtotal
         $subtotal_harga = $produk['harga_produk'] * $jumlah;
     
-        // Masukkan ke detail transaksi
-        $this->db->insert('detail_transaksi', [
-            'id_transaksi' => $id_transaksi,
-            'id_produk' => $id_produk,
-            'jumlah' => $jumlah,
-            'subtotal_harga' => $subtotal_harga,
-        ]);
+        // Cek apakah produk sudah ada di detail_transaksi
+        $this->db->where(['id_transaksi' => $id_transaksi, 'id_produk' => $id_produk]);
+        $detail = $this->db->get('detail_transaksi')->row_array();
     
-        // Update total transaksi
-        $this->db->set('total_transaksi', 'total_transaksi + ' . $subtotal_harga, FALSE);
+        if ($detail) {
+            // Hitung selisih harga sebelumnya
+            $selisih_harga = $subtotal_harga - $detail['subtotal_harga'];
+    
+            // Update detail_transaksi dengan jumlah dan subtotal harga baru
+            $this->db->where(['id_transaksi' => $id_transaksi, 'id_produk' => $id_produk]);
+            $this->db->update('detail_transaksi', [
+                'jumlah' => $jumlah,
+                'subtotal_harga' => $subtotal_harga,
+            ]);
+    
+            // Perbarui total_transaksi sesuai selisih harga
+            $this->db->set('total_transaksi', 'total_transaksi + ' . $selisih_harga, FALSE);
+        } else {
+            // Jika produk belum ada di keranjang, tambahkan sebagai item baru
+            $this->db->insert('detail_transaksi', [
+                'id_transaksi' => $id_transaksi,
+                'id_produk' => $id_produk,
+                'jumlah' => $jumlah,
+                'subtotal_harga' => $subtotal_harga,
+            ]);
+    
+            // Tambahkan subtotal_harga ke total_transaksi
+            $this->db->set('total_transaksi', 'total_transaksi + ' . $subtotal_harga, FALSE);
+        }
+    
+        // Update transaksi
         $this->db->where('id_transaksi', $id_transaksi);
         $this->db->update('transaksi');
     }
     
 
-    
     // Ambil data transaksi berdasarkan ID
-    public function get_transaksi($id_transaksi) {
+    function get_transaksi($id_transaksi) {
         return $this->db->get_where('transaksi', ['id_transaksi' => $id_transaksi])->row_array();
     }
 
     // Ambil detail transaksi berdasarkan ID transaksi
-    public function get_detail_transaksi($id_transaksi) {
+    function get_detail_transaksi($id_transaksi) {
         return $this->db->get_where('detail_transaksi', ['id_transaksi' => $id_transaksi])->result_array();
     }
 
     // Proses checkout
-    public function checkout($id_pelanggan, $keranjang) {
-        // Buat transaksi baru
-        $data_transaksi = [
-            'id_pelanggan' => $id_pelanggan,
-            'tgl_transaksi' => date('Y-m-d H:i:s'),
-            'total_transaksi' => 0, // Total akan dihitung nanti
-            'status_transaksi' => 'diproses'
-        ];
-        $this->db->insert('transaksi', $data_transaksi);
-        $id_transaksi = $this->db->insert_id();
+    function checkout($id_pelanggan, $keranjang) {
+        $id_transaksi = $this->get_or_create_transaksi($id_pelanggan);
 
-        $total_transaksi = 0;
-
-        // Simpan detail transaksi
         foreach ($keranjang as $item) {
             $this->db->where('id_produk', $item['id_produk']);
             $produk = $this->db->get('produk')->row_array();
 
             if ($produk) {
                 $subtotal = $produk['harga_produk'] * $item['jumlah'];
-                $total_transaksi += $subtotal;
 
                 $this->db->insert('detail_transaksi', [
                     'id_transaksi' => $id_transaksi,
@@ -169,33 +145,74 @@ class Mtransaksi extends CI_Model {
             }
         }
 
-        // Update total transaksi
         $this->db->where('id_transaksi', $id_transaksi);
-        $this->db->update('transaksi', ['total_transaksi' => $total_transaksi]);
+        $this->db->update('transaksi', ['status_transaksi' => 'diproses']);
 
         return $id_transaksi;
     }
 
+    // Ambil atau buat transaksi dengan status diproses
     function get_or_create_transaksi($id_pelanggan) {
-        // Cek apakah transaksi sudah ada di database
+        // Cari transaksi dengan status diproses
         $this->db->where('id_pelanggan', $id_pelanggan);
-        $this->db->where('status_transaksi', 'draft');
+        $this->db->where('status_transaksi', null);
         $transaksi = $this->db->get('transaksi')->row_array();
     
         if ($transaksi) {
-            return $transaksi['id_transaksi'];
+            return $transaksi['id_transaksi']; // Kembalikan transaksi yang ada
         }
     
-        // Jika belum ada transaksi, buat transaksi baru
+        // Buat transaksi baru jika tidak ada
         $data_transaksi = [
             'id_pelanggan' => $id_pelanggan,
             'tgl_transaksi' => date('Y-m-d H:i:s'),
             'total_transaksi' => 0,
-            'status_transaksi' => 'draft', // Status awal: draft
+            'status_transaksi' => null,
         ];
         $this->db->insert('transaksi', $data_transaksi);
-        return $this->db->insert_id();
+        $id_transaksi = $this->db->insert_id();
+    
+        // Simpan ID transaksi ke sesi
+        $this->session->set_userdata('id_transaksi', $id_transaksi);
+    
+        return $id_transaksi;
     }
     
+
+    // Ambil keranjang berdasarkan transaksi
+    function get_keranjang($id_transaksi) {
+        $this->db->select('p.id_produk, p.nama_produk, p.harga_produk, p.foto_produk, dt.jumlah, dt.subtotal_harga');
+        $this->db->from('detail_transaksi dt');
+        $this->db->join('produk p', 'dt.id_produk = p.id_produk');
+        $this->db->where('dt.id_transaksi', $id_transaksi);
+        $this->db->order_by('p.nama_produk', 'ASC');
+
+        return $this->db->get()->result_array();
+    }
+
+    // Hapus produk dari keranjang
+    function hapus_produk($id_transaksi, $id_produk) {
+        // Ambil subtotal harga produk yang akan dihapus
+        $this->db->select('subtotal_harga');
+        $this->db->where('id_transaksi', $id_transaksi);
+        $this->db->where('id_produk', $id_produk);
+        $this->db->delete('detail_transaksi');
+    
+        // if ($detail) {
+        //     // Kurangi total transaksi dengan subtotal produk yang dihapus
+        //     $this->db->set('total_transaksi', 'total_transaksi - ' . $detail['subtotal_harga'], FALSE);
+        //     $this->db->where('id_transaksi', $id_transaksi);
+        //     $this->db->update('transaksi');
+    
+        //     // Hapus produk dari detail_transaksi
+        //     $this->db->where('id_transaksi', $id_transaksi);
+        //     $this->db->where('id_produk', $id_produk);
+        //     $this->db->delete('detail_transaksi');
+        // } else {
+        //     throw new Exception("Produk tidak ditemukan dalam keranjang.");
+        // }
+    }
+    
+
 }
 ?>

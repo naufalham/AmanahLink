@@ -20,21 +20,15 @@
                 ?>
                     <tr>
                         <td>
-                            <img src="<?php echo base_url('uploads/' . $produk['foto_produk']); ?>" width="70">
+                            <img src="<?php echo $this->config->item("url_produk").$produk["foto_produk"] ?>" width="70">
                             <br><?php echo $produk['nama_produk']; ?>
                         </td>
                         <td><?php echo number_format($produk['harga_produk']); ?></td>
-                        <td>
-                            <!-- Input untuk mengubah jumlah -->
-                            <form method="post" action="<?php echo base_url('keranjang/update/' . $produk['id_produk']); ?>" class="d-inline">
-                                <input type="number" name="jumlah" value="<?php echo $produk['jumlah']; ?>" class="form-control form-control-sm" style="width: 60px; display: inline;">
-                                <button type="submit" class="btn btn-primary btn-sm">Ubah</button>
-                            </form>
-                        </td>
+                        <td><?php echo $produk['jumlah']; ?></td>
                         <td><?php echo number_format($subtotal); ?></td>
                         <td>
                             <!-- Tombol hapus -->
-                            <a href="<?php echo base_url('keranjang/hapus/' . $produk['id_produk']); ?>" class="btn btn-danger btn-sm">Hapus</a>
+                            <a href="<?php echo base_url('transaksi/keranjang/hapus/' . $produk['id_produk']); ?>" class="btn btn-danger btn-sm">Hapus</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

@@ -159,7 +159,7 @@
                 <form class="buy-section" method="post">
                     <input type="hidden" name="id_produk" value="<?php echo $produk['id_produk']; ?>"/>  <!-- Menambahkan id_produk -->
                     <label for="quantity">Kuantitas</label>
-                    <input min="1" type="number" name="jumlah"/>
+                    <input min="1" value="1" type="number" name="jumlah"/>
                     <button>
                         Beli
                     </button>
