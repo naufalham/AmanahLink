@@ -30,10 +30,9 @@
 			z-index: -1;
 		}
 		.hero-section {
-			background-color: #ffffff;
-			padding: 50px;
+			position: relative;
+			overflow: visible; /* Pastikan elemen di dalam tidak melampaui container */
 		}
-
 		.text-section h1 {
 			font-size: 50px;
 			font-weight: bold;
@@ -47,13 +46,14 @@
 			font-weight: bold;
 		}
 		.text-section {
-			padding-left: 120px; /* Atur nilai padding sesuai kebutuhan */
-			padding-top: 70px; /* Tambahkan nilai padding atas sesuai kebutuhan */
+			padding-left: 150px; /* Atur nilai padding sesuai kebutuhan */
+			padding-top: 100px; /* Tambahkan nilai padding atas sesuai kebutuhan */
 		}
 
 		.text-info {
 			padding-left: 120px; /* Atur nilai padding sesuai kebutuhan */
 		}
+
 
 		.text-section .btn {
 			background-color: #f9da73;
@@ -70,30 +70,47 @@
 		}
 
 		.product-section {
-			position: absolute;
-			top: 35%;
-			left: 420px; /* Ubah dari right ke left */
-			transform: translateY(-50%);
-			padding: 20px;
-			text-align: center;
-		}
-
-		.product-section img {
-			width: 200px;
-			height: auto;
+			position: relative; /* Pastikan posisi relatif agar elemen ::after terhubung */
+			width: 350px; /* Sesuaikan lebar section agar proporsional */
+			height: 350px; /* Pastikan tingginya sama */
+			margin: 0 auto; /* Pusatkan section */
+			display: flex; /* Gunakan flexbox untuk memusatkan konten */
+			justify-content: center;
+			align-items: center;
+			
 		}
 
 		.product-section::after {
 			content: '';
 			position: absolute;
 			background-color: #F9DA73;
-			top: 78%; /* Ubah nilai ini untuk menyesuaikan */
-			left: 800px;
-			transform: translate(-5%, -70%);
-			width: 350px;
-			height: 350px;
+			top: 50%; /* Sesuaikan agar lebih proporsional */
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 300px; /* Sesuaikan ukuran */
+			height: 300px;
 			z-index: -1;
-			border-radius: 500px;
+			border-radius: 50%;
+		}
+
+		.product-section img {
+			width: 150px; /* Sesuaikan ukuran gambar */
+			height: auto; /* Pertahankan proporsi gambar */
+			position: relative; /* Pastikan gambar tetap dalam kontainer */
+			z-index: 1; /* Letakkan gambar di atas lingkaran */
+		}
+
+		.product-section::after {
+			content: '';
+			position: absolute;
+			background-color: #F9DA73; /* Warna lingkaran */
+			top: 60%; /* Pusatkan secara vertikal */
+			left: 50%; /* Pusatkan secara horizontal */
+			transform: translate(-50%, -50%); /* Pusatkan sepenuhnya */
+			width: 300px; /* Ukuran lingkaran */
+			height: 300px; /* Ukuran lingkaran */
+			border-radius: 50%; /* Buat lingkaran sempurna */
+			z-index: 0; /* Letakkan di belakang gambar */
 		}
 
 		.product-info {
@@ -159,6 +176,7 @@
         a {
             text-decoration: none; /* Menghilangkan garis bawah pada link */
         }
+		
 	</style>
 
 </head>

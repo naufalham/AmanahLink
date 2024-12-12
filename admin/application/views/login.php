@@ -155,7 +155,7 @@
 
 <!-- Bagian Produk Air Galon Amanah dengan gambar di pojok kanan -->
     <div class="product-section">
-        <img alt="Refill Galon 19L" src="assets/produk/galon.png" />
+		<img src="<?php echo $this->config->item('url_produk') . 'galon.png'; ?>" alt="Galon">
     </div>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
