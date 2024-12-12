@@ -32,7 +32,6 @@
 		.hero-section {
 			background-color: #ffffff;
 			padding: 50px;
-			position: relative;
 		}
 
 		.text-section h1 {
@@ -72,7 +71,7 @@
 
 		.product-section {
 			position: absolute;
-			top: 55%;
+			top: 35%;
 			left: 420px; /* Ubah dari right ke left */
 			transform: translateY(-50%);
 			padding: 20px;

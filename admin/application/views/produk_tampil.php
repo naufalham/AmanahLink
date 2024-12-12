@@ -90,6 +90,15 @@
             color: #F9DA73;
         }
         .btn.tambah {
+            background-color: #F9DA73;
+            display: inline-block;
+            margin-top: 20px;
+            width: 300px; /* Lebar tombol diperbesar */
+            margin-bottom: 50px; /* Memberikan jarak dengan footer */
+        }
+
+        .btn.tambah:hover {
+            background-color: #0E6635;
             display: inline-block;
             margin-top: 20px;
             width: 300px; /* Lebar tombol diperbesar */
