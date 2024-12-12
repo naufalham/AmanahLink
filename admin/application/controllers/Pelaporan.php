@@ -17,6 +17,8 @@ class Pelaporan extends CI_Controller {
 
 		$this->load->model("Mpelaporan");
 		$data['jumlah_penjualan'] = $this->Mpelaporan->jumlah_penjualan("header");
+		$data['jumlah_penjualan_tahun'] = $this->Mpelaporan->jumlah_penjualan_tahun("header");
+		$data['jumlah_penjualan_bulan'] = $this->Mpelaporan->jumlah_penjualan_bulan("header");
 		$data['pendapatan'] = $this->Mpelaporan->pendapatan("header");
 
 

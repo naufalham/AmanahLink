@@ -2,6 +2,8 @@
 	<h5>Pelaporan Penjualan</h5>	
 
 	<div id="jumlah_penjualan"></div>
+	<div id="jumlah_penjualan_tahun"></div>
+	<div id="jumlah_penjualan_bulan"></div>
 
 </div>
 
@@ -16,7 +18,114 @@
         type: 'pie'
     },
     title: {
-        text: 'Jumlah Penjualan Per produk'
+        text: 'Jumlah Penjualan Keseluruhan'
+    },
+    tooltip: {
+        valueSuffix: ' pcs'
+    },
+    plotOptions: {
+        series: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: [{
+                enabled: true,
+                distance: 20
+            }, {
+                enabled: true,
+                distance: -40,
+                format: '{point.percentage:.1f}%',
+                style: {
+                    fontSize: '1.2em',
+                    textOutline: 'none',
+                    opacity: 0.7
+                },
+                filter: {
+                    operator: '>',
+                    property: 'percentage',
+                    value: 10
+                }
+            }]
+        }
+    },
+    series: [
+        {
+            name: 'Jumlah',
+            colorByPoint: true,
+            data: [
+                <?php foreach ($jumlah_penjualan as $k => $v): ?>
+				{
+                    name: '<?php echo $v['nama_produk'] ?>',
+                    y: <?php echo $v['total_terjual'] ?>
+                },
+				<?php endforeach ?>
+                
+            ]
+        }
+    ]
+});
+</script>
+
+
+<script>
+	Highcharts.chart('jumlah_penjualan_tahun', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: 'Jumlah Penjualan 12 bulan terakhir'
+    },
+    tooltip: {
+        valueSuffix: ' pcs'
+    },
+    plotOptions: {
+        series: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: [{
+                enabled: true,
+                distance: 20
+            }, {
+                enabled: true,
+                distance: -40,
+                format: '{point.percentage:.1f}%',
+                style: {
+                    fontSize: '1.2em',
+                    textOutline: 'none',
+                    opacity: 0.7
+                },
+                filter: {
+                    operator: '>',
+                    property: 'percentage',
+                    value: 10
+                }
+            }]
+        }
+    },
+    series: [
+        {
+            name: 'Jumlah',
+            colorByPoint: true,
+            data: [
+                <?php foreach ($jumlah_penjualan as $k => $v): ?>
+				{
+                    name: '<?php echo $v['nama_produk'] ?>',
+                    y: <?php echo $v['total_terjual'] ?>
+                },
+				<?php endforeach ?>
+                
+            ]
+        }
+    ]
+});
+</script>
+
+<script>
+	Highcharts.chart('jumlah_penjualan_bulan', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: 'Jumlah Penjualan Per bulan'
     },
     tooltip: {
         valueSuffix: ' pcs'
