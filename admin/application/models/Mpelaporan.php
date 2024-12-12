@@ -109,4 +109,26 @@ class Mpelaporan extends CI_Model {
 	
 		return $d;
 	}
+
+	function pendapatan_bulan(){
+	
+		//melakukan query
+		$q = $this->db->query("SELECT DATE_FORMAT(tgl_transaksi, '%M %Y') AS bulan, 
+								    SUM(total_transaksi) AS total_pendapatan 
+								FROM 
+								    transaksi 
+								WHERE 
+								    tgl_transaksi >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) -- Filter 1 bulan terakhir
+									AND status_transaksi = 'selesai'
+								GROUP BY 
+								    YEAR(tgl_transaksi), MONTH(tgl_transaksi)
+								ORDER BY 
+								    YEAR(tgl_transaksi) DESC, MONTH(tgl_transaksi) DESC
+								LIMIT 12;");
+	
+		//pecah ke array
+		$d = $q->result_array();
+	
+		return $d;
+	}
 }

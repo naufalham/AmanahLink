@@ -72,7 +72,7 @@
         type: 'pie'
     },
     title: {
-        text: 'Jumlah Penjualan 12 bulan terakhir'
+        text: 'Jumlah Penjualan Per 12 bulan terakhir'
     },
     tooltip: {
         valueSuffix: ' pcs'
@@ -125,7 +125,7 @@
         type: 'pie'
     },
     title: {
-        text: 'Jumlah Penjualan Per bulan'
+        text: 'Jumlah Penjualan Per 1 bulan terakhir'
     },
     tooltip: {
         valueSuffix: ' pcs'
@@ -177,6 +177,7 @@
 <h5>Pelaporan Pendapatan Per bulan</h5>	
 
 <div id="pendapatan"></div>
+<div id="pendapatan_bulan"></div>
 
 </div>
 
@@ -184,6 +185,7 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 <script>
 
 Highcharts.chart('pendapatan', {
@@ -192,6 +194,75 @@ Highcharts.chart('pendapatan', {
     },
     title: {
         text: 'Pendapatan Bulanan dalam Satu Tahun'
+    },
+    subtitle: {
+        text: 'Sumber: Data Pendapatan Bulanan'
+    },
+    xAxis: {
+        type: 'category',
+        labels: {
+            autoRotation: [-45, -90],
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    },
+    yAxis: {
+        min: 0,// Minimum nilai sumbu Y
+        max: 5000000, // Maximum nilai sumbu Y
+        tickInterval: 1000000, // Interval antar tick (1 juta)
+        title: {
+            text: 'Pendapatan (juta)'
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    tooltip: {
+        pointFormat: 'Pendapatan Bulanan: <b>{point.y} ribu</b>'
+    },
+    series: [{
+        name: 'Pendapatan',
+        colors: [
+            '#0a9eaa'
+        ],
+        colorByPoint: true,
+        groupPadding: 0,
+        data: [
+            <?php foreach ($pendapatan as $k => $v): ?>
+				{
+                    name: '<?php echo $v['bulan'] ?>',
+                    y: <?php echo $v['total_pendapatan'] ?>
+                },
+				<?php endforeach ?>
+        ],
+        dataLabels: {
+            enabled: true,
+            rotation: -90,
+            color: '#FFFFFF',
+            inside: true,
+            verticalAlign: 'top',
+            format: '{point.y}', // satu desimal
+            y: 10, // 10 piksel dari atas
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    }]
+});
+
+</script>
+
+<script>
+
+Highcharts.chart('pendapatan_bulan', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Pendapatan Bulanan'
     },
     subtitle: {
         text: 'Sumber: Data Pendapatan Bulanan'
