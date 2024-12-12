@@ -153,7 +153,7 @@
                 </select>
             </div>
         </div>
-    </div>
+    
 
         <!-- Javascript untuk menangani perubahan status -->
         <script>
