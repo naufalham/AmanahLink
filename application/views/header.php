@@ -116,9 +116,9 @@
                     <?php echo $this->session->userdata('nama_pelanggan') ?>
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="<?php echo base_url("logout") ?>" class="nav-link">Logout</a>
-            </li>
+            </li> -->
         </ul>
         <?php endif ?>
 

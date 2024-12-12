@@ -165,6 +165,8 @@
                 </div>
             </div>
             <button type="submit" class="btn">Simpan</button>
+            <button type="submit" class="btn"><a href="<?php echo base_url("logout") ?>" class="nav-link">Logout</a></button>
+            
         </form>
         
     <div class="product-section">
