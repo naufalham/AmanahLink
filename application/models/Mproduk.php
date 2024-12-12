@@ -29,4 +29,12 @@ class Mproduk extends CI_Model {
         return $d;
     }
 
+	function favorit() {
+        $this->db->where('id_produk', $pfavorit);
+        $q = $this->db->get('produk');
+        $d = $q->row_array();
+
+        return $d;
+    }
+
 }

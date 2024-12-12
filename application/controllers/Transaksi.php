@@ -84,7 +84,8 @@ class Transaksi extends CI_Controller {
         redirect(base_url("transaksi/detail/" .$id_transaksi));
     }
 
-    function hapus_produk($id_produk) {
+    //hapus salah satu produk di keranjang 
+    function hapus($id_produk) {
         // Ambil ID transaksi dari session
         $id_transaksi = $this->session->userdata('id_transaksi');
 
@@ -94,7 +95,7 @@ class Transaksi extends CI_Controller {
 
         // Redirect ke halaman keranjang dengan pesan sukses
         $this->session->set_flashdata('pesan_sukses', 'Produk berhasil dihapus dari keranjang.');
-        redirect(base_url('keranjang'), 'refresh');
+        redirect(base_url('transaksi/keranjang'), 'refresh');
     }
     
 }

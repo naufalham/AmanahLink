@@ -8,7 +8,7 @@
     <style>
 		body, html {
 			font-family: 'Kantumruy Pro', sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f9f9f9;
 		}
 
 		.hero-section {
@@ -128,7 +128,9 @@
                 <div class="col-md-6 text-section">
                     <h5>Air Amanah terjaga Kualitasnya!</h5>
                     <h1>PESAN SEKARANG SEBELUM KEHABISAN!!</h1>
-                    <button class="btn btn-primary">Pesan Disini</button>
+                    <button class="btn btn-primary"  >
+						<a href="<?php echo base_url("produk")?>" class="text-decoration-none">Pesan Disini</a>
+					</button>
                 </div>
                 <div class="product-section">
 					<img alt="Refill Galon 19L" src="assets/produk/image2.png" />
@@ -155,5 +157,21 @@
             </div>
         </div>
     </section>
+	<section>
+		<div class="container">
+			<h5>Produk Terfavorit</h5>
+				<div class="product-grid">
+					<?php foreach ($pfavorit as $key => $value): ?>
+					<div class="product-item">
+						<img src="<?php echo $this->config->item("url_produk").$value["foto_produk"] ?>">            
+						<div class="product-title">
+							<a href="<?php echo base_url("produk/detail/".$value["id_produk"]) ?>">
+								<div class="product-title"><?php echo $value['nama_produk'] ?></div>
+							</a>
+						</div>
+					</div>
+					<?php endforeach ?>
+		</div>
+	</section>
 </body>
 </html>

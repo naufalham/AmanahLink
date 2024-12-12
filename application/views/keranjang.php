@@ -1,6 +1,11 @@
 <div class="container">
     <h3>Keranjang Anda</h3>
 
+    <?php if (empty($keranjang)): ?>
+        <div class="alert alert-warning" role="alert">
+            Keranjang Anda kosong. Silakan tambahkan produk ke keranjang!
+        </div>
+    <?php else: ?>
         <table class="table table-sm table-bordered">
             <thead>
                 <tr>
@@ -37,5 +42,5 @@
         <h4>Total Keseluruhan: <?php echo number_format($total_keseluruhan); ?></h4>
         <!-- Tombol checkout -->
         <a href="<?php echo base_url('transaksi/checkout'); ?>" class="btn btn-success">Checkout Semua</a>
-
+    <?php endif; ?>
 </div>

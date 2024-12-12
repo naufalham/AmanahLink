@@ -151,9 +151,9 @@ class Mtransaksi extends CI_Model {
         return $id_transaksi;
     }
 
-    // Ambil atau buat transaksi dengan status diproses
+    // Ambil atau buat transaksi dengan status null
     function get_or_create_transaksi($id_pelanggan) {
-        // Cari transaksi dengan status diproses
+        // Cari transaksi dengan status null
         $this->db->where('id_pelanggan', $id_pelanggan);
         $this->db->where('status_transaksi', null);
         $transaksi = $this->db->get('transaksi')->row_array();
@@ -193,10 +193,8 @@ class Mtransaksi extends CI_Model {
     // Hapus produk dari keranjang
     function hapus_produk($id_transaksi, $id_produk) {
         // Ambil subtotal harga produk yang akan dihapus
-        $this->db->select('subtotal_harga');
-        $this->db->where('id_transaksi', $id_transaksi);
-        $this->db->where('id_produk', $id_produk);
-        $this->db->delete('detail_transaksi');
+        $this->db->query("DELETE FROM detail_transaksi WHERE id_transaksi = ? AND id_produk = ?", [$id_transaksi, $id_produk]);
+
     
         // if ($detail) {
         //     // Kurangi total transaksi dengan subtotal produk yang dihapus
