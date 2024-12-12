@@ -92,7 +92,7 @@
         .btn.tambah {
             display: inline-block;
             margin-top: 20px;
-            width: 400px; /* Lebar tombol diperbesar */
+            width: 300px; /* Lebar tombol diperbesar */
             margin-bottom: 50px; /* Memberikan jarak dengan footer */
         }
 

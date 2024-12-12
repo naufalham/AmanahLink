@@ -140,7 +140,7 @@
             name: 'Jumlah',
             colorByPoint: true,
             data: [
-                <?php foreach ($jumlah_penjualan as $k => $v): ?>
+                <?php foreach ($jumlah_penjualan_tahun as $k => $v): ?>
 				{
                     name: '<?php echo $v['nama_produk'] ?>',
                     y: <?php echo $v['total_terjual'] ?>
@@ -193,7 +193,7 @@
             name: 'Jumlah',
             colorByPoint: true,
             data: [
-                <?php foreach ($jumlah_penjualan as $k => $v): ?>
+                <?php foreach ($jumlah_penjualan_bulan as $k => $v): ?>
 				{
                     name: '<?php echo $v['nama_produk'] ?>',
                     y: <?php echo $v['total_terjual'] ?>
@@ -333,7 +333,7 @@ Highcharts.chart('pendapatan_bulan', {
         colorByPoint: true,
         groupPadding: 0,
         data: [
-            <?php foreach ($pendapatan as $k => $v): ?>
+            <?php foreach ($pendapatan_bulan as $k => $v): ?>
 				{
                     name: '<?php echo $v['bulan'] ?>',
                     y: <?php echo $v['total_pendapatan'] ?>
