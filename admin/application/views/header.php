@@ -106,6 +106,12 @@
           <?php if ($this->session->userdata("id_pelanggan")): ?> 
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
+                <a class="nav-link link-success">
+                    <img src="<?php echo base_url('assets/logo/profile.png'); ?>" alt="Profile"width="22">
+                    <?php echo $this->session->userdata('username_admin') ?>
+                </a>
+            </li>
+            <li class="nav-item">
               <a href="<?php echo base_url("logout") ?>" class="nav-link">Logout</a>
             </li>
         </ul>

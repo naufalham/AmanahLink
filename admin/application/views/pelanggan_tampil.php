@@ -1,5 +1,41 @@
+<html>
+ <head>
+  <title>
+   Katalog Produk
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+
+
+        .container {
+            text-align: center;
+        }
+    
+        h5 {
+            font-size: 35px;
+            margin-top: 45px;
+            font-weight: bold;
+            color: #0E6635;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        h5::after {
+            content: '';
+            position: absolute;
+            background-color: #F9DA73;
+            top: 50%;
+            left: 59%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 23px;
+            border-radius: 2px;
+            z-index: -1;
+        }
+  </style>
+ </head>
+ <body>
 <div class="container">
-        <h5>Data Pelanggan</h5>
+        <h5>Daftar Pelanggan</h5>
         <table class="table table-bordered" id="tabelku">
             <thead>
                 <tr>
@@ -34,3 +70,5 @@
             </tbody>
         </table>
     </div>
+    </body>
+</html>

@@ -3,37 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Marketplace</title>
+    <title>Masuk Pelanggan</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-</head>
-<body class="bg-light">
+	<style>
+		body, html {
+			margin: 0;
+			padding: 0;
+		}
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4 mt-5 offset-md-4 bg-white shadow p-5">
-                <form method="post">
-                    <div class="mb-3">
-                        <label>Username</label>
-                        <input type="text" name="username" class="form-control" value="<?php echo set_value("username") ?>">
-						<div class="text-danger">
-              				<?php echo form_error("username") ?>
-            			</div>
-                    </div>
-                    <div class="mb-3">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control" value="<?php echo set_value("password") ?>">
-						<div class="text-danger">
-              				<?php echo form_error("password") ?>
-            			</div>
-                    </div>
-                    <button class="btn btn-primary">Login</button>
-                </form>
-            </div>
-        </div>
+		.container {
+			text-align: center;
+
+		}
+
+		h5 {
+			font-size: 35px;
+            margin-top: 45px;
+            font-weight: bold;
+            color: #0E6635;
+            margin-bottom: 30px;
+            position: relative;
+		}
+
+		h5::after {
+			content: '';
+			position: absolute;
+			background-color: #F9DA73;
+			top: 50%;
+			left: 62%;
+			transform: translateX(-50%);
+			width: 80px;
+			height: 23px;
+			border-radius: 2px;
+			z-index: -1;
+		}
+
+		form {
+			padding: 20px 40px;
+			border-radius: 10px;
+			text-align: left;
+			max-width: 550px;
+			margin: 0 auto;
+			box-sizing: border-box;
+		}
+
+		form .mb-3 {
+			margin-bottom: 20px;
+			text-align: left;
+		}
+
+		form label {
+			font-size: 14px;
+			font-weight: bold;
+			color: #0e6635;
+			margin-bottom: 5px;
+			display: block;
+		}
+
+		form input[type="text"],
+		form input[type="password"] {
+			width: 100%;
+			padding: 10px;
+			margin-top: 5px;
+			border: 1px solid #F9DA73;
+			border-radius: 5px;
+		}
+
+		form input::placeholder {
+			color: #888;
+			font-size: 14px;
+			font-weight: normal;
+		}
+
+		.btn {
+			background-color: #f9da73;
+			border: none;
+			color: #0E6635;
+			padding: 10px 20px;
+			font-size: 16px;
+			font-weight: bold;
+			border-radius: 10px;
+			cursor: pointer;
+			width: 65%;
+			margin-top: 20px;
+			margin-left: auto;
+			margin-right: auto;
+        	display: block;
+		}
+
+		.btn:hover {
+			background-color: #0E6635;
+     		color: #f9da73;
+		}
+
+		span.text-muted {
+			color: #0E6635; 
+			font-size: 12px; 
+			margin-top: 5px;
+		}
+
+		.product-section {
+			position: absolute;
+			top: 40%;
+			left: 70px; /* Ubah dari right ke left */
+			transform: translateY(-50%);
+			padding: 20px;
+			text-align: center;
+		}
+
+		.product-section img {
+			width: 300px;
+			height: auto;
+		}
+
+		.product-section::after {
+			content: '';
+			position: absolute;
+			background-color: #F9DA73;
+			top: 50%;
+			left: -57px;
+			transform: translate(-5%, -10%);
+			width: 250px;
+			height: 450px;
+			z-index: -1;
+		}
+
+	</style>
+</head>
+
+<body class="">
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 offset-md-2">
+        <h5>Masuk Admin</h5>
+			<form method="post" action="">
+				<div class="mb-3">
+					<label>Username</label>
+					<input type="text" name="username" class="form-control" placeholder="Masukkan email" value="<?php echo set_value('username') ?>">
+					<span class="text-muted"><?php echo form_error("username") ?></span>
+				</div>
+				<div class="mb-3">
+					<label>Password</label>
+					<input type="password" name="password" class="form-control" placeholder="Masukkan password" value="<?php echo set_value("password") ?>">
+					<span class="text-muted"><?php echo form_error("password") ?></span>
+				</div>
+				<button class="btn">Kirim</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- Bagian Produk Air Galon Amanah dengan gambar di pojok kanan -->
+    <div class="product-section">
+        <img alt="Refill Galon 19L" src="assets/produk/galon.png" />
     </div>
 
-
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<?php if ($this->session->flashdata('pesan_sukses')): ?>
 	<script>swal("Sukses!", "<?php echo $this->session->flashdata('pesan_sukses') ?>", "success");</script>
 	<?php endif ?>
