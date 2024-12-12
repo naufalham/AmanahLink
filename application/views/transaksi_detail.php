@@ -1,24 +1,20 @@
 <style>
-
-
-    .container {
-    }
-
-    h5 {
+    .judul_detail{
         font-size: 35px;
         margin-top: 45px;
         font-weight: bold;
         color: #0E6635;
         margin-bottom: 30px;
         position: relative;
+        text-align: center;
     }
 
-    h5::after {
+    .judul_detail::after{
         content: '';
         position: absolute;
         background-color: #F9DA73;
         top: 50%;
-        left: 59%;
+        left: 60%;
         transform: translateX(-50%);
         width: 80px;
         height: 23px;
@@ -26,6 +22,23 @@
         z-index: -1;
     }
 
+    h4 {
+        font-size: 25px;
+        margin-top: 30px;
+        font-weight: bold;
+        color: #0E6635;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .row{
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        text-align: left;
+
+    }
     .table {
         width: 100%;
         max-width: 1200px;
@@ -79,26 +92,30 @@
     }
 
     .status {
-        display: inline-block;
-        padding: 7px 13px;
-        border-radius: 5px;
-        color: white;
-        font-size: 14px;
-        font-weight: bold;
-        text-align: center;
-    }
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 5px;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
 
-    .status.diproses {
-        background-color: #0E6635;
-    }
+        .status.diproses {
+            background-color: #0E6635;
+        }
 
-    .status.selesai {
-        background-color: #0056b3;
-    }
+        .status.dikirim {
+            background-color:rgb(241, 137, 0);
+        }
 
-    .status.dibatalkan {
-        background-color: #B30000;
-    }
+        .status.selesai {
+            background-color: #0056b3;
+        }
+
+        .status.dibatalkan {
+            background-color: #B30000;
+        }
 
     @media (max-width: 768px) {
         .table th,
@@ -116,18 +133,21 @@
 
 
 <div class="container">
+    <h5 class="judul_detail">Detail Transaksi</h5>
 	<div class="row mb-5">
 		<div class="col-md-3">
-			<h5>Transaksi</h5>
+			<h4>Transaksi</h4>
 			<p>ID: <?php echo $transaksi['id_transaksi'] ?></p>
 			<p><?php echo date('d M Y H:i', strtotime($transaksi['tgl_transaksi'])) ?></p>
-			<span class="badge bg-primary"><?php echo $transaksi['status_transaksi'] ?></span>
+			<span class="status <?php echo strtolower($transaksi['status_transaksi']); ?>">
+                            <?php echo $transaksi['status_transaksi']; ?>
+                        </span>
 		</div>
 		<div class="col-md-3">
 			
 		</div>
 		<div class="col-md-3">
-			<h5>Penerima</h5>
+			<h4>Penerima</h4>
 			<p><?php echo $transaksi['nama_pelanggan'] ?></p>
 			<p><?php echo $transaksi['wa_pelanggan'] ?></p>
 			<p><?php echo $transaksi['alamat'] ?></p>
@@ -136,7 +156,6 @@
 		</div>
 	</div>
 
-	<h5>Produk</h5>
 	<table class="table">
 		<thead>
 			<tr>
@@ -156,11 +175,11 @@
 				<td><?php echo $value["nama_produk"]; ?></td>
 				<td><?php echo number_format($value["harga_produk"]); ?></td>
 				<td><?php echo $value["jumlah_produk"]; ?></td>
-				<td><?php echo $value["subtotal_harga"]; ?></td>
+				<td><?php echo number_format($value["subtotal_harga"]); ?></td>
 			</tr>
 			<?php endforeach ?>
-			<tr>
-				<td colspan="4">Total</td>
+			<tr style="background-color: #f0f0f0;">
+				<td colspan="4"><b>Total</b></td>
 				<th><?php echo number_format($value["total_harga"]);?></th>
 			</tr>
 		</tbody>

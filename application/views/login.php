@@ -15,6 +15,7 @@
 
 		.container {
 			text-align: center;
+
 		}
 
 		h5 {
@@ -40,7 +41,6 @@
 		}
 
 		form {
-			background-color: #F9F9F9;
 			padding: 20px 40px;
 			border-radius: 10px;
 			text-align: left;
@@ -133,7 +133,7 @@
 	</style>
 </head>
 
-<body class="bg-light">
+<body class="">
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 offset-md-2">

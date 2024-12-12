@@ -21,6 +21,9 @@ class Akun extends CI_Controller{
     $this->form_validation->set_rules("nama_pelanggan", "Nama Lengkap", "required");
     $this->form_validation->set_rules("alamat", "Alamat", "required");
     $this->form_validation->set_rules("wa_pelanggan", "Nomor WA", "required");
+    
+    // atur pesan bindo
+		$this->form_validation->set_message("required", "%s wajib diisi");
 
     if ($this->form_validation->run() == TRUE) {
         $this->load->model('Mpelanggan');

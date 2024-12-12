@@ -34,7 +34,6 @@
     }
 
     form {
-        background-color: #F9F9F9;
         padding: 20px 40px;
         border-radius: 10px;
         text-align: left;

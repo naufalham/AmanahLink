@@ -89,6 +89,12 @@
             margin-top: 20px;
         }
 
+		span.text-muted {
+			color:rgb(155, 0, 0); 
+			font-size: 12px; 
+			margin-top: 5px;
+		}
+
         .product-section {
             position: absolute;
             top: 40%;
@@ -141,27 +147,31 @@
                 <div class="col-half">
                     <label for="username_pelanggan">Username/Email</label>
                     <input type="text" id="username_pelanggan" name="username_pelanggan" class="form-control" value="<?php echo set_value('username_pelanggan', $this->session->userdata('username_pelanggan')); ?>">
+                    <span class="text-muted"><?php echo form_error("username_pelanggan") ?></span>
                 </div>
                 <div class="col-half">
                     <label for="nama_pelanggan">Nama Lengkap</label>
                     <input type="text" id="nama_pelanggan" name="nama_pelanggan" class="form-control" value="<?php echo set_value('nama_pelanggan', $this->session->userdata('nama_pelanggan')); ?>">
+                    <span class="text-muted"><?php echo form_error("nama_pelanggan") ?></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-half">
                     <label for="password_pelanggan">Password</label>
                     <input type="password" id="password_pelanggan" name="password_pelanggan" class="form-control">
-                    <p class="text-muted">Kosongkan jika password tidak diubah</p>
+                    <span class="text-muted">Kosongkan jika password tidak diubah</span>
                 </div>
                 <div class="col-half">
                     <label for="wa_pelanggan">No HP</label>
                     <input type="text" id="wa_pelanggan" name="wa_pelanggan" class="form-control" value="<?php echo set_value('wa_pelanggan', $this->session->userdata('wa_pelanggan')); ?>">
+                    <span class="text-muted"><?php echo form_error("wa_pelanggan") ?></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-half" style="flex: 1 1 100%;">
                     <label for="alamat">Alamat Lengkap</label>
                     <input type="text" id="alamat" name="alamat" class="form-control" value="<?php echo set_value('alamat', $this->session->userdata('alamat')); ?>">
+                    <span class="text-muted"><?php echo form_error("alamat") ?></span>
                 </div>
             </div>
             <button type="submit" class="btn">Simpan</button>
