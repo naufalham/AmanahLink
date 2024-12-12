@@ -9,13 +9,9 @@
 		body, html {
 			margin: 0;
 			padding: 0;
-			font-family: Arial, sans-serif;
 		}
 
-		body {
-			font-family: 'Kantumruy Pro', sans-serif;
-            background-color: #f5f5f5;
-		}
+
 
 		.container {
 			text-align: center;

@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Profil</title>
     <style>
-        body {
-            font-family: 'Kantumruy Pro', sans-serif;
-            background-color: #f5f5f5;
 
-        }
 
         .container {
             text-align: center;
@@ -39,7 +35,7 @@
         }
 
         form {
-            background-color: #F9F9F9;
+            background-color: #ffffff;
             padding: 20px 40px;
             border-radius: 10px;
 			text-align: left;

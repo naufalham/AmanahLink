@@ -27,6 +27,7 @@ $config['base_url'] = 'http://localhost/AmanahLink/admin/';
 
 $config['assets_produk'] = $_SERVER["DOCUMENT_ROOT"]."/amanahlink/assets/produk/";
 $config['url_produk'] = 'http://localhost/amanahlink/assets/produk/';
+$config['url_logo'] = 'http://localhost/amanahlink/assets/logo/';
 
 
 /*
