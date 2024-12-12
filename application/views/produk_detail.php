@@ -1,8 +1,5 @@
 <html>
-<head>
-  <title>
-   Air Amanah Refill 19 Liter
-  </title>
+
   <style>
     body {
         text-align: center;
@@ -135,7 +132,7 @@
         }
     }
   </style>
-</head>
+
 <body>
     <div class="container">
         <div class="product-grid">

@@ -50,7 +50,7 @@
         background-color: transparent; /* Tidak ada warna background */
     }
 
-    /* Isi Tabel */
+    /* Isi Tabel */   
     .table td {
         padding: 15px;
         text-align: center;
@@ -63,6 +63,8 @@
     .table tr:last-child td {
         border-bottom: none; /* Menghapus garis bawah di baris terakhir */
     }
+
+
 
     .btn {
         text-decoration: none;

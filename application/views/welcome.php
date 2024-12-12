@@ -7,6 +7,31 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
 
+<<<<<<< HEAD
+=======
+		.judul_produk{
+			font-size: 35px;
+			margin-top: 45px;
+			font-weight: bold;
+			color: #0E6635;
+			margin-bottom: 30px;
+			position: relative;
+			text-align: center;
+		}
+
+		.judul_produk::after{
+			content: '';
+			position: absolute;
+			background-color: #F9DA73;
+			top: 50%;
+			left: 61%;
+			transform: translateX(-50%);
+			width: 80px;
+			height: 23px;
+			border-radius: 2px;
+			z-index: -1;
+		}
+>>>>>>> e0422b714b8ff0ac4f1bfda7ce3dc228cd71b90d
 		.hero-section {
 			background-color: #ffffff;
 			padding: 50px;
@@ -100,40 +125,62 @@
 			border-radius: 15px;
 		}
 
-		@media (max-width: 768px) {
-			.text-section, .image-section {
-				text-align: center;
-			}
+		.product-grid {
+            display: grid; /* Gunakan grid layout */
+            grid-template-columns: repeat(3, 1fr); /* Tampilkan 3 kolom */
+            gap: 150px; /* Jarak antar produk */
+            justify-items: center; /* Produk berada di tengah */
+            justify-content: center; /* Pusatkan grid */
+            padding: 80px;
+        }
+        .product-item {
+            background-color: #F9DA73;
+            border-radius: 20px; /* Membuat sudut membulat */
+            padding: 20px 10px 10px; /* Memberikan ruang untuk teks */
+            text-align: center;
+            box-sizing: border-box; /* Memastikan padding tidak memengaruhi ukuran elemen */
+            position: relative; /* Supaya teks dan gambar bisa diatur posisinya relatif terhadap container */
+            
+        }
 
-			.text-section h1, .text-section h2 {
-				font-size: 1.8rem;
-			}
+        .product-item img {
+            position: relative;
+            top: -50%; /* Membuat gambar naik ke atas */
+            z-index: 1; /* Agar gambar berada di atas elemen lain */
+            width: 250px; /* Atur ukuran lebar gambar */
+            height: auto; /* Agar proporsi gambar tetap terjaga */
+        }
 
-			.product-info {
-				border-radius: 0;
-			}
-		}
 
+        .product-title {
+            color: #0E6635; /* Warna hijau gelap */
+            font-weight: bold; /* Teks tebal */
+            font-size: 16px; /* Ukuran font disesuaikan */
+            margin-top: -30%; /* Geser teks ke atas untuk proporsi */
+            text-align: center; /* Rata tengah teks */
+        }
+
+        a {
+            text-decoration: none; /* Menghilangkan garis bawah pada link */
+        }
 	</style>
 
 </head>
 <body>
-    <header class="hero-section">
+    <section class="hero-section">
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-md-6 text-section">
                     <h5>Air Amanah terjaga Kualitasnya!</h5>
                     <h1>PESAN SEKARANG SEBELUM KEHABISAN!!</h1>
-
 						<a href="<?php echo base_url("produk")?>" class="btn">Pesan Disini</a>
-
                 </div>
                 <div class="product-section">
 					<img alt="Refill Galon 19L" src="assets/produk/image2.png" />
 				</div>
             </div>
         </div>
-    </header>
+    </section>
 
     <section class="product-info">
         <div class="container">
@@ -155,9 +202,9 @@
     </section>
 	<section>
 		<div class="container">
-			<h5>Produk Terfavorit</h5>
+			<h5 class="judul_produk">Produk Terfavorit</h5>
 				<div class="product-grid">
-					<?php foreach ($pfavorit as $key => $value): ?>
+					<?php foreach ($produk_terfavorit as $key => $value): ?>
 					<div class="product-item">
 						<img src="<?php echo $this->config->item("url_produk").$value["foto_produk"] ?>">            
 						<div class="product-title">

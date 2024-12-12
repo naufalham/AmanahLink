@@ -5,6 +5,7 @@ class Mtransaksi extends CI_Model {
     function transaksi_pelanggan_beli($id_pelanggan) {
         $this->db->where('id_pelanggan', $id_pelanggan);
         $this->db->where('status_transaksi !=', null); // Filter status tidak null
+        $this->db->order_by('tgl_transaksi', 'DESC');
         return $this->db->get("transaksi")->result_array();
     }
     

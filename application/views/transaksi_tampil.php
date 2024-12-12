@@ -32,7 +32,7 @@
             border-radius: 2px;
             z-index: -1;
         }
-
+        
         .table {
             width: 100%;
             max-width: 1200px;
@@ -98,6 +98,10 @@
             background-color: #0E6635;
         }
 
+        .status.dikirim {
+            background-color:rgb(241, 137, 0);
+        }
+
         .status.selesai {
             background-color: #0056b3;
         }
@@ -124,6 +128,11 @@
 </head>
 <div class="container">
         <h5>Daftar Transaksi</h5>
+        <?php if (empty($transaksi)): ?>
+        <div class="alert alert-warning" role="alert">
+            Transaksi Anda kosong. Silakan lakukan pemesanan!
+        </div>
+        <?php else: ?>
         <table class="table" id="tabelku">
             <thead>
                 <tr>
@@ -154,6 +163,7 @@
                 <?php endforeach ?>
             </tbody>
         </table>
+        <?php endif; ?>
     </div>
     </body>
 </html>
