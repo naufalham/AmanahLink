@@ -128,7 +128,7 @@
                 <div class="col-md-6 text-section">
                     <h5>Air Amanah terjaga Kualitasnya!</h5>
                     <h1>PESAN SEKARANG SEBELUM KEHABISAN!!</h1>
-                    <button class="btn btn-primary"  >
+                    <button class="btn"  >
 						<a href="<?php echo base_url("produk")?>" class="text-decoration-none">Pesan Disini</a>
 					</button>
                 </div>
