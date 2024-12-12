@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Kantumruy Pro', sans-serif;
-            background-color: #f5f5f5;
+            background-color: #ffffff;
         }
 
         .container {
@@ -65,6 +65,7 @@
             text-align: center;
             color: #0E6635;
             font-size: 16px;
+            background-color: transparent; /* Tidak ada warna background */
             border-bottom: 1px solid #ddd; /* Garis bawah antar baris */
         }
 
