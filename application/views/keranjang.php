@@ -153,21 +153,23 @@
                     <td><b><?php echo number_format($total_keseluruhan); ?></b></td>
                     <td>.</td>
                 </tr>
-                
+
                 <tr>
                     <td colspan="4"><b>Diskon (10%)</b></td>
                     <td><b>- <?php echo number_format($total_keseluruhan * 0.1); ?></b></td>
                     <td>.</td>
                 </tr>
-                <!-- Total Keseluruhan yang akan ditampilkan untuk semua status pelanggan -->
+
+                <!-- Total Keseluruhan yang akan ditampilkan untuk member -->
                 <tr style="background-color: #f0f0f0;">
                     <td colspan="4"><b>Total Keseluruhan</b></td>
-                    <td><b><?php echo number_format($total_final = $status_pelanggan ? $total_keseluruhan * 0.9 : $total_keseluruhan); ?></b></td>
+                    <td><b><?php echo number_format($total_final = $total_keseluruhan * 0.9); ?></b></td>
                     <td>
                         <a href="<?php echo base_url('transaksi/checkout'); ?>" class="btn">Checkout</a>
                     </td>
                 </tr>
-                <?php endif; ?>
+            <?php else: ?>
+                <!-- Jika bukan member, tampilkan total keseluruhan tanpa diskon -->
                 <tr style="background-color: #f0f0f0;">
                     <td colspan="4"><b>Total Keseluruhan</b></td>
                     <td><b><?php echo number_format($total_final = $total_keseluruhan); ?></b></td>
@@ -175,6 +177,8 @@
                         <a href="<?php echo base_url('transaksi/checkout'); ?>" class="btn">Checkout</a>
                     </td>
                 </tr>
+            <?php endif; ?>
+
             </tfoot>
 
         </table>
