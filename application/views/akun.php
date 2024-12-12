@@ -88,6 +88,23 @@
             width: 100%;
             margin-top: 20px;
         }
+        #btn_logout {
+            background-color:rgb(206, 0, 0);
+            border: none;
+            color: #F9DA73;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #btn_logout:hover {
+            background-color: #0E6635;
+            color: #F9DA73;
+        }
 
 		span.text-muted {
 			color:rgb(155, 0, 0); 
@@ -175,7 +192,7 @@
                 </div>
             </div>
             <button type="submit" class="btn">Simpan</button>
-            <button type="submit" class="btn"><a href="<?php echo base_url("logout") ?>" class="nav-link">Logout</a></button>
+            <button type="submit" class="btn" id="btn_logout"><a href="<?php echo base_url("logout") ?>" class="nav-link">Logout</a></button>
             
         </form>
         

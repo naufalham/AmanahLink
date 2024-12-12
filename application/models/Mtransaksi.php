@@ -127,30 +127,40 @@ class Mtransaksi extends CI_Model {
     }
 
     // Proses checkout
-    function checkout($id_pelanggan, $keranjang) {
-        $id_transaksi = $this->get_or_create_transaksi($id_pelanggan);
-
-        foreach ($keranjang as $item) {
-            $this->db->where('id_produk', $item['id_produk']);
-            $produk = $this->db->get('produk')->row_array();
-
-            if ($produk) {
-                $subtotal = $produk['harga_produk'] * $item['jumlah'];
-
-                $this->db->insert('detail_transaksi', [
-                    'id_transaksi' => $id_transaksi,
-                    'id_produk' => $item['id_produk'],
-                    'jumlah' => $item['jumlah'],
-                    'subtotal_harga' => $subtotal
-                ]);
-            }
+    function checkout() {
+        // Ambil ID transaksi dari sesi
+        $id_transaksi = $this->session->userdata('id_transaksi');
+        if (!$id_transaksi) {
+            show_error('Tidak ada transaksi yang ditemukan untuk checkout.', 400);
         }
-
+    
+        // Ambil total transaksi dari database
+        $transaksi = $this->get_transaksi($id_transaksi);
+        $total_transaksi = $transaksi['total_transaksi'];
+    
+        // Cek apakah pelanggan adalah member
+        $id_pelanggan = $this->session->userdata("id_pelanggan");
+        $status_pelanggan = $this->status_pelanggan($id_pelanggan);
+    
+        // Terapkan diskon hanya jika pelanggan adalah member
+        if ($status_pelanggan == 'Member') {
+            $total_transaksi *= 0.9; // Diskon 10%
+        }
+    
+        // Update total transaksi dan status transaksi
         $this->db->where('id_transaksi', $id_transaksi);
-        $this->db->update('transaksi', ['status_transaksi' => 'diproses']);
-
-        return $id_transaksi;
+        $this->db->update('transaksi', [
+            'total_transaksi' => $total_transaksi,
+            'status_transaksi' => 'diproses'
+        ]);
+    
+        // Hapus ID transaksi dari sesi
+        $this->session->unset_userdata('id_transaksi');
+    
+        redirect(base_url('transaksi/konfirmasi/' . $id_transaksi));
     }
+    
+    
 
     // Ambil atau buat transaksi dengan status null
     function get_or_create_transaksi($id_pelanggan) {
@@ -187,30 +197,36 @@ class Mtransaksi extends CI_Model {
         $this->db->join('produk p', 'dt.id_produk = p.id_produk');
         $this->db->where('dt.id_transaksi', $id_transaksi);
         $this->db->order_by('p.nama_produk', 'ASC');
-
+    
         return $this->db->get()->result_array();
     }
+    
 
     // Hapus produk dari keranjang
     function hapus_produk($id_transaksi, $id_produk) {
         // Ambil subtotal harga produk yang akan dihapus
         $this->db->query("DELETE FROM detail_transaksi WHERE id_transaksi = ? AND id_produk = ?", [$id_transaksi, $id_produk]);
-
-    
-        // if ($detail) {
-        //     // Kurangi total transaksi dengan subtotal produk yang dihapus
-        //     $this->db->set('total_transaksi', 'total_transaksi - ' . $detail['subtotal_harga'], FALSE);
-        //     $this->db->where('id_transaksi', $id_transaksi);
-        //     $this->db->update('transaksi');
-    
-        //     // Hapus produk dari detail_transaksi
-        //     $this->db->where('id_transaksi', $id_transaksi);
-        //     $this->db->where('id_produk', $id_produk);
-        //     $this->db->delete('detail_transaksi');
-        // } else {
-        //     throw new Exception("Produk tidak ditemukan dalam keranjang.");
-        // }
     }
+
+    public function status_pelanggan($id_pelanggan) {
+        $this->db->select('status_pelanggan');
+        $this->db->from('pelanggan');
+        $this->db->where('id_pelanggan', $id_pelanggan);
+        $query = $this->db->get();
+    
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return $row->status_pelanggan;
+        }
+        return false;
+
+        log_message('debug', 'Query status pelanggan untuk ID: ' . $id_pelanggan);
+log_message('debug', 'Status pelanggan: ' . ($query->num_rows() > 0 ? $row->status_pelanggan : 'Tidak ditemukan'));
+
+exit();
+    }
+    
+    
     
 
 }
