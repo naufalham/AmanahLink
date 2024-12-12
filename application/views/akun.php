@@ -93,6 +93,33 @@
             margin-top: 20px;
         }
 
+        .product-section {
+            position: absolute;
+            top: 40%;
+            right: 70px;
+            transform: translateY(-50%);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-section img {
+            width: 300px;
+            height: auto;
+        }
+
+        .product-section::after {
+            content: '';
+            position: absolute;
+            background-color: #F9DA73;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -10%);
+            width: 250px;
+            height: 450px;
+            z-index: -1;
+            border-radius: 30px;
+        }
+
         button.btn:hover {
             background-color: #0E6635;
             color: #F9DA73;
@@ -143,6 +170,10 @@
             </div>
             <button type="submit" class="btn">Simpan</button>
         </form>
+        
+    <div class="product-section">
+        <!-- <img alt="Refill Galon 19L" src="assets/produk/galon.png" /> -->
+    </div>
     </div>
 </body>
 </html>

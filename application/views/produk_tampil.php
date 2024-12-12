@@ -18,7 +18,7 @@
             font-size: 35px;
             margin-top: 45px;
             font-weight: bold;
-            color: #2e7d32;
+            color: #0E6635;
             margin-bottom: 30px;
             position: relative;
         }
@@ -36,7 +36,7 @@
         }
         .highlight {
             position: relative;
-            color: #2e7d32;
+            color: #0E6635;
             font-weight: bold;
             display: inline-block;
         }
