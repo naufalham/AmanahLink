@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
 
-<<<<<<< HEAD
-=======
 		.judul_produk{
 			font-size: 35px;
 			margin-top: 45px;
@@ -31,7 +29,6 @@
 			border-radius: 2px;
 			z-index: -1;
 		}
->>>>>>> e0422b714b8ff0ac4f1bfda7ce3dc228cd71b90d
 		.hero-section {
 			background-color: #ffffff;
 			padding: 50px;

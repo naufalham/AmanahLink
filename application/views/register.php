@@ -51,7 +51,7 @@
     }
 
     .form-control {
-        background-color: #F9F9F9;
+
         border-radius: 5px;
         border: 1px solid #F9DA73;
         padding: 10px;
