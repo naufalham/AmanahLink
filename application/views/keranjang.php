@@ -94,6 +94,10 @@
         background-color:
     }
 
+    tfoot tr td {
+    : center;
+    }
+
     tfoot tr td:last-child {
     display: flex;
     justify-content: space-between;
@@ -146,15 +150,29 @@
                 <?php endforeach; ?>
             </tbody>
             <tfoot>
+                <tr>
+                    <td colspan="4"><b>Total</b></td>
+                    <td><b><?php echo number_format($total_keseluruhan); ?></b></td>
+                    <td>.</td>
+                </tr>
+                <?php if ($status_pelanggan): ?>
+                <tr>
+                    <td colspan="4"><b>Diskon (10%)</b></td>
+                    <td><b>- <?php echo number_format($total_keseluruhan * 0.1); ?></b></td>
+                    <td>.</td>
+                </tr>
+                <?php endif; ?>
                 <tr style="background-color: #f0f0f0;">
-                    <td colspan="4"><b>Total</b> </td>
-                    <td><b><?php echo number_format($total_keseluruhan);?></b></td>
+                    <td colspan="4"><b>Total Keseluruhan</b></td>
+                    <td><b><?php echo number_format($status_pelanggan ? $total_keseluruhan * 0.9 : $total_keseluruhan); ?></b></td>
                     <td>
-                        <!-- Tombol checkout -->
                         <a href="<?php echo base_url('transaksi/checkout'); ?>" class="btn">Checkout</a>
                     </td>
                 </tr>
             </tfoot>
+
         </table>
     <?php endif; ?>
+
+    
 </div>

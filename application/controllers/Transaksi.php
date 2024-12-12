@@ -16,6 +16,9 @@ class Transaksi extends CI_Controller {
         $this->load->model("Mtransaksi");
         $data["transaksi"] = $this->Mtransaksi->transaksi_pelanggan_beli($id_pelanggan);
 
+        // Cek apakah pelanggan adalah member
+        $data['status_pelanggan'] = $this->Mtransaksi->status_pelanggan($id_pelanggan); 
+
         $this->load->view('header');
         $this->load->view('transaksi_tampil', $data);
         $this->load->view('footer');
@@ -26,6 +29,10 @@ class Transaksi extends CI_Controller {
 
         $data["produk_beli"] = $this->Mtransaksi->produk_beli($id_transaksi);
         $data["transaksi"] = $this->Mtransaksi->detail($id_transaksi);
+
+        // Ambil ID pelanggan dan periksa apakah dia member
+        $id_pelanggan = $this->session->userdata('id_pelanggan');
+        $data['status_pelanggan'] = $this->Mtransaksi->status_pelanggan($id_pelanggan);
 
         $this->load->view('header');
         $this->load->view('transaksi_detail', $data);
@@ -44,13 +51,16 @@ class Transaksi extends CI_Controller {
             $this->session->set_userdata('id_transaksi', $id_transaksi);
         }
     
+        // Ambil data keranjang
         $data['keranjang'] = $this->Mtransaksi->get_keranjang($id_transaksi);
-    
+        
+        // Cek apakah pelanggan adalah member
+        $data['status_pelanggan'] = $this->Mtransaksi->status_pelanggan($id_pelanggan);
+
         $this->load->view('header');
         $this->load->view('keranjang', $data);
         $this->load->view('footer');
     }
-    
 
     function checkout() {
         $this->load->model('Mtransaksi');
@@ -77,14 +87,18 @@ class Transaksi extends CI_Controller {
         $data['transaksi'] = $this->Mtransaksi->get_transaksi($id_transaksi);
         $data['detail_transaksi'] = $this->Mtransaksi->get_detail_transaksi($id_transaksi);
 
+        // Ambil ID pelanggan dan periksa apakah dia member
+        $id_pelanggan = $this->session->userdata('id_pelanggan');
+        $data['status_pelanggan'] = $this->Mtransaksi->status_pelanggan($id_pelanggan);
+
         // Set pesan alert menggunakan session flashdata
         $this->session->set_flashdata('pesan_sukses', 'Checkout berhasil! Pesanan Anda sedang diproses.');
 
         // Redirect ke halaman utama atau halaman lain
-        redirect(base_url("transaksi/detail/" .$id_transaksi));
+        redirect(base_url("transaksi/detail/" . $id_transaksi));
     }
 
-    //hapus salah satu produk di keranjang 
+    // Hapus salah satu produk di keranjang 
     function hapus($id_produk) {
         // Ambil ID transaksi dari session
         $id_transaksi = $this->session->userdata('id_transaksi');
