@@ -14,8 +14,8 @@
 			font-weight: bold;
 		}
 		.text-section {
-			padding-left: 120px; /* Atur nilai padding sesuai kebutuhan */
-			padding-top: 70px; /* Tambahkan nilai padding atas sesuai kebutuhan */
+			padding-left: 150px; /* Atur nilai padding sesuai kebutuhan */
+			padding-top: 170px; /* Tambahkan nilai padding atas sesuai kebutuhan */
 		}
 
         .text-section .btn {
@@ -35,7 +35,6 @@
 		.product-section {
 			position: absolute;
 			top: 55%;
-			left: 420px; /* Ubah dari right ke left */
 			transform: translateY(-50%);
 			text-align: center;
 		}
