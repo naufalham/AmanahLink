@@ -83,7 +83,7 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" href="<?php echo base_url(''); ?>">
-          <img src="../amanahlink/assets/logo/logo_nav.png" alt="logo">
+        <img src="<?php echo $this->config->item('url_logo') . 'logo_nav.png'; ?>" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -108,8 +108,8 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
                 <a class="nav-link link-success">
-                    <img src="<?php echo base_url('assets/logo/profile.png'); ?>" alt="Profile"width="22">
-                    <?php echo $this->session->userdata('username_admin') ?>
+                <img src="<?php echo $this->config->item('url_logo') . 'profile.png'; ?>" alt="Logo" width="20" height="20">
+                <?php echo $this->session->userdata('username_admin') ?>
                 </a>
             </li>
             <li class="nav-item">

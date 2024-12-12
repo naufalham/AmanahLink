@@ -78,12 +78,13 @@
         <div class="footer-content">
             <div>
                 <h3>Alamat Kami</h3>
-                <p><img src="<?php echo base_url('assets/logo/lokasi.png'); ?>" alt="Lokasi" width="20" height="20"> Sedan, Sariharjo, Ngaglik, Sleman, DIY 55581</p>
+                <p><img src="<?php echo $this->config->item('url_logo') . 'lokasi.png'; ?>" alt="Logo" width="20" height="20">
+                Sedan, Sariharjo, Ngaglik, Sleman, DIY 55581</p>
             </div>
             <div>
                 <h3>Kontak kami</h3>
-                <p><img src="<?php echo base_url('assets/logo/telepon.png'); ?>" alt="Telepon" width="20" height="20"> +62 89668369180</p>
-                <p><img src="<?php echo base_url('assets/logo/email.png'); ?>" alt="Email" width="22" height="17"> anasarifin30@students.amikom.ac.id</p>
+                <p><img src="<?php echo $this->config->item('url_logo') . 'telepon.png'; ?>" alt="Logo" width="20" height="20"> +62 89668369180</p>
+                <p><img src="<?php echo $this->config->item('url_logo') . 'email.png'; ?>" alt="Logo" width="20" height="20"> anasarifin30@students.amikom.ac.id</p>
             </div>
         </div>
         <div class="footer-bottom">copyright &copy; 2024. Amanah Link</div>

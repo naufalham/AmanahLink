@@ -20,8 +20,5 @@ class Madmin extends CI_Model {
         }else {
             return "tidak ada";
         }
-    }
-    
-    
-    
+    } 
 }
