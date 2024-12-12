@@ -208,7 +208,7 @@
 
 
 <div class="container">
-<h5>Pelaporan Pendapatan Per bulan</h5>	
+<h5>Pelaporan Pendapatan</h5>	
 
 <div id="pendapatan"></div>
 <div id="pendapatan_bulan"></div>

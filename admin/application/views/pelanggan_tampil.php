@@ -5,114 +5,121 @@
   </title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <style>
+.container {
+    text-align: center;
+    max-width: 60%; 
+    padding: 0 20px;
+}
 
+h5 {
+    font-size: 35px;
+    margin-top: 45px;
+    font-weight: bold;
+    color: #0E6635;
+    margin-bottom: 30px;
+    position: relative;
+}
 
-        .container {
-            text-align: center;
-        }
-    
-        h5 {
-            font-size: 35px;
-            margin-top: 45px;
-            font-weight: bold;
-            color: #0E6635;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        h5::after {
-            content: '';
-            position: absolute;
-            background-color: #F9DA73;
-            top: 50%;
-            left: 59%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 23px;
-            border-radius: 2px;
-            z-index: -1;
-        }
+h5::after {
+    content: '';
+    position: absolute;
+    background-color: #F9DA73;
+    top: 50%;
+    left: 59%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 23px;
+    border-radius: 2px;
+    z-index: -1;
+}
 
-        .table {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-collapse: collapse;
-            text-align: left;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-        /* Header Tabel */
-        .table thead tr {
-            border-bottom: 3px solid #0E6635; /* Garis hijau di bawah header */
-        }
+.table thead tr {
+    border-bottom: 3px solid #0E6635;
+}
 
-        .table th {
-            padding: 15px;
-            font-size: 18px;
-            color: #0E6635;
-            text-align: center;
-            font-weight: bold;
-            background-color: transparent; /* Tidak ada warna background */
-        }
+.table th {
+    padding: 15px;
+    font-size: 18px;
+    color: #0E6635;
+    text-align: center;
+    font-weight: bold;
+    background-color: transparent;
+}
 
-        /* Isi Tabel */
-        .table td {
-            padding: 15px;
-            text-align: center;
-            color: #0E6635;
-            font-size: 16px;
-            background-color: transparent; /* Tidak ada warna background */
-            border-bottom: 1px solid #ddd; /* Garis bawah antar baris */
-        }
+.table td {
+    padding: 15px;
+    text-align: center;
+    color: #0E6635;
+    font-size: 16px;
+    background-color: transparent;
+    border-bottom: 1px solid #ddd;
+}
 
-        .table tr:last-child td {
-            border-bottom: none; /* Menghapus garis bawah di baris terakhir */
-        }
+.table tr:last-child td {
+    border-bottom: none;
+}
 
-        .btn {
-            text-decoration: none;
-            background-color: #F9DA73;
-            color: #0E6635;
-            padding: 7px 13px;
-            font-size: 14px;
-            font-weight: bold;
-        }
+.table td .btn {
+    text-decoration: none;
+    color: #0E6635;
+    padding: 7px 13px;
+    font-size: 14px;
+    font-weight: bold;
+}
 
-        .btn:hover {
-            background-color: #0E6635;
-            color: #F9DA73;
-        }
+.table td .btn:hover {
+    color: #F9DA73;
+}
 
-        .status {
-            display: inline-block;
-            padding: 7px 13px;
-            border-radius: 5px;
-            color: white;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-        }
+/* Kolom aksi */
+.table td:last-child {
+    width: 150px; 
+}
 
-        .status.nonmember {
-            background-color: #0E6635;
-        }
+.table td .btn {
+    margin-right: 5px;
+}
 
-        .status.member {
-            background-color:#0e2a66;
-        }
+/* Status */
+.status {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
 
-        @media (max-width: 768px) {
-            .table th,
-            .table td {
-                font-size: 12px;
-                padding: 10px;
-            }
+.status.nonmember {
+    background-color: #0E6635;
+}
 
-            .btn {
-                font-size: 14px;
-                padding: 7px 13px;
-            }
-        }
+.status.member {
+    background-color:#0e2a66;
+}
+
+@media (max-width: 768px) {
+    .table th, .table td {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 7px 13px;
+    }
+}
+
   </style>
  </head>
  <body>
@@ -128,7 +135,7 @@
                     <th>Alamat</th>
                     <th>Wa Pelanggan</th>
                     <th>Status Pelanggan</th>
-                    <th>Aksi</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -148,8 +155,12 @@
                         </span>
                     </td>
                     <td>
-                        <a href="<?php echo base_url("pelanggan/detail/".$value['id_pelanggan']) ?>" class="btn">Detail</a> | 
-                        <a href="<?php echo base_url("pelanggan/hapus/".$value['id_pelanggan']) ?>" class="btn">Hapus</a>
+                    <a href="<?php echo base_url("pelanggan/detail/".$value['id_pelanggan']) ?>" class="btn">
+                        <i class="fas fa-eye"></i>
+                    </a> | 
+                    <a href="<?php echo base_url("pelanggan/hapus/".$value['id_pelanggan']) ?>" class="btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
                     </td>
                 </tr>
                 <?php endforeach ?>

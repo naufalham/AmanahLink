@@ -9,6 +9,7 @@
 
         .container {
             text-align: center;
+            max-width: 64%;
         }
     
         h5 {
@@ -25,7 +26,7 @@
             position: absolute;
             background-color: #F9DA73;
             top: 50%;
-            left: 59%;
+            left: 60%;
             transform: translateX(-50%);
             width: 80px;
             height: 23px;
@@ -60,6 +61,14 @@
         /* Isi Tabel */
         .table td {
             padding: 15px;
+            text-align: left;
+            color: #0E6635;
+            font-size: 16px;
+            background-color: transparent; /* Tidak ada warna background */
+            border-bottom: 1px solid #ddd; /* Garis bawah antar baris */
+        }
+        #tabelku td {
+            padding: 15px;
             text-align: center;
             color: #0E6635;
             font-size: 16px;
@@ -69,7 +78,11 @@
 
         .table tr:last-child td {
             border-bottom: none; /* Menghapus garis bawah di baris terakhir */
-			
+        }
+
+        select {
+            text-align: left;
+            max-width: 20%;
         }
 
         .btn {
@@ -181,7 +194,7 @@
         </script>
 
 	<div class="container">
-			<h5>Transaksi Beli</h5>
+			<h5>Riwayat Transaksi</h5>
 			<table class="table" id="tabelku">
 	            <thead>
 	                <tr>

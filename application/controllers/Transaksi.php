@@ -64,22 +64,38 @@ class Transaksi extends CI_Controller {
 
     function checkout() {
         $this->load->model('Mtransaksi');
-
+    
         // Ambil ID transaksi dari sesi
         $id_transaksi = $this->session->userdata('id_transaksi');
         if (!$id_transaksi) {
             show_error('Tidak ada transaksi yang ditemukan untuk checkout.', 400);
         }
-
-        // Update status transaksi menjadi diproses
+    
+        // Ambil total transaksi dari database
+        $transaksi = $this->Mtransaksi->get_transaksi($id_transaksi);
+        $total_transaksi = $transaksi['total_transaksi'];
+    
+        // Cek apakah pelanggan adalah member
+        $id_pelanggan = $this->session->userdata("id_pelanggan");
+        $status_pelanggan = $this->Mtransaksi->status_pelanggan($id_pelanggan);
+    
+        // Terapkan diskon hanya jika pelanggan adalah member
+        $total_final = $status_pelanggan == 'Member' ? $total_transaksi * 0.9 : $total_transaksi;
+    
+        // Update total transaksi dan status transaksi
         $this->db->where('id_transaksi', $id_transaksi);
-        $this->db->update('transaksi', ['status_transaksi' => 'diproses']);
-
+        $this->db->update('transaksi', [
+            'total_transaksi' => $total_final,  // Simpan nilai total_final yang sudah dihitung
+            'status_transaksi' => 'diproses'   // Update status transaksi
+        ]);
+    
         // Hapus ID transaksi dari sesi
         $this->session->unset_userdata('id_transaksi');
-
+    
+        // Redirect ke halaman konfirmasi dengan ID transaksi
         redirect(base_url('transaksi/konfirmasi/' . $id_transaksi));
     }
+    
 
     function konfirmasi($id_transaksi) {
         $this->load->model('Mtransaksi');

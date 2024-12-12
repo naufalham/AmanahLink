@@ -1,6 +1,4 @@
 <style>
-
-
     .container {
         text-align: center;
     }
@@ -64,8 +62,6 @@
         border-bottom: none; /* Menghapus garis bawah di baris terakhir */
     }
 
-
-
     .btn {
         text-decoration: none;
         background-color: #F9DA73;
@@ -109,7 +105,6 @@
     }
 </style>
 
-
 <div class="container">
     <h5>Keranjang Anda</h5>
 
@@ -131,6 +126,7 @@
             </thead>
             <tbody>
                 <?php 
+                $total_final = 0;
                 $total_keseluruhan = 0;
                 foreach ($keranjang as $index => $produk): 
                     $subtotal = $produk['harga_produk'] * $produk['jumlah'];
@@ -150,21 +146,31 @@
                 <?php endforeach; ?>
             </tbody>
             <tfoot>
+            <?php if ($status_pelanggan == 'Member'): ?>
+                <!-- Jika status pelanggan adalah member, tampilkan total sebelum diskon dan diskon -->
                 <tr>
                     <td colspan="4"><b>Total</b></td>
                     <td><b><?php echo number_format($total_keseluruhan); ?></b></td>
                     <td>.</td>
                 </tr>
-                <?php if ($status_pelanggan): ?>
+                
                 <tr>
                     <td colspan="4"><b>Diskon (10%)</b></td>
                     <td><b>- <?php echo number_format($total_keseluruhan * 0.1); ?></b></td>
                     <td>.</td>
                 </tr>
+                <!-- Total Keseluruhan yang akan ditampilkan untuk semua status pelanggan -->
+                <tr style="background-color: #f0f0f0;">
+                    <td colspan="4"><b>Total Keseluruhan</b></td>
+                    <td><b><?php echo number_format($total_final = $status_pelanggan ? $total_keseluruhan * 0.9 : $total_keseluruhan); ?></b></td>
+                    <td>
+                        <a href="<?php echo base_url('transaksi/checkout'); ?>" class="btn">Checkout</a>
+                    </td>
+                </tr>
                 <?php endif; ?>
                 <tr style="background-color: #f0f0f0;">
                     <td colspan="4"><b>Total Keseluruhan</b></td>
-                    <td><b><?php echo number_format($status_pelanggan ? $total_keseluruhan * 0.9 : $total_keseluruhan); ?></b></td>
+                    <td><b><?php echo number_format($total_final = $total_keseluruhan); ?></b></td>
                     <td>
                         <a href="<?php echo base_url('transaksi/checkout'); ?>" class="btn">Checkout</a>
                     </td>
@@ -174,5 +180,4 @@
         </table>
     <?php endif; ?>
 
-    
 </div>

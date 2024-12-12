@@ -69,9 +69,17 @@
             border-bottom: none; /* Menghapus garis bawah di baris terakhir */
         }
 
+        /* Kolom aksi */
+        .table td:last-child {
+            width: 150px; 
+        }
+
+        .table td .btn {
+            margin-right: 5px;
+        }
+
         .btn {
             text-decoration: none;
-            background-color: #F9DA73;
             color: #0E6635;
             padding: 7px 13px;
             font-size: 14px;
@@ -79,7 +87,6 @@
         }
 
         .btn:hover {
-            background-color: #0E6635;
             color: #F9DA73;
         }
         .btn.tambah {
@@ -117,7 +124,7 @@
                 <th>Nama Produk</th>
                 <th>Harga</th>
                 <th>Deskripsi</th>
-                <th>Aksi</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -131,9 +138,12 @@
                 <td><?php echo $v['harga_produk'] ?></td>
                 <td><?php echo $v['deskripsi_produk'] ?></td>
                 <td>
-                    <a href="<?php echo base_url("produk/edit/".$v['id_produk']) ?>" class="btn">Edit</a>
-                    <a href="<?php echo base_url("produk/hapus/".$v['id_produk']) ?>" class="btn">Hapus</a>
-                </td>
+                <a href="<?php echo base_url("produk/edit/".$v['id_produk']) ?>" class="btn">
+                    <i class="fas fa-edit"></i>
+                </a> |
+                <a href="<?php echo base_url("produk/hapus/".$v['id_produk']) ?>" class="btn">
+                    <i class="fas fa-trash-alt"></i>
+                </a>                </td>
             </tr>
             <?php endforeach ?>
         </tbody>
