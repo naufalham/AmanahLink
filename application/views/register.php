@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrasi Pelanggan</title>
     <style>
-        body {
-            font-family: 'Kantumruy Pro', sans-serif;
-            background-color: #f5f5f5;
-        }
+
 
         .container {
             text-align: center;

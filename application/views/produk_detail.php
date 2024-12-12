@@ -5,9 +5,7 @@
   </title>
   <style>
     body {
-        font-family: 'Kantumruy pro', sans-serif;
         text-align: center;
-        background-color: #ffffff;
         margin-top: 0;
         padding: 0;
     }
@@ -116,7 +114,7 @@
         font-size: 16px;
         cursor: pointer;
         height: 139%; /* Pastikan tombol memiliki tinggi yang sama dengan buy-section */
-\    }
+    }
     .buy-section button[type="button"] {
         background-color: transparent;
         border: none;
@@ -124,6 +122,8 @@
         color: #0E6635;
         cursor: pointer;
     }
+
+
     @media (max-width: 768px) {
         .container {
             flex-direction: column;
@@ -163,7 +163,7 @@
                     <button type="button" onclick="decreaseQuantity()">-</button>
                     <input id="quantity" min="1" type="number" name="jumlah" value="1" />
                     <button type="button" onclick="increaseQuantity()">+</button>
-                    <button>Beli</button>
+                    <button class="beli">Beli</button>
                 </form>
             <?php endif; ?>
         </div>

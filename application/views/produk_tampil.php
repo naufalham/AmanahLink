@@ -5,10 +5,7 @@
   </title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <style>
-        body {
-            font-family: 'Kantumruy Pro', sans-serif;
-            background-color: #f5f5f5;
-        }
+
 
         .container {
             text-align: center;

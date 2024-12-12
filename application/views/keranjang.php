@@ -1,8 +1,5 @@
 <style>
-    body {
-        font-family: 'Kantumruy Pro', sans-serif;
-        background-color: #ffffff;
-    }
+
 
     .container {
         text-align: center;
@@ -74,7 +71,7 @@
         padding: 7px 13px;
         font-size: 14px;
         font-weight: bold;
-    }
+    }        
 
     .btn:hover {
         background-color: #0E6635;
@@ -152,7 +149,7 @@
                     <td><b><?php echo number_format($total_keseluruhan);?></b></td>
                     <td>
                         <!-- Tombol checkout -->
-                        <a href="<?php echo base_url('transaksi/checkout'); ?>" class="btn btn-success">Checkout Semua</a>
+                        <a href="<?php echo base_url('transaksi/checkout'); ?>" class="btn">Checkout</a>
                     </td>
                 </tr>
             </tfoot>

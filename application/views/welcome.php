@@ -6,13 +6,10 @@
     <title>Home - Air Amanah</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
-		body, html {
-			font-family: 'Kantumruy Pro', sans-serif;
-            background-color: #f9f9f9;
-		}
+
 
 		.hero-section {
-			background-color: #f9f9f9;
+			background-color: #ffffff;
 			padding: 50px;
 			position: relative;
 		}
@@ -128,9 +125,9 @@
                 <div class="col-md-6 text-section">
                     <h5>Air Amanah terjaga Kualitasnya!</h5>
                     <h1>PESAN SEKARANG SEBELUM KEHABISAN!!</h1>
-                    <button class="btn btn-primary"  >
-						<a href="<?php echo base_url("produk")?>" class="text-decoration-none">Pesan Disini</a>
-					</button>
+                    
+						<a href="<?php echo base_url("produk")?>" class="btn">Pesan Disini</a>
+					
                 </div>
                 <div class="product-section">
 					<img alt="Refill Galon 19L" src="assets/produk/image2.png" />

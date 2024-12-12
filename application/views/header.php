@@ -13,6 +13,7 @@
     <style>
         body {
             font-family: 'Kantumruy Pro', sans-serif;
+            background-color: #ffffff;
         }
 
         .navbar {
