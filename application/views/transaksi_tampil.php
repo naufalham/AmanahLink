@@ -98,6 +98,10 @@
             background-color: #0E6635;
         }
 
+        .status.dikirim {
+            background-color: #9AA6B2;
+        }
+
         .status.selesai {
             background-color: #0056b3;
         }
