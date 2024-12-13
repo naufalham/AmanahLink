@@ -164,13 +164,13 @@
         <div class="input-group">
             <div class="col-half">
                 <label>Nama Produk</label>
-                <input type="text" name="nama_produk" class="form-control">
+                <input type="text" name="nama_produk" class="form-control" placeholder="Masukkan nama produk">
                 <span class="text-muted"><?php echo form_error("nama_produk") ?></span>
             </div>
 
             <div class="col-half">
                 <label>Harga</label>
-                <input type="number" name="harga_produk" class="form-control">
+                <input type="number" name="harga_produk" class="form-control" placeholder="Masukkan harga produk">
                 <span class="text-muted"><?php echo form_error("harga_produk") ?></span>
             </div>
         </div>
@@ -189,7 +189,7 @@
         <!-- Deskripsi Produk -->
         <div class="mb-3">
             <label>Deskripsi</label>
-            <textarea name="deskripsi_produk" class="form-control"></textarea>
+            <textarea name="deskripsi_produk" class="form-control" placeholder="Masukkan deskripsi produk"></textarea>
             <span class="text-muted"><?php echo form_error("deskripsi_produk") ?></span>
         </div>
 
