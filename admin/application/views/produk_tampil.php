@@ -151,12 +151,13 @@
                 <td><?php echo $v['harga_produk'] ?></td>
                 <td><?php echo $v['deskripsi_produk'] ?></td>
                 <td>
-                <a href="<?php echo base_url("produk/edit/".$v['id_produk']) ?>" class="btn">
-                    <i class="fas fa-edit"></i>
-                </a> |
-                <a href="<?php echo base_url("produk/hapus/".$v['id_produk']) ?>" class="btn">
-                    <i class="fas fa-trash-alt"></i>
-                </a>                </td>
+                    <a href="<?php echo base_url("produk/edit/".$v['id_produk']) ?>" class="btn">
+                        <i class="fas fa-edit"></i>
+                    </a> |
+                    <a href="<?php echo base_url("produk/hapus/".$v['id_produk']) ?>" class="btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>                
+                </td>
             </tr>
             <?php endforeach ?>
         </tbody>

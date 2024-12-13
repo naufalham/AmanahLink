@@ -77,13 +77,11 @@
     }
 
     .btn-danger {
-        background-color: #B30000;
-        color: #ffffff;
+        color: #0E6635;
     }
 
     .btn-danger:hover {
-        background-color: #ffffff;
-        color: #B30000;
+        color: #F9DA73;
     }
 
     .btn-success {
@@ -139,8 +137,9 @@
                         <td><?php echo $produk['jumlah']; ?></td>
                         <td><?php echo number_format($subtotal); ?></td>
                         <td>
-                            <!-- Tombol hapus -->
-                            <a href="<?php echo base_url('transaksi/hapus/' . $produk['id_produk']); ?>" class="btn btn-danger btn-sm">Hapus</a>
+                            <a href="<?php echo base_url("transaksi/hapus/".$produk['id_produk']) ?>" class="btn-danger">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>   
                         </td>
                     </tr>
                 <?php endforeach; ?>

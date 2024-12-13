@@ -174,6 +174,19 @@
             background-color: #0E6635;
             color: #F9DA73;
         }
+        .btn-batal {
+            background-color: #F9DA73;
+            color: #0E6635;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .btn-batal:hover {
+            background-color: #0E6635;
+            color: #F9DA73;
+        }
 
         span.text-muted {
 			color: #0E6635; 
