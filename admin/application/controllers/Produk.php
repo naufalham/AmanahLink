@@ -27,12 +27,28 @@ class Produk extends CI_Controller {
 	function tambah(){
 		$this->load->model("Mproduk");
 
+		//form validation
+		$this->form_validation->set_rules("nama_produk", "nama produk", "required");
+		$this->form_validation->set_rules("deskripsi_produk", "deskripsi produk", "required");
+		$this->form_validation->set_rules("harga_produk", "harga produk", "required");
+		if (empty($_FILES['foto_produk']['name'])) {
+			$this->form_validation->set_rules("foto_produk", "Foto Produk", "required", [
+				"required" => "Foto produk wajib diunggah."
+			]);
+		}
+		
+		
+		// atur pesan bindo
+		$this->form_validation->set_message("required", "%s wajib diisi");
+
+	if($this->form_validation->run()==TRUE){
 		$inputan = $this->input->post();
 		if ($inputan){
 			$this->Mproduk->simpan($inputan);
-			$this->session->set_flashdata('pesan_sukses', 'rpoduk tersimpan');
+			$this->session->set_flashdata('pesan_sukses', 'produk tersimpan');
 			redirect('produk','refresh');
 		}
+	}
 
 		$this->load->view("header");
 		$this->load->view("produk_tambah");
@@ -41,24 +57,35 @@ class Produk extends CI_Controller {
 
 	function edit($id_produk){
 
-		//1. tampil data lama
+		//tampil data lama
 		$this->load->model("Mproduk");
 		$data['produk'] = $this->Mproduk->detail($id_produk);
 
-		// $this->load->model("Mkategori");
-		// $data ["kategori"] = $this->Mkategori->tampil();
+		//form validation
+		$this->form_validation->set_rules("nama_produk", "nama produk", "required");
+		$this->form_validation->set_rules("deskripsi_produk", "deskripsi produk", "required");
+		$this->form_validation->set_rules("harga_produk", "harga produk", "required");
+		if (empty($_FILES['foto_produk']['name'])) {
+			$this->form_validation->set_rules("foto_produk", "Foto Produk", "required", [
+				"required" => "Foto produk wajib diunggah."
+			]);
+		}
+		
+		// atur pesan bindo
+		$this->form_validation->set_message("required", "%s wajib diisi");
 
-		//2. ubah data
+		//ubah data
 		$inputan = $this->input->post();
+		if($this->form_validation->run()==TRUE){
+			if($inputan){
+				$this->Mproduk->ubah($inputan, $id_produk);
 
-		if($inputan){
-			$this->Mproduk->ubah($inputan, $id_produk);
+				//pesan
+				$this->session->set_flashdata('pesan_sukses', 'produk telah diubah');
 
-			//pesan
-			$this->session->set_flashdata('pesan_sukses', 'produk telah diubah');
-
-			//redirect
-			redirect('produk','refresh');
+				//redirect
+				redirect('produk','refresh');
+			}
 		}
 
 		$this->load->view("header");

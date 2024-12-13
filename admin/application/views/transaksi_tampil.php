@@ -128,6 +128,11 @@
 </head>
 <div class="container">
         <h5>Daftar Transaksi</h5>
+        <?php if (empty($transaksi)): ?>
+        <div class="alert alert-warning" role="alert">
+            Tidak Ada Transaksi.
+        </div>
+        <?php else: ?>
         <table class="table" id="tabelku">
             <thead>
                 <tr>
@@ -158,6 +163,7 @@
                 <?php endforeach ?>
             </tbody>
         </table>
+        <?php endif; ?>
     </div>
     </body>
 </html>

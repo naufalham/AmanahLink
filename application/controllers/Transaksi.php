@@ -5,6 +5,7 @@ class Transaksi extends CI_Controller {
         parent::__construct();
         // Jika tidak ada sesi pelanggan, arahkan ke halaman utama
         if (!$this->session->userdata("id_pelanggan")) {
+            $this->session->set_flashdata('pesan_gagal', 'Anda harus login');
             redirect('/', 'refresh');
         }
     }

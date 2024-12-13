@@ -117,6 +117,22 @@
             background-color:#0e2a66;
         }
 
+        .status.diproses {
+            background-color: #0E6635;
+        }
+
+        .status.dikirim {
+            background-color:rgb(241, 137, 0);
+        }
+
+        .status.selesai {
+            background-color: #0056b3;
+        }
+
+        .status.dibatalkan {
+            background-color: #B30000;
+        }
+
         @media (max-width: 768px) {
             .table th,
             .table td {
@@ -213,7 +229,11 @@
 	                    <td><?php echo $key+1; ?></td>
 	                    <td><?php echo $value['tgl_transaksi']; ?></td>
 	                    <td><?php echo $value['total_transaksi']; ?></td>
-	                    <td><?php echo $value['status_transaksi']; ?></td>
+	                    <td>
+                            <span class="status <?php echo $value['status_transaksi']; ?>">
+                                <?php echo $value['status_transaksi']; ?>
+                            </span>
+                        </td>
 	                    <td>
 	                        <a href="<?php echo base_url("transaksi/detail/".$value["id_transaksi"]) ?>" class="btn">Detail</a>
 	                    </td>

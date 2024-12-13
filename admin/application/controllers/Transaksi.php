@@ -8,6 +8,7 @@ class Transaksi extends CI_Controller{
 
         //jika tidak ada tiket, maka suruh login
         if(!$this->session->userdata("id_admin")) {
+            $this->session->set_flashdata('pesan_gagal', 'Anda harus login');
             redirect('/','refresh');
         }
     }

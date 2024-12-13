@@ -124,7 +124,11 @@
 </head>
 <div class="container">
     <h5>Daftar Produk</h5>
-
+        <?php if (empty($produk)): ?>
+        <div class="alert alert-warning" role="alert">
+            Tidak Ada Daftar Produk. Silahkan tambahkan produk!
+        </div>
+        <?php else: ?>
     <table class="table">
         <thead>
             <tr>
@@ -157,7 +161,7 @@
             <?php endforeach ?>
         </tbody>
     </table>
-
+        <?php endif; ?>
     <a href="<?php echo base_url("produk/tambah") ?>" class="btn tambah">Tambah</a>
 </div>
 </body>

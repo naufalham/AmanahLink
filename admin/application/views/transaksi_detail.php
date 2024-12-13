@@ -34,6 +34,15 @@
         position: relative;
     }
 
+    h4 {
+        font-size: 25px;
+        margin-top: 30px;
+        font-weight: bold;
+        color: #0E6635;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
     .row{
         width: 100%;
         max-width: 1200px;
@@ -134,25 +143,28 @@
     }
 </style>
 <div class="container">
-    <div class="row mb-5">
-        <div class="col-md-3">
-        <h5>Detail Transaksi</h5>
-            <h1>Transaksi</h1>
-            <p>ID: <?php echo $transaksi['id_transaksi'] ?></p>
-            <p><?php echo date('d M Y H:i', strtotime($transaksi['tgl_transaksi'])) ?></p>
+<h5 class="judul_detail">Detail Transaksi</h5>
 
-            <div>
-                <select class="form-control form-select" name="status_transaksi" id="status_transaksi">
-                <option value="">Pilih Status</option>
-                    <?php foreach ($enum_status as $status): ?>
-                        <option value="<?php echo $status; ?>" 
-                                <?php echo ($transaksi['status_transaksi'] == $status) ? 'selected' : ''; ?>>
-                            <?php echo ucfirst($status); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-        </div>
+<div class="row mb-5">
+		<div class="col-md-3">
+			<h4>Transaksi</h4>
+			<p>ID: <?php echo $transaksi['id_transaksi'] ?></p>
+			<p><?php echo date('d M Y H:i', strtotime($transaksi['tgl_transaksi'])) ?></p>
+			<span class="status <?php echo strtolower($transaksi['status_transaksi']); ?>">
+                            <?php echo $transaksi['status_transaksi']; ?>
+                        </span>
+		</div>
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-3">
+			<h4>Penerima</h4>
+			<p><?php echo $transaksi['nama_pelanggan'] ?></p>
+			<p><?php echo $transaksi['wa_pelanggan'] ?></p>
+			<p><?php echo $transaksi['alamat'] ?></p>
+		</div>
+		<div class="col-md-3">
+		</div>
+	</div>
     
 
         <!-- Javascript untuk menangani perubahan status -->
@@ -175,15 +187,7 @@
                 
             });
         </script>
-       
-        <div class="col-md-3">
-            <h1>Penerima</h1>
-            <p><?php echo $transaksi['nama_pelanggan'] ?></p>
-            <p><?php echo $transaksi['wa_pelanggan'] ?></p>
-            <p><?php echo $transaksi['alamat'] ?>
-        </div>
-      
-    </div>
+
 
     <div class="container">
     <table class="table">
@@ -210,8 +214,8 @@
             <?php endforeach ?>
         </tbody>
         <tfoot>
-            <tr>
-                <td colspan="4">Total Harus Dibayar</td>
+			<tr style="background-color: #f0f0f0;">
+                <td colspan="4"><b>Total Harus Dibayar</b></td>
                 <th><?php echo number_format($transaksi['total_transaksi']) ?></th>
             </tr>
         </tfoot>

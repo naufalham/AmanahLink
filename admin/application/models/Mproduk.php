@@ -19,14 +19,6 @@ class Mproduk extends CI_Model {
 		return $d;
 	}
 
-	// function produk_admin($id_admin){
-	// 	$this->db->where('id_admin', $id_admin);
-	// 	//melakukan query
-	// 	$q = $this->db->get("produk");
-	// 	$d = $q->result_array();
-
-	// 	return $d;
-	// }
 
 	function simpan($inputan){
 		//upload foto
@@ -41,20 +33,14 @@ class Mproduk extends CI_Model {
 		//jika upload maka dapat nama fotonya 
 		if($ngupload){
 			$inputan['foto_produk'] = $this->upload->data("file_name");
-
-			
 		}
-		// $inputan['id_admin'] = $this->session->userdata("id_admin");
 
 		//query simpan data
 		$this->db->insert('produk', $inputan);
 	}
 
 	function detail($id_produk){
-		//detail data produk sesuai id_produk dan id_admin yang login
-		// $this->db->where('id_admin', $this->session->userdata("id_admin"));
 		$this->db->where('id_produk', $id_produk);
-		// $this->db->join("kategori", 'produk.id_kategori = kategori.id_kategori', 'left');
 		$q = $this->db->get("produk");
 		$d = $q->row_array();
 

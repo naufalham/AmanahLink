@@ -21,7 +21,6 @@
         .footer {
             background: linear-gradient(#F9DA73 0, 1%, #0E6635 99%, #0E6635 200%);
             color: white;
-            text-align: center;
             padding: 20px 0;
             position: relative;
             border-radius: 80px 80px 0 0;
@@ -60,6 +59,7 @@
         .footer-bottom {
             margin-top: 20px;
             margin-bottom: 20px;
+            text-align: center;
         }
         @media (max-width: 600px) {
             .footer-content {
@@ -76,15 +76,20 @@
 
     <div class="footer">
         <div class="footer-content">
-            <div>
+        <div>
                 <h3>Alamat Kami</h3>
-                <p><img src="<?php echo $this->config->item('url_logo') . 'lokasi.png'; ?>" alt="Logo" width="20" height="20">
-                Sedan, Sariharjo, Ngaglik, Sleman, DIY 55581</p>
+                <a href="https://maps.app.goo.gl/bqDqZcER6FTdtd4R6" target="_blank">
+                    <img src="<?php echo $this->config->item('url_logo') . 'lokasi.png';?>" alt="Lokasi" width="20" height="20"> Sedan No. 48C RT/RW 03/33, Sariharjo, Ngaglik, Sleman, DIY 55581
+                </a>            
             </div>
             <div>
                 <h3>Kontak kami</h3>
-                <p><img src="<?php echo $this->config->item('url_logo') . 'telepon.png'; ?>" alt="Logo" width="20" height="20"> +62 89668369180</p>
-                <p><img src="<?php echo $this->config->item('url_logo') . 'email.png'; ?>" alt="Logo" width="20" height="20"> anasarifin30@students.amikom.ac.id</p>
+                <a href="https://api.whatsapp.com/send/?phone=6289668369180" target="_blank">
+                    <img src="<?php echo $this->config->item('url_logo') . 'telepon.png';?>" alt="Telepon" width="20" height="20"> +62 89668369180
+                </a> <br>
+                <a href="mailto:anasarifin30@students.amikom.ac.id" target="_blank">
+                    <img src="<?php echo $this->config->item('url_logo') . 'email.png';?>" alt="Email" width="22" height="17"> anasarifin30@students.amikom.ac.id
+                </a>
             </div>
         </div>
         <div class="footer-bottom">copyright &copy; 2024. Amanah Link</div>

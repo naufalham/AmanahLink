@@ -90,7 +90,9 @@
             <div class="row align-items-center">
                 <div class="col-md-6 text-section">
                     <h5>SELAMAT DATANG DI DASHBOARD ADMIN</h5>
+					<?php if (!$this->session->userdata("id_admin")): ?> 
                     <a href="<?php echo base_url("login")?>" class="btn">Login</a>
+					<?php endif ?>
                 </div>
                 <div class="product-section">
 					<img src="<?php echo $this->config->item('url_produk') . 'image2.png'; ?>">

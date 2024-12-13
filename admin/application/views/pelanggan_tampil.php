@@ -125,6 +125,11 @@ h5::after {
  <body>
 <div class="container">
         <h5>Daftar Pelanggan</h5>
+        <?php if (empty($pelanggan)): ?>
+        <div class="alert alert-warning" role="alert">
+            Tidak Ada Daftar Pelanggan.
+        </div>
+        <?php else: ?>
         <table class="table" id="tabelku">
             <thead>
                 <tr>
@@ -166,6 +171,7 @@ h5::after {
                 <?php endforeach ?>
             </tbody>
         </table>
+        <?php endif; ?>
     </div>
     </body>
 </html>

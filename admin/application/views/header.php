@@ -104,7 +104,7 @@
             </li>
           </ul>
 
-          <?php if ($this->session->userdata("id_pelanggan")): ?> 
+          <?php if ($this->session->userdata("id_admin")): ?> 
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
                 <a class="nav-link link-success">

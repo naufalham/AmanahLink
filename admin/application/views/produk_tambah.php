@@ -147,6 +147,12 @@
             background-color: #0E6635;
             color: #F9DA73;
         }
+
+        span.text-muted {
+			color: #0E6635; 
+			font-size: 12px; 
+			margin-top: 5px;
+		}
     </style>
 </head>
 <body>
@@ -159,28 +165,29 @@
             <div class="col-half">
                 <label>Nama Produk</label>
                 <input type="text" name="nama_produk" class="form-control">
+                <span class="text-muted"><?php echo form_error("nama_produk") ?></span>
             </div>
 
             <div class="col-half">
                 <label>Harga</label>
                 <input type="number" name="harga_produk" class="form-control">
+                <span class="text-muted"><?php echo form_error("harga_produk") ?></span>
             </div>
         </div>
 
         <!-- Foto Produk -->
         <div class="mb-3">
-            <label>Foto Produk</label>
-            <div class="upload-container">
-                <input type="text" class="form-control file-info" value="format jpg/png" disabled>
-                <label for="foto_produk" class="upload-btn">Upload Foto</label>
-                <input type="file" name="foto_produk" id="foto_produk" class="file-input" onchange="updateFileName()">
-            </div>
+            <label>Foto</label>
+            <input type="file" name="foto_produk" class="form-control">
+            <span class="text-muted"><?php echo form_error("foto_produk") ?></span>
         </div>
+
 
         <!-- Deskripsi Produk -->
         <div class="mb-3">
             <label>Deskripsi</label>
             <textarea name="deskripsi_produk" class="form-control"></textarea>
+            <span class="text-muted"><?php echo form_error("deskripsi_produk") ?></span>
         </div>
 
         <!-- Tombol Simpan -->

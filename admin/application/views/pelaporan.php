@@ -34,10 +34,13 @@
  <body>
 <div class="container">
 	<h5>Pelaporan Penjualan</h5>	
-
+    <br><br><br>
 	<div id="jumlah_penjualan"></div>
+    <br><br><br>
 	<div id="jumlah_penjualan_tahun"></div>
+    <br><br><br>
 	<div id="jumlah_penjualan_bulan"></div>
+    <br><br><br>
 
 </div>
 
@@ -210,7 +213,9 @@
 <div class="container">
 <h5>Pelaporan Pendapatan</h5>	
 
+<br><br><br>
 <div id="pendapatan"></div>
+<br><br><br>
 <div id="pendapatan_bulan"></div>
 
 </div>

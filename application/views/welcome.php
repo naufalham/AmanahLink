@@ -217,6 +217,11 @@
 	<section>
 		<div class="container">
 			<h5 class="judul_produk">Produk Terfavorit</h5>
+			<?php if (empty($produk_terfavorit)): ?>
+			<div class="alert alert-warning text-center" role="alert">
+				Tidak Terdapat Produk. Silakan menghubungi pihak terkait !
+			</div>
+			<?php else: ?>
 				<div class="product-grid">
 					<?php foreach ($produk_terfavorit as $key => $value): ?>
 					<div class="product-item">
@@ -229,6 +234,7 @@
 					</div>
 					<?php endforeach ?>
 		</div>
+		<?php endif; ?>
 	</section>
 </body>
 </html>

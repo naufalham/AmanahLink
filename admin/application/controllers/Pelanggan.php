@@ -7,6 +7,7 @@ class Pelanggan extends CI_Controller{
 
         //jk tidak ada tiket biskop, maka suruh login
         if (!$this->session->userdata("id_admin")) {
+            $this->session->set_flashdata('pesan_gagal', 'Anda harus login');
             redirect('/','refresh');
         }
     }

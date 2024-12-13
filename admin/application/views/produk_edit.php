@@ -175,6 +175,12 @@
             color: #F9DA73;
         }
 
+        span.text-muted {
+			color: #0E6635; 
+			font-size: 12px; 
+			margin-top: 5px;
+		}
+
     </style>
 </head>
 <body>
@@ -186,16 +192,18 @@
             <div class="col-half">
                 <label>Nama Produk</label>
                 <input type="text" name="nama_produk" value="<?php echo $produk['nama_produk'] ?>" class="form-control">
+                <span class="text-muted"><?php echo form_error("nama_produk") ?></span>
             </div>
             <div class="col-half">
                 <label>Harga Produk</label>
                 <input type="number" name="harga_produk" value="<?php echo $produk['harga_produk'] ?>" class="form-control">
+                <span class="text-muted"><?php echo form_error("harga_produk") ?></span>
             </div>
         </div>
         <div class="col-half">
             <label>Foto Produk</label>
             <div class="upload-container">
-                <input type="text" class="form-control file-info" value="format jpg/png" disabled>
+                <input type="text" class="form-control file-info" value="<?php echo $produk['foto_produk'] ?>" disabled>
                 <label for="foto_produk" class="upload-btn">upload file</label>
                 <input type="file" name="foto_produk" id="foto_produk" class="file-input" onchange="updateFileName()">
             </div>
@@ -206,6 +214,7 @@
         <div class="mb-3">
             <label>Deskripsi Produk</label>
             <textarea name="deskripsi_produk" class="form-control"><?php echo $produk['deskripsi_produk'] ?></textarea>
+            <span class="text-muted"><?php echo form_error("deskripsi_produk") ?></span>
         </div>
 
         <!-- Tombol Simpan dan Batal -->

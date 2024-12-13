@@ -20,7 +20,7 @@ class Login extends CI_Controller {
 
 			if ($output=="ada") {
 				$this->session->set_flashdata('pesan_sukses', 'Berhasil Login');
-				redirect('pelaporan','refresh');
+				redirect('welcome','refresh');
 			}else {
 				$this->session->set_flashdata('pesan_gagal', 'Gagal Login');
 				redirect('/','refresh');

@@ -113,6 +113,11 @@
  <body>
     <div class="container">
     <h5>Katalog produk</h5>
+        <?php if (empty($produk)): ?>
+        <div class="alert alert-warning" role="alert">
+            Produk kosong. Silakan menghubungi pihak terkait !
+        </div>
+        <?php else: ?>
     <div class="product-grid">
         <?php foreach ($produk as $key => $value): ?>
         <div class="product-item">
@@ -125,6 +130,7 @@
         </div>
         <?php endforeach ?>
     </div>
+    <?php endif; ?>
     </div>
  </body>
 </html>
