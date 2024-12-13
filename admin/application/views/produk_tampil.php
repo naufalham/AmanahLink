@@ -129,7 +129,7 @@
             Tidak Ada Daftar Produk. Silahkan tambahkan produk!
         </div>
         <?php else: ?>
-    <table class="table">
+    <table class="table" id="tabelku">
         <thead>
             <tr>
                 <th>No</th>

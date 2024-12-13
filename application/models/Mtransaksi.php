@@ -219,11 +219,6 @@ class Mtransaksi extends CI_Model {
             return $row->status_pelanggan;
         }
         return false;
-
-        log_message('debug', 'Query status pelanggan untuk ID: ' . $id_pelanggan);
-log_message('debug', 'Status pelanggan: ' . ($query->num_rows() > 0 ? $row->status_pelanggan : 'Tidak ditemukan'));
-
-exit();
     }
     
     

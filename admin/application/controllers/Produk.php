@@ -11,9 +11,7 @@ class Produk extends CI_Controller {
 		}
 	}
 
-
     function index(){
-		
 		//manggil model Mproduk
 		$this->load->model("Mproduk");
 
@@ -37,18 +35,17 @@ class Produk extends CI_Controller {
 			]);
 		}
 		
-		
 		// atur pesan bindo
 		$this->form_validation->set_message("required", "%s wajib diisi");
 
-	if($this->form_validation->run()==TRUE){
-		$inputan = $this->input->post();
-		if ($inputan){
-			$this->Mproduk->simpan($inputan);
-			$this->session->set_flashdata('pesan_sukses', 'produk tersimpan');
-			redirect('produk','refresh');
+		if($this->form_validation->run()==TRUE){
+			$inputan = $this->input->post();
+			if ($inputan){
+				$this->Mproduk->simpan($inputan);
+				$this->session->set_flashdata('pesan_sukses', 'produk tersimpan');
+				redirect('produk','refresh');
+			}
 		}
-	}
 
 		$this->load->view("header");
 		$this->load->view("produk_tambah");

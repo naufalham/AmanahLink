@@ -150,9 +150,17 @@
 			<h4>Transaksi</h4>
 			<p>ID: <?php echo $transaksi['id_transaksi'] ?></p>
 			<p><?php echo date('d M Y H:i', strtotime($transaksi['tgl_transaksi'])) ?></p>
-			<span class="status <?php echo strtolower($transaksi['status_transaksi']); ?>">
-                            <?php echo $transaksi['status_transaksi']; ?>
-                        </span>
+            <div>
+                <select class="form-control form-select" name="status_transaksi" id="status_transaksi">
+                <option value="">Pilih Status</option>
+                    <?php foreach ($enum_status as $status): ?>
+                        <option value="<?php echo $status; ?>" 
+                                <?php echo ($transaksi['status_transaksi'] == $status) ? 'selected' : ''; ?>>
+                            <?php echo ucfirst($status); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 		</div>
 		<div class="col-md-3">
 		</div>
