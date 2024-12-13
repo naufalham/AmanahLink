@@ -11,6 +11,7 @@ class Mproduk extends CI_Model {
 		return $d;
 	}
 
+	//produk terfavorit
 	function tampil_produk_terbaru(){
 		$this->db->order_by('id_produk', 'desc');
 		$q = $this->db->get("produk",4,0);
@@ -18,7 +19,6 @@ class Mproduk extends CI_Model {
 
 		return $d;
 	}
-
 
 	function simpan($inputan){
 		//upload foto
@@ -62,18 +62,12 @@ class Mproduk extends CI_Model {
 			$inputan['foto_produk'] = $this->upload->data("file_name");
 		}
 
-		// $inputan['id_admin'] = $this->session->userdata("id_admin");
-
-		//query data sesuai id_produk
-		//query update data produk sesuai id_produk dan id_admin yang login
-		// $this->db->where('id_admin', $this->session->userdata("id_admin"));
 		$this->db->where('id_produk', $id);
 		$this->db->update('produk', $inputan);
 	}
 
 	function hapus($id_produk){
-		//query hapus data produk sesuai id_produk dan id_admin yang login
-		// $this->db->where('id_admin', $this->session->userdata("id_admin"));
+		//query hapus data produk sesuai id_produk
 		$this->db->where('id_produk', $id_produk);
 		$this->db->delete('produk');
 	}

@@ -96,7 +96,7 @@ class Produk extends CI_Controller {
 		$this->Mproduk->hapus($id_produk);
 
 		//pesan
-		$this->session->set_flashdata('pesan_sukses', 'produk telah diubah');
+		$this->session->set_flashdata('pesan_sukses', 'produk telah dihapus');
 
 		//redirect
 		redirect('produk','refresh');

@@ -177,9 +177,12 @@
 
         <!-- Foto Produk -->
         <div class="mb-3">
-            <label>Foto</label>
-            <input type="file" name="foto_produk" class="form-control">
-            <span class="text-muted"><?php echo form_error("foto_produk") ?></span>
+            <label>Foto Produk</label>
+            <div class="upload-container">
+                <input type="text" class="form-control file-info" value="format jpg/png" disabled>
+                <label for="foto_produk" class="upload-btn">Upload Foto</label>
+                <input type="file" name="foto_produk" id="foto_produk" class="file-input" onchange="updateFileName()">
+            </div>
         </div>
 
 

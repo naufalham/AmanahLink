@@ -236,9 +236,7 @@
             <button type="submit" class="btn-simpan">Simpan</button>
         </div>
     </form>
-    <div class="product-section">
-        <!-- <img alt="Refill Galon 19L" src="assets/produk/galon.png" /> -->
-    </div>
+
 </div>
 
 </body>
