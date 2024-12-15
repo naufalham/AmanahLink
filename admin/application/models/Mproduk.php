@@ -11,15 +11,6 @@ class Mproduk extends CI_Model {
 		return $d;
 	}
 
-	//produk terfavorit
-	function tampil_produk_terbaru(){
-		$this->db->order_by('id_produk', 'desc');
-		$q = $this->db->get("produk",4,0);
-		$d = $q->result_array();
-
-		return $d;
-	}
-
 	function simpan($inputan){
 		//upload foto
 		$config['upload_path'] = $this->config->item("assets_produk");

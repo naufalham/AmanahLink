@@ -12,6 +12,7 @@ class Mtransaksi extends CI_Model{
     return $d;
     }
     
+    //menampilkan transaksi berdasarkan id_pelanggan
     function transaksi_pelanggan_beli($id_pelanggan) {
         $this->db->where('id_pelanggan', $id_pelanggan);
         $q = $this->db->get("transaksi");
@@ -21,30 +22,31 @@ class Mtransaksi extends CI_Model{
     
     function detail($id_transaksi){
         $q = $this->db->select('
-    produk.id_produk,
-    produk.nama_produk,
-    produk.deskripsi_produk,
-    produk.harga_produk,
-    produk.foto_produk,
-    detail_transaksi.jumlah,
-    detail_transaksi.subtotal_harga,
-    transaksi.id_transaksi,
-    transaksi.tgl_transaksi,
-    transaksi.total_transaksi,
-    transaksi.status_transaksi,
-    pelanggan.id_pelanggan,
-    pelanggan.username_pelanggan,
-    pelanggan.nama_pelanggan,
-    pelanggan.status_pelanggan,
-    pelanggan.alamat,
-    pelanggan.wa_pelanggan
-');
-$this->db->from('transaksi');
-$this->db->join('pelanggan', 'pelanggan.id_pelanggan = transaksi.id_pelanggan', 'left');
-$this->db->join('detail_transaksi', 'detail_transaksi.id_transaksi = transaksi.id_transaksi', 'left');
-$this->db->join('produk', 'produk.id_produk = detail_transaksi.id_produk', 'left');
-$this->db->where('transaksi.id_transaksi', $id_transaksi);
-$this->db->group_by('transaksi.id_transaksi');
+            produk.id_produk,
+            produk.nama_produk,
+            produk.deskripsi_produk,
+            produk.harga_produk,
+            produk.foto_produk,
+            detail_transaksi.jumlah,
+            detail_transaksi.subtotal_harga,
+            transaksi.id_transaksi,
+            transaksi.tgl_transaksi,
+            transaksi.total_transaksi,
+            transaksi.status_transaksi,
+            pelanggan.id_pelanggan,
+            pelanggan.username_pelanggan,
+            pelanggan.nama_pelanggan,
+            pelanggan.status_pelanggan,
+            pelanggan.alamat,
+            pelanggan.wa_pelanggan
+        ');
+        
+        $this->db->from('transaksi');
+        $this->db->join('pelanggan', 'pelanggan.id_pelanggan = transaksi.id_pelanggan', 'left');
+        $this->db->join('detail_transaksi', 'detail_transaksi.id_transaksi = transaksi.id_transaksi', 'left');
+        $this->db->join('produk', 'produk.id_produk = detail_transaksi.id_produk', 'left');
+        $this->db->where('transaksi.id_transaksi', $id_transaksi);
+        $this->db->group_by('transaksi.id_transaksi');
 
         $q = $this->db->get('');
         $d = $q->row_array();

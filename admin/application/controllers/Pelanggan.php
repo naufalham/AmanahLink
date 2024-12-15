@@ -24,6 +24,7 @@ class Pelanggan extends CI_Controller{
         $this->load->view('pelanggan_tampil', $data);
         $this->load->view('footer');
     }
+    
     function detail($id_pelanggan) {
 
         $this->load->model('Mpelanggan');

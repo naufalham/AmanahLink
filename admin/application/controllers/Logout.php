@@ -5,7 +5,7 @@ class Logout extends CI_Controller {
 
 	public function index()
 	{
-		//menghancurkan tiket biskop yang dibuat saat login tadi
+		//menghancurkan sesi login yang dibuat saat login tadi
 		$this->session->unset_userdata("id_admin");
 		$this->session->unset_userdata("username_admin");
 		//redirect ke halaman login

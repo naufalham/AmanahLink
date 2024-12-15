@@ -13,7 +13,7 @@ class Madmin extends CI_Model {
 
         //jika tidak kosong maka ada
         if (!empty($cekadmin)) {
-            //membuat tiket login yang dipakae selama login
+            //membuat sesi login yang dipakae selama login
             $this->session->set_userdata("id_admin", $cekadmin["id_admin"]);
             $this->session->set_userdata("username_admin", $cekadmin["username_admin"]);
             return "ada";

@@ -11,6 +11,7 @@ class Mpelanggan extends CI_Model{
 
     return $d;
     }
+
     function detail($id_pelanggan) {
     	$this->db->where('id_pelanggan', $id_pelanggan);
     	$q = $this->db->get('pelanggan');
@@ -18,6 +19,7 @@ class Mpelanggan extends CI_Model{
 
     	return $d;
     }
+    
     function hapus($id_pelanggan) {
         //delete from pelanggan where id_pelanggan=5
         $this->db->where('id_pelanggan', $id_pelanggan);

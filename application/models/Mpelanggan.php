@@ -76,6 +76,7 @@ class Mpelanggan extends CI_Model{
        $this->session->set_userdata("alamat", $cekpelanggan["alamat"]);
        $this->session->set_userdata("wa_pelanggan", $cekpelanggan["wa_pelanggan"]);
     }
+    
     function register($m) {
         $this->db->insert('pelanggan', $m);
         

@@ -11,14 +11,6 @@ class Mproduk extends CI_Model {
 		return $d;
 	}
 
-	function tampil_produk_terbaru(){
-		$this->db->order_by('id_produk', 'desc');
-		$q = $this->db->get("produk",4,0);
-		$d = $q->result_array();
-
-		return $d;
-	}
-
 	function detail($id_produk) {
         $this->db->where('id_produk', $id_produk);
         $q = $this->db->get('produk');
