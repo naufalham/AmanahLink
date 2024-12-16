@@ -62,25 +62,16 @@ class Produk extends CI_Controller {
 		$this->form_validation->set_rules("nama_produk", "nama produk", "required");
 		$this->form_validation->set_rules("deskripsi_produk", "deskripsi produk", "required");
 		$this->form_validation->set_rules("harga_produk", "harga produk", "required");
-		if (empty($_FILES['foto_produk']['name'])) {
-			$this->form_validation->set_rules("foto_produk", "Foto Produk", "required", [
-				"required" => "Foto produk wajib diunggah."
-			]);
-		}
 		
 		// atur pesan bindo
 		$this->form_validation->set_message("required", "%s wajib diisi");
 
 		//ubah data
-		$inputan = $this->input->post();
 		if($this->form_validation->run()==TRUE){
+			$inputan = $this->input->post();
 			if($inputan){
 				$this->Mproduk->ubah($inputan, $id_produk);
-
-				//pesan
 				$this->session->set_flashdata('pesan_sukses', 'produk telah diubah');
-
-				//redirect
 				redirect('produk','refresh');
 			}
 		}

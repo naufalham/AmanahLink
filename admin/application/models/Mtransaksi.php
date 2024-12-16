@@ -2,19 +2,27 @@
 
 class Mtransaksi extends CI_Model{
 
-    function tampil(){
-    //melakukan query
-    $q = $this->db->get("transaksi");
-
-    //pecah ke array
-    $d = $q->result_array();
-
-    return $d;
+    function tampil() {
+        // Filter status tidak null
+        $this->db->where('status_transaksi !=', null);
+    
+        // Tambahkan urutan DESC berdasarkan kolom tertentu, misalnya id_transaksi
+        $this->db->order_by('id_transaksi', 'DESC');
+    
+        // Eksekusi query
+        $q = $this->db->get("transaksi");
+    
+        // Pecah ke array
+        $d = $q->result_array();
+    
+        return $d;
     }
+    
     
     //menampilkan transaksi berdasarkan id_pelanggan
     function transaksi_pelanggan_beli($id_pelanggan) {
         $this->db->where('id_pelanggan', $id_pelanggan);
+        $this->db->where('status_transaksi !=', null); // Filter status tidak null
         $q = $this->db->get("transaksi");
         $d = $q->result_array();
         return $d;

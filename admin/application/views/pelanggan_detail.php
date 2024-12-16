@@ -163,15 +163,19 @@
         <tr>
             <td><strong>Status Pelanggan</strong></td>
             <td>
-                <select class="form-control form-select" name="status_pelanggan" id="status_pelanggan">
-                    <option value="">Pilih Status</option>
-                    <?php foreach ($enum_status as $status): ?>
-                        <option value="<?php echo $status; ?>" 
-                                <?php echo ($pelanggan['status_pelanggan'] == $status) ? 'selected' : ''; ?>>
-                            <?php echo ucfirst($status); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
+                <form action="<?php echo base_url('pelanggan/update_member'); ?>" method="POST">
+                    <select class="form-control form-select" name="status_pelanggan" id="status_pelanggan">
+                        <option value="">Pilih Status</option>
+                        <?php foreach ($enum_status as $status): ?>
+                            <option value="<?php echo $status; ?>" 
+                                    <?php echo ($pelanggan['status_pelanggan'] == $status) ? 'selected' : ''; ?>>
+                                <?php echo ucfirst($status); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <input type="hidden" name="id_pelanggan" value="<?php echo $pelanggan['id_pelanggan']; ?>">
+                    <button type="submit" class="btn mt-2">Simpan</button>
+                </form>
             </td>
         </tr>
         <tr>
@@ -188,26 +192,7 @@
         </tr>
     </table>
 </div>
-		<!-- Javascript untuk menangani perubahan status -->
-        <script>
-            document.getElementById('status_pelanggan').addEventListener('change', function() {
-                var selectedStatus = this.value;
-                var idPelanggan = <?php echo $pelanggan['id_pelanggan']; ?>;
-                
-                // Mengirim data status transaksi yang dipilih ke server menggunakan fetch API
-                fetch('<?php echo site_url('pelanggan/update_member'); ?>', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        id_pelanggan: idPelanggan,
-                        status_pelanggan: selectedStatus
-                    })
-                })
-                
-            });
-        </script>
+
 
 	<div class="container">
 			<h5>Riwayat Transaksi</h5>

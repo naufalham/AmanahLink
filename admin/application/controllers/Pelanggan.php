@@ -61,30 +61,27 @@ class Pelanggan extends CI_Controller{
 
     function update_member() {
         // Pastikan data dikirim melalui POST dan valid
-        $input = json_decode(file_get_contents('php://input'), true);
+        $id_pelanggan = $this->input->post('id_pelanggan');
+        $status_pelanggan = $this->input->post('status_pelanggan');
     
-        if (isset($input['id_pelanggan']) && isset($input['status_pelanggan'])) {
-            $id_pelanggan = $input['id_pelanggan'];
-            $status_pelanggan = $input['status_pelanggan'];
-    
+        if (!empty($id_pelanggan) && !empty($status_pelanggan)) {
             // Panggil fungsi update_status di Model
             $this->load->model('Mpelanggan');
             $update_successful = $this->Mpelanggan->update_member($id_pelanggan, $status_pelanggan);
-            
+    
             // Mengirimkan pesan flashdata untuk sukses
             if ($update_successful) {
                 $this->session->set_flashdata('pesan_sukses', 'Status pelanggan berhasil diperbaharui');
             } else {
-                // Jika gagal, berikan pesan error (optional)
                 $this->session->set_flashdata('pesan_gagal', 'Terjadi kesalahan saat memperbarui status pelanggan');
             }
-            redirect('', 'refresh');
-            // Redirect ke halaman detail transaksi (atau halaman yang sesuai)
-            
+            // Redirect ke halaman detail pelanggan (atau halaman lain yang sesuai)
+            redirect('pelanggan/detail/' . $id_pelanggan);
         } else {
-            // Jika parameter tidak valid, redirect ke halaman sebelumnya (atau halaman lain)
+            // Jika parameter tidak valid, redirect ke halaman sebelumnya
             $this->session->set_flashdata('pesan_gagal', 'Data tidak valid');
-            redirect('pelanggan', 'refresh');
+            redirect('pelanggan');
         }
     }
+    
 }

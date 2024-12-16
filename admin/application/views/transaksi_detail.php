@@ -143,90 +143,71 @@
     }
 </style>
 <div class="container">
-<h5 class="judul_detail">Detail Transaksi</h5>
+    <h5 class="judul_detail">Detail Transaksi</h5>
 
-<div class="row mb-5">
-		<div class="col-md-3">
-			<h4>Transaksi</h4>
-			<p>ID: <?php echo $transaksi['id_transaksi'] ?></p>
-			<p><?php echo date('d M Y H:i', strtotime($transaksi['tgl_transaksi'])) ?></p>
-            <div>
-                <select class="form-control form-select" name="status_transaksi" id="status_transaksi">
-                <option value="">Pilih Status</option>
-                    <?php foreach ($enum_status as $status): ?>
-                        <option value="<?php echo $status; ?>" 
-                                <?php echo ($transaksi['status_transaksi'] == $status) ? 'selected' : ''; ?>>
-                            <?php echo ucfirst($status); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-		</div>
-		<div class="col-md-3">
-		</div>
-		<div class="col-md-3">
-			<h4>Penerima</h4>
-			<p><?php echo $transaksi['nama_pelanggan'] ?></p>
-			<p><?php echo $transaksi['wa_pelanggan'] ?></p>
-			<p><?php echo $transaksi['alamat'] ?></p>
-		</div>
-		<div class="col-md-3">
-		</div>
-	</div>
-    
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <h4>Transaksi</h4>
+            <p>ID: <?php echo $transaksi['id_transaksi'] ?></p>
+            <p><?php echo date('d M Y H:i', strtotime($transaksi['tgl_transaksi'])) ?></p>
 
-        <!-- Javascript untuk menangani perubahan status -->
-        <script>
-            document.getElementById('status_transaksi').addEventListener('change', function() {
-                var selectedStatus = this.value;
-                var idTransaksi = <?php echo $transaksi['id_transaksi']; ?>;
-                
-                // Mengirim data status transaksi yang dipilih ke server menggunakan fetch API
-                fetch('<?php echo site_url('transaksi/update_status'); ?>', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        id_transaksi: idTransaksi,
-                        status_transaksi: selectedStatus
-                    })
-                })
-                
-            });
-        </script>
-
+            <!-- Form untuk mengubah status transaksi -->
+            <form method="POST" action="<?php echo base_url('transaksi/update_status'); ?>">
+                <input type="hidden" name="id_transaksi" value="<?php echo $transaksi['id_transaksi']; ?>">
+                <div>
+                    <select class="form-control form-select" name="status_transaksi">
+                        <option value="">Pilih Status</option>
+                        <?php foreach ($enum_status as $status): ?>
+                            <option value="<?php echo $status; ?>" 
+                                    <?php echo ($transaksi['status_transaksi'] == $status) ? 'selected' : ''; ?>>
+                                <?php echo ucfirst($status); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <button type="submit" class="btn mt-3">Simpan</button>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <h4>Penerima</h4>
+            <p><?php echo $transaksi['nama_pelanggan'] ?></p>
+            <p><?php echo $transaksi['wa_pelanggan'] ?></p>
+            <p><?php echo $transaksi['alamat'] ?></p>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
 
     <div class="container">
-    <table class="table">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Produk</th>
-                <th>Harga</th>
-                <th>Jumlah</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($transaksi_detail as $k => $v): ?>
-            <tr>
-                <td>
-                    <img src="<?php echo $this->config->item("url_produk").$v['foto_produk'] ?>" width="200">
-                </td>
-                <td><?php echo $v['nama_produk']; ?></td>
-                <td><?php echo number_format($v['harga_produk']); ?></td>
-                <td><?php echo number_format($v['jumlah']); ?></td>
-                <td><?php echo number_format($v['harga_produk'] * $v['jumlah']); ?></td>
-            </tr>
-            <?php endforeach ?>
-        </tbody>
-        <tfoot>
-			<tr style="background-color: #f0f0f0;">
-                <td colspan="4"><b>Total Harus Dibayar</b></td>
-                <th><?php echo number_format($transaksi['total_transaksi']) ?></th>
-            </tr>
-        </tfoot>
-    </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Produk</th>
+                    <th>Harga</th>
+                    <th>Jumlah</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($transaksi_detail as $k => $v): ?>
+                    <tr>
+                        <td>
+                            <img src="<?php echo $this->config->item("url_produk").$v['foto_produk'] ?>" width="200">
+                        </td>
+                        <td><?php echo $v['nama_produk']; ?></td>
+                        <td><?php echo number_format($v['harga_produk']); ?></td>
+                        <td><?php echo number_format($v['jumlah']); ?></td>
+                        <td><?php echo number_format($v['harga_produk'] * $v['jumlah']); ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+            <tfoot>
+                <tr style="background-color: #f0f0f0;">
+                    <td colspan="4"><b>Total Harus Dibayar</b></td>
+                    <th><?php echo number_format($transaksi['total_transaksi']) ?></th>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 </div>
