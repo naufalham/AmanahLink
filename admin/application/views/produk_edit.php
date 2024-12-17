@@ -220,6 +220,7 @@
                 <label for="foto_produk" class="upload-btn">upload file</label>
                 <input type="file" name="foto_produk" id="foto_produk" class="file-input" onchange="updateFileName()">
             </div>
+            <span class="text-muted"><?php echo form_error("foto_produk") ?></span>
         </div>
 
 
