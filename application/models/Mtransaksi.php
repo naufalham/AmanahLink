@@ -205,9 +205,24 @@ class Mtransaksi extends CI_Model {
     // Hapus produk dari keranjang
     function hapus_produk($id_transaksi, $id_produk) {
         // Ambil subtotal harga produk yang akan dihapus
-        $this->db->query("DELETE FROM detail_transaksi WHERE id_transaksi = ? AND id_produk = ?", [$id_transaksi, $id_produk]);
+        $this->db->select('subtotal_harga');
+        $this->db->where(['id_transaksi' => $id_transaksi, 'id_produk' => $id_produk]);
+        $detail = $this->db->get('detail_transaksi')->row_array();
+        
+        if ($detail) {
+            $subtotal_harga = $detail['subtotal_harga'];
+            
+            // Hapus produk dari detail_transaksi
+            $this->db->where(['id_transaksi' => $id_transaksi, 'id_produk' => $id_produk]);
+            $this->db->delete('detail_transaksi');
+            
+            // Kurangi subtotal harga dari total_transaksi
+            $this->db->set('total_transaksi', 'total_transaksi - ' . $subtotal_harga, FALSE);
+            $this->db->where('id_transaksi', $id_transaksi);
+            $this->db->update('transaksi');
+        }
     }
-
+    
     public function status_pelanggan($id_pelanggan) {
         $this->db->select('status_pelanggan');
         $this->db->from('pelanggan');
