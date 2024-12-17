@@ -71,7 +71,7 @@ class Mtransaksi extends CI_Model {
         }
     
         $id_pelanggan = $this->session->userdata("id_pelanggan");
-        $id_transaksi = $this->get_or_create_transaksi($id_pelanggan);
+        $id_transaksi = $this->ambil_buat_transaksi($id_pelanggan);
     
         $produk = $this->db->get_where('produk', ['id_produk' => $id_produk])->row_array();
         if (!$produk) {
@@ -117,12 +117,12 @@ class Mtransaksi extends CI_Model {
     
 
     // Ambil data transaksi berdasarkan ID
-    function get_transaksi($id_transaksi) {
+    function ambil_transaksi($id_transaksi) {
         return $this->db->get_where('transaksi', ['id_transaksi' => $id_transaksi])->row_array();
     }
 
     // Ambil detail transaksi berdasarkan ID transaksi
-    function get_detail_transaksi($id_transaksi) {
+    function ambil_detail_transaksi($id_transaksi) {
         return $this->db->get_where('detail_transaksi', ['id_transaksi' => $id_transaksi])->result_array();
     }
 
@@ -135,7 +135,7 @@ class Mtransaksi extends CI_Model {
         }
     
         // Ambil total transaksi dari database
-        $transaksi = $this->get_transaksi($id_transaksi);
+        $transaksi = $this->ambil_transaksi($id_transaksi);
         $total_transaksi = $transaksi['total_transaksi'];
     
         // Cek apakah pelanggan adalah member
@@ -163,7 +163,7 @@ class Mtransaksi extends CI_Model {
     
 
     // Ambil atau buat transaksi dengan status null
-    function get_or_create_transaksi($id_pelanggan) {
+    function ambil_buat_transaksi($id_pelanggan) {
         // Cari transaksi dengan status null
         $this->db->where('id_pelanggan', $id_pelanggan);
         $this->db->where('status_transaksi', null);
@@ -191,7 +191,7 @@ class Mtransaksi extends CI_Model {
     
 
     // Ambil keranjang berdasarkan transaksi
-    function get_keranjang($id_transaksi) {
+    function ambil_keranjang($id_transaksi) {
         $this->db->select('p.id_produk, p.nama_produk, p.harga_produk, p.foto_produk, dt.jumlah, dt.subtotal_harga');
         $this->db->from('detail_transaksi dt');
         $this->db->join('produk p', 'dt.id_produk = p.id_produk');

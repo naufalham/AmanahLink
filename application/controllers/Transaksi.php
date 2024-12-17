@@ -48,12 +48,12 @@ class Transaksi extends CI_Controller {
     
         if (!$id_transaksi) {
             // Ambil atau buat transaksi jika sesi kosong
-            $id_transaksi = $this->Mtransaksi->get_or_create_transaksi($id_pelanggan);
+            $id_transaksi = $this->Mtransaksi->ambil_buat_transaksi($id_pelanggan);
             $this->session->set_userdata('id_transaksi', $id_transaksi);
         }
     
         // Ambil data keranjang
-        $data['keranjang'] = $this->Mtransaksi->get_keranjang($id_transaksi);
+        $data['keranjang'] = $this->Mtransaksi->ambil_keranjang($id_transaksi);
         
         // Cek apakah pelanggan adalah member
         $data['status_pelanggan'] = $this->Mtransaksi->status_pelanggan($id_pelanggan);
@@ -73,7 +73,7 @@ class Transaksi extends CI_Controller {
         }
     
         // Ambil total transaksi dari database
-        $transaksi = $this->Mtransaksi->get_transaksi($id_transaksi);
+        $transaksi = $this->Mtransaksi->ambil_transaksi($id_transaksi);
         $total_transaksi = $transaksi['total_transaksi'];
     
         // Cek apakah pelanggan adalah member
@@ -101,8 +101,8 @@ class Transaksi extends CI_Controller {
     function konfirmasi($id_transaksi) {
         $this->load->model('Mtransaksi');
 
-        $data['transaksi'] = $this->Mtransaksi->get_transaksi($id_transaksi);
-        $data['detail_transaksi'] = $this->Mtransaksi->get_detail_transaksi($id_transaksi);
+        $data['transaksi'] = $this->Mtransaksi->ambil_transaksi($id_transaksi);
+        $data['detail_transaksi'] = $this->Mtransaksi->ambil_detail_transaksi($id_transaksi);
 
         // Ambil ID pelanggan dan periksa apakah dia member
         $id_pelanggan = $this->session->userdata('id_pelanggan');
