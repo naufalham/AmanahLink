@@ -166,7 +166,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($produk_beli as $key => $value): ?>
+			<?php 
+                $total_keseluruhan = 0;
+                foreach ($produk_beli as $key => $value): 
+                $subtotal = $value['harga_produk'] * $value['jumlah_produk'];
+                $total_keseluruhan += $subtotal;
+                ?>
 				
 			
 			<tr>
@@ -181,15 +186,15 @@
             <?php if ($status_pelanggan == 'Member'): ?>
                 <tr style="background-color: #f0f0f0;">
                     <td colspan="4"><b>Total Sebelum Diskon</b></td>
-                    <th><?php echo number_format($value["total_harga"]); ?></th>
+                    <th><?php echo number_format($total_keseluruhan); ?></th>
                 </tr>
                 <tr style="background-color: #f0f0f0;">
                     <td colspan="4"><b>Diskon (10%)</b></td>
-                    <th>- <?php echo number_format($value["total_harga"] * 0.1); ?></th>
+                    <th>- <?php echo number_format($total_keseluruhan * 0.1); ?></th>
                 </tr>
                 <tr style="background-color: #e0e0e0;">
-                    <td colspan="4"><b>Total Setelah Diskon</b></td>
-                    <th><?php echo number_format($value["total_harga"] * 0.9); ?></th>
+                    <td colspan="4"><b>Total Harus Dibayar</b></td>
+                    <th><?php echo number_format($total_keseluruhan * 0.9); ?></th>
                 </tr>
             <?php else: ?>
                 <tr style="background-color: #e0e0e0;">
