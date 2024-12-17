@@ -179,8 +179,8 @@
 			<?php endforeach ?>
 			<tr style="background-color: #f0f0f0;">
 				<td colspan="4"><b>Total</b></td>
-				<th><?php echo number_format($value["total_harga"]);?></th>
-			</tr>
+                <th><?php echo number_format($value["total_harga"]);?></th>
+                </tr>
 		</tbody>
 	</table>
 </div>
