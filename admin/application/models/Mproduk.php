@@ -38,24 +38,11 @@ class Mproduk extends CI_Model {
 		return $d;
 	}
 
-	function ubah($inputan, $id){
-		//ngurusi foto_produk jika pengguna up foto
-
-		$config['upload_path'] = $this->config->item("assets_produk");
-		$config['allowed_types'] = 'gif|jpg|png|jpeg';
-		$this->load->library("upload", $config);
-
-		//adegan ngupload
-		$ngupload = $this->upload->do_upload("foto_produk");
-
-		//jika ngupload
-		if($ngupload){
-			$inputan['foto_produk'] = $this->upload->data("file_name");
-		}
-
+	function ubah($inputan, $id) {
 		$this->db->where('id_produk', $id);
 		$this->db->update('produk', $inputan);
 	}
+	
 
 	function hapus($id_produk){
 		//query hapus data produk sesuai id_produk
