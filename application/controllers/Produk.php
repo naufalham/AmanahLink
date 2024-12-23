@@ -32,7 +32,7 @@ class Produk extends CI_Controller {
         $id_pelanggan = $this->session->userdata("id_pelanggan");
     
         // Ambil atau buat transaksi
-        $id_transaksi = $this->Mtransaksi->get_or_create_transaksi($id_pelanggan);
+        $id_transaksi = $this->Mtransaksi->ambil_buat_transaksi($id_pelanggan);
         $this->session->set_userdata('id_transaksi', $id_transaksi);
     
         $inputan = $this->input->post();
