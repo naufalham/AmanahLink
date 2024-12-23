@@ -158,7 +158,7 @@
 <body>
 <div class="container">
     <h5>Tambah Produk</h5>
-
+    
     <form method="post" enctype="multipart/form-data">
         <!-- Nama dan Harga Produk dalam satu baris -->
         <div class="input-group">
@@ -186,7 +186,6 @@
             <span class="text-muted"><?php echo form_error("foto_produk") ?></span>
         </div>
 
-
         <!-- Deskripsi Produk -->
         <div class="mb-3">
             <label>Deskripsi</label>
@@ -200,6 +199,5 @@
         </div>
     </form>
 </div>
-
 </body>
 </html>
