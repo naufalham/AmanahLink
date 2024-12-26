@@ -105,7 +105,9 @@
         .status.selesai {
             background-color: #0056b3;
         }
-
+        .status.dibayar {
+            background-color:rgb(74, 0, 104);
+        }
         .status.dibatalkan {
             background-color: #B30000;
         }

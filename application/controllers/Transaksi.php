@@ -35,6 +35,64 @@ class Transaksi extends CI_Controller {
         $id_pelanggan = $this->session->userdata('id_pelanggan');
         $data['status_pelanggan'] = $this->Mtransaksi->status_pelanggan($id_pelanggan);
 
+        $snapToken = "";
+        $data['cekmidtrans'] = array();
+        if($data['transaksi']['status_transaksi']=="diproses"){
+
+            include 'midtrans-php/Midtrans.php';
+            \Midtrans\Config::$serverKey = 'SB-Mid-server-LucM4Cnwfngui4V_APMpKFXP';
+            \Midtrans\Config::$isProduction = false;
+            \Midtrans\Config::$isSanitized = true;
+            \Midtrans\Config::$is3ds = true;
+
+            $params['transaction_details']['order_id']=$data['transaksi']['id_transaksi'];
+            $params['transaction_details']['gross_amount']=$data['transaksi']['total_harga'];
+
+            try {
+                $snapToken = \Midtrans\Snap::getSnapToken($params);
+            } catch(Exception $e) {
+
+            }
+
+            $data['snapToken'] = $snapToken;
+
+            //cek midtrans sudah ada transaksi atau belum, sudah dibayar/belum
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.sandbox.midtrans.com/v2/".$data["transaksi"]["id_transaksi"]."/status",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                'accept: application/json', 'authorization: Basic U0ItTWlkLXNlcnZlci1MdWNNNENud2ZuZ3VpNFZfQVBNcEtGWFA6YW1pa29t'
+            ),
+            ));
+
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+
+            curl_close($curl);
+
+            if ($err) {
+            echo "cURL Error #:" . $err;
+            } else {
+            // echo $response;
+                $responsi = json_decode($response, TRUE);
+                if(isset($responsi['status_code']) && in_array($responsi['status_code'], [200,201])){
+                    $data['cekmidtrans'] = $responsi;
+                    if($responsi['transaction_status']=='settlement'){
+                        $this->Mtransaksi->set_dibayar($id_transaksi);
+                        redirect('transaksi/detail/' . $id_transaksi,'refresh');
+                    }
+                }
+            }
+        }
+
+
+
         $this->load->view('header');
         $this->load->view('transaksi_detail', $data);
         $this->load->view('footer');

@@ -235,6 +235,12 @@ class Mtransaksi extends CI_Model {
         }
         return false;
     }
+
+    function set_dibayar($id_transaksi){
+        $this->db->where('id_transaksi', $id_transaksi);
+        $this->db->set('status_transaksi', 'dibayar');
+        $this->db->update('transaksi');
+    }
     
     
     

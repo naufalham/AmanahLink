@@ -76,10 +76,11 @@ class Produk extends CI_Controller {
 		// Atur pesan bindo
 		$this->form_validation->set_message("required", "%s wajib diisi");
 	
+		// Validasi dan upload foto jika ada
 		if ($this->form_validation->run() == TRUE) {
 			$inputan = $this->input->post();
 	
-			// Validasi dan upload foto jika ada
+			// Cek apakah ada file foto diunggah
 			if (!empty($_FILES['foto_produk']['name'])) {
 				$config['upload_path'] = $this->config->item("assets_produk");
 				$config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -89,13 +90,22 @@ class Produk extends CI_Controller {
 				if ($this->upload->do_upload("foto_produk")) {
 					$inputan['foto_produk'] = $this->upload->data("file_name");
 	
+								// Validasi format file
+					$file_type = strtolower(pathinfo($_FILES['foto_produk']['name'], PATHINFO_EXTENSION));
+					if (!in_array($file_type, ['jpg', 'jpeg', 'png'])) {
+						$this->form_validation->set_rules("foto_produk", "Foto Produk", "required", [
+							"required" => "Jenis file harus JPG atau PNG."
+						]);
+					}
+
 					// Hapus foto lama jika ada
 					if (!empty($data['produk']['foto_produk'])) {
 						unlink($this->config->item("assets_produk") . $data['produk']['foto_produk']);
 					}
 				} else {
 					// Jika upload gagal, tampilkan pesan error
-					$this->session->set_flashdata('pesan_error', $this->upload->display_errors());
+					$this->form_validation->set_rules("foto_produk", "Foto Produk", "required", [
+					"required" => "Jenis file harus JPG atau PNG."]);
 					redirect("produk/edit/$id_produk", 'refresh');
 				}
 			}
@@ -110,7 +120,7 @@ class Produk extends CI_Controller {
 		$this->load->view("produk_edit", $data);
 		$this->load->view("footer");
 	}
-		
+					
 
 	function hapus($id_produk){
 		//query hapus data

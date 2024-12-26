@@ -105,6 +105,10 @@
             background-color: #0E6635;
         }
 
+        .status.dibayar {
+            background-color:rgb(74, 0, 104);
+        }
+
         .status.dikirim {
             background-color:rgb(241, 137, 0);
         }
@@ -195,6 +199,7 @@
                 <tr style="background-color: #e0e0e0;">
                     <td colspan="4"><b>Total Harus Dibayar</b></td>
                     <th><?php echo number_format($total_keseluruhan * 0.9); ?></th>
+                    <?php $total_transaksi = ($total_keseluruhan * 0.9); ?>
                 </tr>
             <?php else: ?>
                 <tr style="background-color: #e0e0e0;">
@@ -203,6 +208,23 @@
                 </tr>
             <?php endif; ?>
 
+
 		</tbody>
 	</table>
 </div>
+
+    <?php if(!empty($snapToken)):?>
+            <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-kHxwsSvkMpD_qfsc"></script>
+            <script type="text/javascript">
+            $(document).ready(function(){
+                snap.pay('<?php echo $snapToken?>', {
+                onSuccess: function(result){
+                },
+                onPending: function(result){
+                },
+                onError: function(result){
+                }
+                });
+            });
+            </script>
+    <?php endif?>
