@@ -213,12 +213,14 @@
                 <span class="text-muted"><?php echo form_error("harga_produk") ?></span>
             </div>
         </div>
+        
+        
         <div class="col-half">
             <label>Foto Produk</label>
             <div class="upload-container">
                 <input type="text" class="form-control file-info" value="<?php echo $produk['foto_produk'] ?>" disabled>
-                <label for="foto_produk" class="upload-btn">upload file</label>
-                <input type="file" name="foto_produk" id="foto_produk" class="file-input" onchange="updateFileName()">
+                <label for="foto_produk" class="upload-btn">Upload File</label>
+                <input type="file" name="foto_produk" id="foto_produk" class="file-input">
             </div>
             <span class="text-muted"><?php echo form_error("foto_produk") ?></span>
         </div>
