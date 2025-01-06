@@ -180,7 +180,7 @@
                 </div>
                 <div class="col-half">
                     <label for="wa_pelanggan">No HP</label>
-                    <input type="text" id="wa_pelanggan" name="wa_pelanggan" class="form-control" value="<?php echo set_value('wa_pelanggan', $this->session->userdata('wa_pelanggan')); ?>">
+                    <input type="number" id="wa_pelanggan" name="wa_pelanggan" class="form-control" value="<?php echo set_value('wa_pelanggan', $this->session->userdata('wa_pelanggan')); ?>">
                     <span class="text-muted"><?php echo form_error("wa_pelanggan") ?></span>
                 </div>
             </div>
