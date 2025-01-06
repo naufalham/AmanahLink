@@ -73,11 +73,19 @@ class Produk extends CI_Controller {
 		$this->form_validation->set_rules("harga_produk", "Harga Produk", "required");
 		$this->form_validation->set_message("required", "%s wajib diisi");
 	
+<<<<<<< HEAD
+		// Validasi dan upload foto jika ada
+		if ($this->form_validation->run() == TRUE) {
+			$inputan = $this->input->post();
+	
+			// Cek apakah ada file foto diunggah
+=======
 		// Jalankan validasi form
 		if ($this->form_validation->run() == TRUE) {
 			$inputan = $this->input->post();
 	
 			// Cek jika ada perubahan pada file
+>>>>>>> e0f982ccf84a0de6b3886e578d62ab57a23c547b
 			if (!empty($_FILES['foto_produk']['name'])) {
 				$config['upload_path'] = $this->config->item("assets_produk");
 				$config['allowed_types'] = 'jpg|jpeg|png';
@@ -88,15 +96,34 @@ class Produk extends CI_Controller {
 					// Ambil nama file baru
 					$inputan['foto_produk'] = $this->upload->data('file_name');
 	
+<<<<<<< HEAD
+								// Validasi format file
+					$file_type = strtolower(pathinfo($_FILES['foto_produk']['name'], PATHINFO_EXTENSION));
+					if (!in_array($file_type, ['jpg', 'jpeg', 'png'])) {
+						$this->form_validation->set_rules("foto_produk", "Foto Produk", "required", [
+							"required" => "Jenis file harus JPG atau PNG."
+						]);
+					}
+
+					// Hapus foto lama jika ada
+=======
 					// Hapus file lama jika ada
+>>>>>>> e0f982ccf84a0de6b3886e578d62ab57a23c547b
 					if (!empty($data['produk']['foto_produk'])) {
 						unlink($this->config->item("assets_produk") . $data['produk']['foto_produk']);
 					}
 				} else {
+<<<<<<< HEAD
+					// Jika upload gagal, tampilkan pesan error
+					$this->form_validation->set_rules("foto_produk", "Foto Produk", "required", [
+					"required" => "Jenis file harus JPG atau PNG."]);
+					redirect("produk/edit/$id_produk", 'refresh');
+=======
 					// Tambahkan error ke validasi
 					$this->form_validation->set_rules("foto_produk", "Foto Produk", "required", [
 						"required" => "Jenis file harus JPG atau PNG."
 					]);
+>>>>>>> e0f982ccf84a0de6b3886e578d62ab57a23c547b
 				}
 			}
 	
@@ -112,9 +139,13 @@ class Produk extends CI_Controller {
 		$this->load->view("produk_edit", $data);
 		$this->load->view("footer");
 	}
+<<<<<<< HEAD
+					
+=======
 	
 	
 		
+>>>>>>> e0f982ccf84a0de6b3886e578d62ab57a23c547b
 
 	function hapus($id_produk){
 		//query hapus data

@@ -128,6 +128,10 @@
         .status.dibatalkan {
             background-color: #B30000;
         }
+        
+        .status.dibayar {
+            background-color:rgb(74, 0, 104);
+        }
 
     @media (max-width: 768px) {
         .table th,
